@@ -2,3 +2,11 @@ Grupo F
 
 - Teresa Calvo
 - Sebastian Cruz
+
+1. Descripción General 
+
+El proyecto consiste en una plataforma web integral diseñada para la recepción, investigación, seguimiento y resolución de quejas y no conformidades de clientes. El sistema automatiza el flujo de trabajo operacional desde que el usuario reporta un problema hasta que el equipo interno investiga la causa raíz y aplica un plan de acción correctiva para evitar la recurrencia. 
+
+2. Problema que Resuelve 
+
+Muchas empresas manejan los reclamos de clientes de forma desorganizada (mediante correos o registros en papel), lo que provoca pérdidas de información, falta de trazabilidad en las investigaciones, demora en las respuestas y la imposibilidad de medir los costos asociados a las fallas de calidad.
