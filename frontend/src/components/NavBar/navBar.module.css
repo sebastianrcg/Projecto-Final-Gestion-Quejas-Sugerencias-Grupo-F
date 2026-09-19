@@ -1,0 +1,40 @@
+.navBar { 
+    height: 64px;
+    width: 100%;
+    background-color: #1b263b;
+    display: flex;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    z-index: 10;
+    position: relative;
+    
+}
+
+.navLink {
+    text-decoration: none;
+    color: #e0e1dd;
+    margin: 0 10px;
+    font-size: 22px;
+    /* font-weight: bold; */
+}
+
+.navLink:hover {
+    color:#EB8F04 ;
+}
+
+.loginBtn {
+   
+    font-size: 22px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 50px;
+    background-color: #24a0ed;
+    text-decoration: none;
+    color: #e0e1dd;
+}
+
+.loginBtn:hover {
+    background-color: #2089ca;
+}

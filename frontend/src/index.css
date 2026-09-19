@@ -54,10 +54,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* font-family: "Nunito"; */
 }
 
 #root {
   min-height: 100dvh;
   max-width: 100dvw;
-  background-color: #9f9fa0;
+  background-color: #e0e1dd;
+  font-family: "Nunito";
 }
