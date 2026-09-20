@@ -17,7 +17,7 @@ const Home = () => {
                 <p>Centraliza la recepción de reclamos, automatiza la ivestigacion de causa raíz y gestiona planes de acción correctiva para evitar la recurrencia de fallas.</p>
 
                 <div className={styles.heroBtns}>
-                    <button onClick={()=> navigate('/reportarQuejas')} className={`${styles.heroButton} ${styles.primaryButton}`}>Registrar Queja</button>
+                    <button onClick={()=> navigate('/reportarQueja')} className={`${styles.heroButton} ${styles.primaryButton}`}>Registrar Queja</button>
                     <button onClick={()=> navigate('/tracking')}className={`${styles.heroButton} ${styles.secondaryButton}`}>Consultar Estado</button>
                 </div>
             </div>
