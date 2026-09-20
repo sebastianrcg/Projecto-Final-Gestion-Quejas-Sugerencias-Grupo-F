@@ -8,27 +8,32 @@ const Quejas = () => {
             <h2 className={styles.title}>Registrar una Queja</h2>
             <div className={styles.form}>
                 <form >
-                    <div>
-                        <input type="text" placeholder="Nombre" />
-                        <input type="email" placeholder="Correo Electronico" />
+                    <div className={styles.inputContainer}>
+                        <input type="text" placeholder="Nombre" name="nombre" />
+                        <input type="email" placeholder="Correo Electronico" name="email" />
                     </div>
-                    <div>
-                        <input type="text" placeholder="Producto Afectado" />
-                        <input type="text" placeholder="Lote / Codigo de Produccion" />
+                    <div className={styles.inputContainer}>
+                        <input type="text" placeholder="Producto Afectado" name="producto"/>
+                        <input type="text" placeholder="Lote / Codigo de Produccion" name="lote"/>
                     </div>
-                    <div>
-                    <select name="">
+                    <div className={styles.inputContainer}>
+                    <select name="tipoQueja">
                         <option value="" selected disabled> Tipo de Queja</option>
 
                     </select>
 
-                    <input type="file" />
+                    <input type="file" name="file" />
                     </div>
-                    <textarea name="">
 
+                    <div className={styles.commentBox}>
+
+                    <textarea name="comentario" placeholder="Ingresa detalles e informacion de la reclamción.">
                     </textarea>
-                    <div>
-                    <button>Enviar Queja</button>
+                    </div>
+                    
+                    <div className={styles.formBtns}>
+                    <button className={styles.saveBtn}>Enviar Queja</button>
+                    <button className={styles.btnReset}>Reiniciar Formulario</button>
                     </div>
 
                 </form>
