@@ -1,11 +1,11 @@
 const express = require("express");
-const pool = require("../model/pgDatabase.js");
+const pool = require("../model/pgDatabase");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const authRouter = express.Router();
 
-const JWT_SECRET = process.env.JWT_TOKEN;
+
 
 
 authRouter.post("/login", async (req, res) => {
@@ -16,7 +16,7 @@ authRouter.post("/login", async (req, res) => {
     }
     try {
         const sql = "SELECT * FROM users WHERE username=$1"
-        const results = await pool(sql, [username]);
+        const results = await pool.query(sql, [username]);
 
         if (results.rows.length === 0) {
             return res.status(401).json({ error: "Credenciales invalidos." });
@@ -32,7 +32,7 @@ authRouter.post("/login", async (req, res) => {
 
         delete user.password;
 
-        const jwtToken = jwt.sign(user, JWT_SECRET, { expiresIn: "1d" })
+        const jwtToken = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: "1d" })
 
         req.session.user = user;
         req.session.token = jwtToken;
