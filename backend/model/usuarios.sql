@@ -5,6 +5,7 @@ CREATE TABLE users (
     correo varchar(100),
     username varchar(100),
     password varchar(255),
+    role varchar(50),
     fechanacimiento date,
     estado boolean default true
 )
