@@ -1,0 +1,19 @@
+.container {
+    width: 100%;
+    height: calc(100dvh - 64px);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.loginSection{
+    grid-column: 1/2;
+}
+
+.loginImage {
+    grid-column: 2/4;
+    /* height: 100%; */
+    background-image: url("../../../public/loginImage.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

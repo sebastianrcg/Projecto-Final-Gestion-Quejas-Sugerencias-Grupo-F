@@ -83,8 +83,8 @@ const Quejas = () => {
                                 <option value="documentation_incompleta">Documentación incompleta</option>
                             </optgroup>
 
-                            <optgroup label="Otro">
-                            <option value="otro">Otro</option>
+                            <optgroup label="Otra">
+                            <option value="otra">Otra</option>
                             </optgroup>
             
 
