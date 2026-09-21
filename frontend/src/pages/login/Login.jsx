@@ -16,6 +16,8 @@ const Login = () => {
         setPassword(value);
     }
 
+    // agregar post cuando el backend este listo
+
     return(
         <>
             <div className={styles.container}>
