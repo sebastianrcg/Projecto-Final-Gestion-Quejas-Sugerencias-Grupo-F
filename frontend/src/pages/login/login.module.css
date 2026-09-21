@@ -70,3 +70,12 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.errorMsg {
+    margin-top: 10px;
+    text-align: center;
+    color: #ed2424;
+    font-size: 20px;
+    margin-bottom: -10px;
+    font-weight: bold;
+}

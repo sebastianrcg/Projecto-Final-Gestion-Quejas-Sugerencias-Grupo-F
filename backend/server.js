@@ -4,6 +4,8 @@ const cors = require("cors");
 const helmet = require("helmet");
 const session = require("express-session");
 
+const authRouter = require("./routes/auth.js")
+
 require("dotenv").config();
 
 const app = express();
@@ -29,6 +31,8 @@ app.use(cors({
 app.use(helmet())
 app.use(express.json());
 app.use(morgan("dev"));
+
+app.use("/auth", authRouter);
 
 
 app.listen(PORT, ()=> { 

@@ -15,7 +15,7 @@ authRouter.post("/login", async (req, res) => {
         return res.status(400).json({ error: "Peticion invalida" });
     }
     try {
-        const sql = "SELECT * FROM users WHERE correo=$1"
+        const sql = "SELECT * FROM users WHERE username=$1"
         const results = await pool(sql, [username]);
 
         if (results.rows.length === 0) {
@@ -35,6 +35,7 @@ authRouter.post("/login", async (req, res) => {
         const jwtToken = jwt.sign(user, JWT_SECRET, { expiresIn: "1d" })
 
         req.session.user = user;
+        req.session.token = jwtToken;
         return res.json({
             validated: true,
             user: user,
@@ -46,7 +47,26 @@ authRouter.post("/login", async (req, res) => {
         console.error('Error iniciando sesion:', err);
         res.status(500).json({ error: 'Error iniciando sesion, intente de nuevo.' });
     }
+})
 
+authRouter.get("/session", (req, res)=>{
+    if (req.session.user){
+        res.json({
+            user: req.session.user,
+            token: req.session.token
+        })
+    } else {
+        res.status(401).json({
+            user: null
+        })
+    }
+})
+
+authRouter.post("/logout", (req, res)=> {
+    req.session.destroy(() =>{
+        res.clearCookie("connect.sid");
+        res.json({message: "Sesion cerrada"})
+    })
 })
 
 module.exports = authRouter;
