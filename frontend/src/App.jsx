@@ -22,7 +22,7 @@ function App() {
         <Route path="login" element={<Login />} />
       </Route>
 
-      <Route path="/app" element={ProtectedRoute}>
+      <Route path="/app" element={<ProtectedRoute />}>
         <Route index element={<Main />}/>
 
 

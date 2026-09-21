@@ -1,7 +1,12 @@
 import styles from "./protectednav.module.css";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
 
 const ProtectedNav = ({style}) => {
+    const {signOut} = useAuth()
+    
     return (
         <>
             <nav className={style}>
@@ -12,8 +17,8 @@ const ProtectedNav = ({style}) => {
                 <NavLink >Acciones Correctivas</NavLink>
                 <NavLink >Usuarios</NavLink>
                 <NavLink >Reportes</NavLink>
-                <NavLink >Cerrar sesion</NavLink>
-            </nav>
+                <NavLink onClick={signOut}>Cerrar sesion</NavLink>
+            </nav> 
         </>
     )
 }
