@@ -26,8 +26,8 @@ const Login = () => {
                     <h3>Inicie sesión con su correo</h3>
 
                     <form>
-                        <input type="email" placeholder="Correo Electronico" value={username} onChange={handleUserChange}/>
-                        <input type="password" placeholder="Contraseña" value={password} onChange={handlePassChange}/>
+                        <input type="email" placeholder="Correo Electronico" value={username} onChange={handleUserChange} required/>
+                        <input type="password" placeholder="Contraseña" value={password} onChange={handlePassChange} required/>
                         <button>Inicar Sesión</button>
                     </form>
 
