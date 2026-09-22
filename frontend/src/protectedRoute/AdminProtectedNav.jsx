@@ -14,7 +14,7 @@ import { VscCommentDiscussionSparkle } from "react-icons/vsc";
 import { SiGithubactions } from "react-icons/si";
 
 
-const ProtectedNav = ({style}) => {
+const AdminProtectedNav = ({style}) => {
     const {signOut} = useAuth()
     
     return (
@@ -27,6 +27,7 @@ const ProtectedNav = ({style}) => {
                 <NavLink className={styles.link}><VscCommentDiscussionSparkle /> <p>Quejas</p></NavLink>
                 <NavLink className={styles.link}><LuFileSearch /> <p>Investigacion</p></NavLink>
                 <NavLink className={styles.link}><SiGithubactions /><p>Acciones Correctivas</p> </NavLink>
+                <NavLink className={styles.link}><FaRegUser /><p>Usuarios</p></NavLink>
                 <NavLink className={styles.link}><HiOutlineDocumentReport /><p>Reportes</p></NavLink>
                 <NavLink className={styles.logOutBtn} onClick={signOut}>Cerrar sesion</NavLink>
             </nav> 
@@ -34,4 +35,4 @@ const ProtectedNav = ({style}) => {
     )
 }
 
-export default ProtectedNav;
+export default AdminProtectedNav;
