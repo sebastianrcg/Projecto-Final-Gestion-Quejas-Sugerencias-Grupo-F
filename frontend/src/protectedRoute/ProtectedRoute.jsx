@@ -21,7 +21,6 @@ const ProtectedRoute = () => {
                 </div>
             </div>
         )
-
     }
 
     return (

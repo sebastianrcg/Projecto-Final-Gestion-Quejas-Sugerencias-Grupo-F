@@ -10,6 +10,7 @@ import { AuthProvider } from "./context/AuthContext"
 import ProtectedRoute from "./protectedRoute/ProtectedRoute"
 
 import Main from "./protectedPages/main/Main"
+import Usuarios from "./protectedPages/usuarios/Usuarios"
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
 
       <Route path="/app" element={<ProtectedRoute />}>
         <Route index element={<Main />}/>
+        <Route path="usuarios" element={<Usuarios />}/>
 
 
       </Route>

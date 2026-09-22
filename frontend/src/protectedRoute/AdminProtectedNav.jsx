@@ -27,7 +27,7 @@ const AdminProtectedNav = ({style}) => {
                 <NavLink className={styles.link}><VscCommentDiscussionSparkle /> <p>Quejas</p></NavLink>
                 <NavLink className={styles.link}><LuFileSearch /> <p>Investigacion</p></NavLink>
                 <NavLink className={styles.link}><SiGithubactions /><p>Acciones Correctivas</p> </NavLink>
-                <NavLink className={styles.link}><FaRegUser /><p>Usuarios</p></NavLink>
+                <NavLink to="/app/usuarios" className={styles.link}><FaRegUser /><p>Usuarios</p></NavLink>
                 <NavLink className={styles.link}><HiOutlineDocumentReport /><p>Reportes</p></NavLink>
                 <NavLink className={styles.logOutBtn} onClick={signOut}>Cerrar sesion</NavLink>
             </nav> 

@@ -10,9 +10,11 @@
     background-color: #1b263b;
     display: flex;
     flex-direction: column;
-    height: 100dvh;
+    max-height: 100dvh;
 }
 
 .content {
     grid-column: 2/6;
+    max-height: 100dvh;
+    overflow-y: scroll;
 }
