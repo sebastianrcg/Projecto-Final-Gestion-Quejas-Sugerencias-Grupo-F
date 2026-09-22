@@ -1,0 +1,42 @@
+.link {
+    text-decoration: none;
+    color: #e0e1dd;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 20px;
+    display: flex;
+}
+
+.link p{
+    margin-left: 10px;
+}
+
+.link:hover{
+    color:#EB8F04;
+}
+
+.logOutBtn {
+    width: fit-content;
+    text-decoration: none;
+    color: #e0e1dd;
+    font-size: 20px;
+    margin: 0 auto;
+    margin-top: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 5px 15px;
+    border-radius: 50px;
+    background-color: #ed2424;
+    font-weight: bold;
+}
+
+.logOutBtn:hover{
+    background-color: #cf1f1f;
+}
+
+.logo {
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}

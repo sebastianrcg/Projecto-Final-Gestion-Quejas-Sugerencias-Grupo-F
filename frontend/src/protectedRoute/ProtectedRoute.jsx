@@ -14,7 +14,7 @@ const ProtectedRoute = () => {
         <div className={styles.container}>
             <ProtectedNav style={styles.nav}/>
             <div className={styles.content}>
-                <Outlet/>
+                <Outlet/> 
             </div>
         </div>
     )
