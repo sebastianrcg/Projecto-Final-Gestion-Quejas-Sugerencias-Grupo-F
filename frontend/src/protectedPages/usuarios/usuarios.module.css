@@ -5,10 +5,32 @@
     font-size: 40px;
 }
 
+.btnContainer {
+    display: flex;
+    justify-content: end;
+    margin-top: 15px;
+    margin-right: 40px;
+}
+
+.btnContainer button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    background-color: #4bdf5f;
+    font-weight: bold;
+    color: white;
+}
+
+.btnContainer button:hover {
+    background-color: #45ca57;
+}
+
 .table{
     width: 90%;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 20px;
     background-color: white;
     /* padding: 10px; */
     border-radius: 5px;

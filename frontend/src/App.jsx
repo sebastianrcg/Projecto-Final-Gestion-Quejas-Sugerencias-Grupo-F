@@ -11,6 +11,7 @@ import ProtectedRoute from "./protectedRoute/ProtectedRoute"
 
 import Main from "./protectedPages/main/Main"
 import Usuarios from "./protectedPages/usuarios/Usuarios"
+import RegistrarUsuario from "./protectedPages/nuevoUsuario/RegistrarUsuario"
 
 function App() {
 
@@ -26,7 +27,8 @@ function App() {
       <Route path="/app" element={<ProtectedRoute />}>
         <Route index element={<Main />}/>
         <Route path="usuarios" element={<Usuarios />}/>
-
+        <Route path="usuarios/nuevoUsuario" element={<RegistrarUsuario />} />
+ 
 
       </Route>
     </>

@@ -1,9 +1,12 @@
 import styles from "./usuarios.module.css";
 import { useEffect, useState } from "react";
 import axios from "../../axiosConfig";
+import { useNavigate } from "react-router-dom";
 
 const Usuarios = () => {
     const [usuarios, setUsuarios] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(()=> {
 
@@ -25,6 +28,9 @@ const Usuarios = () => {
     return (
         <>
             <h3 className={styles.title}>Usuarios</h3>
+            <div className={styles.btnContainer}>
+                <button onClick={()=> navigate("/app/usuarios/nuevoUsuario")}>Registrar Usuario</button>
+            </div>
 
             <table className={styles.table}>
                 <thead>
