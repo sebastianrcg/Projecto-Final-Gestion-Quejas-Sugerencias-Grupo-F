@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.use("/auth", authRouter);
-app.use("/usuarios", usuariosRouter);
+app.use("/usuarios", usuariosRouter); 
 
 
 app.listen(PORT, ()=> { 
