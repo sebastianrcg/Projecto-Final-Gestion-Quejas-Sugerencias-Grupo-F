@@ -9,7 +9,7 @@ const Quejas = () => {
         producto: "",
         lote: "",
         tipoQueja: "",
-        file: "",
+        foto: "",
         comentario: ""
     })
 
@@ -27,7 +27,7 @@ const Quejas = () => {
         producto: "",
         lote: "",
         tipoQueja: "",
-        file: "",
+        foto: "",
         comentario: ""
     })
     }
@@ -95,7 +95,7 @@ const Quejas = () => {
 
                         </select>
 
-                        <input type="file" name="file" accept="image/*"/>
+                        <input type="file" name="foto" accept="image/*"/>
                     </div>
 
                     <div className={styles.commentBox}>
