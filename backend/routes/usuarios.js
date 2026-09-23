@@ -24,7 +24,7 @@ usuariosRouter.post("/", async (req, res)=>{
         const hashedPassword = await bcrypt.hash(password, salt);
 
         const sql = "INSERT INTO users (nombre, apellido, correo, username, password, role, fechanacimiento) VALUES ($1, $2, $3, $4, $5, $6, $7)"
-        const values = [nombre, apellido, correo, username, password, role, fechaNacimiento];
+        const values = [nombre, apellido, correo, username, hashedPassword, role, fechaNacimiento];
 
         const results = await pool.query(sql, values);
 

@@ -1,12 +1,15 @@
 import styles from "./usuarios.module.css";
 import { useEffect, useState } from "react";
 import axios from "../../axiosConfig";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const Usuarios = () => {
     const [usuarios, setUsuarios] = useState([]);
 
     const navigate = useNavigate();
+
+    const {session} = useAuth();
 
     useEffect(()=> {
 
@@ -24,6 +27,10 @@ const Usuarios = () => {
         }
         getUsuarios();
     }, [])
+
+    if (session.user.role !== "admin"){
+        return <Navigate to="/app/" />
+    }
 
     return (
         <>
