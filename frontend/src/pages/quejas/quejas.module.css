@@ -1,5 +1,5 @@
 .title {
-    margin-top: 40px;
+    margin-top: 30px;
     text-align: center;
     color: black;
     font-size: 35px;
@@ -10,7 +10,7 @@
     min-height: 60dvh;
     background-color: white;
     margin: 0 auto;
-    margin-top: 45px;
+    margin-top: 30px;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); */
@@ -29,6 +29,20 @@
 .inputContainer input {
     height: 35px;
     width: 40%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.inputContainerSubject {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 15px 0;
+}
+
+.inputContainerSubject input {
+    height: 35px;
+    width: 86.7%;
     padding: 10px;
     font-size: 20px;
 }
@@ -65,7 +79,7 @@
     display: flex;
     justify-content: center;
     gap: 25px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .saveBtn{

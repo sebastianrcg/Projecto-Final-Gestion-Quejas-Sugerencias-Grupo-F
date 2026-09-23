@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const Quejas = () => {
     const [queja, setQueja] = useState({
+        titulo: "",
         nombre: "",
         correo: "",
         producto: "",
@@ -20,6 +21,7 @@ const Quejas = () => {
     const resetForm = (event)=> {
         event.preventDefault();
         setQueja({
+        titulo: "",
         nombre: "",
         correo: "",
         producto: "",
@@ -35,16 +37,19 @@ const Quejas = () => {
             <h2 className={styles.title}>Registrar una Queja</h2>
             <div className={styles.form}>
                 <form >
+                    <div className={styles.inputContainerSubject}>
+                        <input type="text" placeholder="Titulo/Sujeto" name="titulo" value={queja.titulo} onChange={handleChange} />
+                    </div>
                     <div className={styles.inputContainer}>
-                        <input type="text" placeholder="Nombre" name="nombre" value={queja.nombre} onChange={handleChange}/>
-                        <input type="email" placeholder="Correo Electronico" name="correo" value={queja.correo} onChange={handleChange}/>
+                        <input type="text" placeholder="Nombre" name="nombre" value={queja.nombre} onChange={handleChange} required/>
+                        <input type="email" placeholder="Correo Electronico" name="correo" value={queja.correo} onChange={handleChange} required/>
                     </div>
                     <div className={styles.inputContainer}>
                         <input type="text" placeholder="Producto Afectado" name="producto" value={queja.producto} onChange={handleChange} />
                         <input type="text" placeholder="Lote / Codigo de Produccion" name="lote" value={queja.lote} onChange={handleChange}/>
                     </div>
                     <div className={styles.inputContainer}>
-                        <select name="tipoQueja" value={queja.tipoQueja} onChange={handleChange}>
+                        <select name="tipoQueja" value={queja.tipoQueja} onChange={handleChange} required>
                             <option value="" selected disabled> Tipo de Queja</option>
                             <optgroup label="Defectos de Producto">
                                 <option value="empaque_defectuoso">Empaque defectuoso o mal sellado</option>
@@ -95,7 +100,7 @@ const Quejas = () => {
 
                     <div className={styles.commentBox}>
 
-                        <textarea name="comentario" placeholder="Ingresa detalles e informacion de la reclamación." value={queja.comentario} onChange={handleChange}>
+                        <textarea name="comentario" placeholder="Ingresa detalles e informacion de la reclamación." value={queja.comentario} onChange={handleChange} required>
                         </textarea>
                     </div>
 
