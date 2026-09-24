@@ -92,7 +92,7 @@ const Quejas = () => {
             <div className={ (showForm) ? `${styles.form}` : `${styles.formSuccess}`}>
                 {showMessage &&
                     <div className={styles.success}>
-                        <p>{message.split("@")[0]}<br/> {message.split("@")[1]}</p>
+                        <p>{message.split("@")[0]}<br/><b>{message.split("@")[1].split(":")[0]}: </b> {message.split("@")[1].split(":")[1]}</p>
                         
                         <button onClick={otraQueja}>Registrar Otra Queja</button>
                     </div>}
