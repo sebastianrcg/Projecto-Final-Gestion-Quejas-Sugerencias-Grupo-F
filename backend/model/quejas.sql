@@ -1,6 +1,7 @@
 CREATE TABLE quejas (
     id serial primary key,
     titulo varchar(200) NOT NULL,
+    nombre varchar(200) NOT NULL,
     correo varchar(200) NOT NULL,
     producto varchar(150),
     lote varchar(100),

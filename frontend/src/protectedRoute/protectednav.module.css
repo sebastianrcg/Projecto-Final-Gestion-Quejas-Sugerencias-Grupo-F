@@ -26,12 +26,14 @@
     text-align: center;
     padding: 5px 15px;
     border-radius: 50px;
-    background-color: #ed2424;
+    background-color: #ef3b49;
+    /* background-color: #ed2424; */
     font-weight: bold;
 }
 
 .logOutBtn:hover{
-    background-color: #cf1f1f;
+    background-color: #d6303d;
+    /* background-color: #cf1f1f; */
 }
 
 .logo {

@@ -6,8 +6,9 @@ const cors = require("cors");
 const helmet = require("helmet");
 const session = require("express-session");
 
-const authRouter = require("./routes/auth.js")
+const authRouter = require("./routes/auth.js");
 const usuariosRouter = require('./routes/usuarios.js');
+const quejasRouter = require("./routes/quejas.js");
 
 
 
@@ -23,20 +24,21 @@ app.use(session({
         maxAge: 1000*60*60*24    
         // 1 day cookie
     }
-}))
+}));
 
 
 app.use(cors({
     origin: "http://localhost:5173",
     credentials: true
-}))
+}));
 
-app.use(helmet())
+app.use(helmet());
 app.use(express.json());
 app.use(morgan("dev"));
 
 app.use("/auth", authRouter);
-app.use("/usuarios", usuariosRouter); 
+app.use("/usuarios", usuariosRouter);
+app.use("/quejas", quejasRouter);
 
 
 app.listen(PORT, ()=> { 

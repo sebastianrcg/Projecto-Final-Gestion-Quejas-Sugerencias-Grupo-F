@@ -1,6 +1,10 @@
 import styles from "./quejas.module.css";
 import { useState } from "react";
 
+
+import { nanoid } from "nanoid"
+import axios from "axios";
+
 const Quejas = () => {
     const [queja, setQueja] = useState({
         titulo: "",
@@ -13,40 +17,97 @@ const Quejas = () => {
         comentario: ""
     })
 
-    const handleChange = (event)=> {
-        const {name, value} = event.target;
-        setQueja(prev => ({...prev, [name]: value}))
+    const [showForm, setShowForm] = useState(true)
+
+    const [showMessage, setShowMessage] = useState(false);
+    const [message, setMessage] = useState("");
+
+    const [showError, setShowError] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setQueja(prev => ({ ...prev, [name]: value }))
     }
     // Hacer handle change para el archivo de imagen y arreglar el resetForm para el archivo, archivos funcionan diferente
-    const resetForm = (event)=> {
+    const resetForm = (event) => {
         event.preventDefault();
         setQueja({
-        titulo: "",
-        nombre: "",
-        correo: "",
-        producto: "",
-        lote: "",
-        tipoQueja: "",
-        foto: "",
-        comentario: ""
-    })
+            titulo: "",
+            nombre: "",
+            correo: "",
+            producto: "",
+            lote: "",
+            tipoQueja: "",
+            foto: "",
+            comentario: ""
+        })
+    }
+
+    const enviarQueja = async (event) => {
+        event.preventDefault();
+        setShowError(false);
+        setErrorMsg("");
+
+        try {
+            const tracking = nanoid(15);
+
+            const response = await axios.post("http://localhost:5000/quejas", { ...queja, tracking: tracking });
+
+            setMessage(`Queja registrada, gracias por su opinion y sugerencias.@Codigo de seguimiento: ${tracking}`);
+            setShowForm(false);
+            setShowMessage(true);
+        } catch (err) {
+            if (err.response && err.response.data && err.response.data.error) {
+                setShowError(true);
+                setErrorMsg(err.response.data.error);
+            } else {
+                setShowError(true);
+                setErrorMsg("Error registrando queja, intente de nuevo.");
+            }
+
+        }
+
+    }
+
+    const otraQueja = () =>{
+        setShowMessage(false);
+        setMessage("");
+        setQueja({
+            titulo: "",
+            nombre: "",
+            correo: "",
+            producto: "",
+            lote: "",
+            tipoQueja: "",
+            foto: "",
+            comentario: ""
+        });
+        setShowForm(true)
     }
 
     return (
         <>
             <h2 className={styles.title}>Registrar una Queja</h2>
-            <div className={styles.form}>
-                <form >
+            <div className={ (showForm) ? `${styles.form}` : `${styles.formSuccess}`}>
+                {showMessage &&
+                    <div className={styles.success}>
+                        <p>{message.split("@")[0]}<br/> {message.split("@")[1]}</p>
+                        
+                        <button onClick={otraQueja}>Registrar Otra Queja</button>
+                    </div>}
+
+                {showForm && <form onSubmit={enviarQueja}>
                     <div className={styles.inputContainerSubject}>
-                        <input type="text" placeholder="Titulo/Sujeto" name="titulo" value={queja.titulo} onChange={handleChange} />
+                        <input type="text" placeholder="Titulo/Sujeto" name="titulo" value={queja.titulo} onChange={handleChange} required />
                     </div>
                     <div className={styles.inputContainer}>
-                        <input type="text" placeholder="Nombre" name="nombre" value={queja.nombre} onChange={handleChange} required/>
-                        <input type="email" placeholder="Correo Electronico" name="correo" value={queja.correo} onChange={handleChange} required/>
+                        <input type="text" placeholder="Nombre" name="nombre" value={queja.nombre} onChange={handleChange} required />
+                        <input type="email" placeholder="Correo Electronico" name="correo" value={queja.correo} onChange={handleChange} required />
                     </div>
                     <div className={styles.inputContainer}>
                         <input type="text" placeholder="Producto Afectado" name="producto" value={queja.producto} onChange={handleChange} />
-                        <input type="text" placeholder="Lote / Codigo de Produccion" name="lote" value={queja.lote} onChange={handleChange}/>
+                        <input type="text" placeholder="Lote / Codigo de Produccion" name="lote" value={queja.lote} onChange={handleChange} />
                     </div>
                     <div className={styles.inputContainer}>
                         <select name="tipoQueja" value={queja.tipoQueja} onChange={handleChange} required>
@@ -89,13 +150,13 @@ const Quejas = () => {
                             </optgroup>
 
                             <optgroup label="Otra">
-                            <option value="otra">Otra</option>
+                                <option value="otra">Otra</option>
                             </optgroup>
-            
+
 
                         </select>
 
-                        <input type="file" name="foto" accept="image/*"/>
+                        <input type="file" name="foto" accept="image/*" />
                     </div>
 
                     <div className={styles.commentBox}>
@@ -103,13 +164,13 @@ const Quejas = () => {
                         <textarea name="comentario" placeholder="Ingresa detalles e informacion de la reclamación." value={queja.comentario} onChange={handleChange} required>
                         </textarea>
                     </div>
-
+                    {showError && <p className={styles.errorMsg}>{errorMsg}</p>}
                     <div className={styles.formBtns}>
-                        <button className={styles.saveBtn}>Enviar Queja</button>
+                        <button className={styles.saveBtn} type="submit">Enviar Queja</button>
                         <button className={styles.btnReset} onClick={resetForm}>Reiniciar Formulario</button>
                     </div>
 
-                </form>
+                </form>}
             </div>
         </>
     )
