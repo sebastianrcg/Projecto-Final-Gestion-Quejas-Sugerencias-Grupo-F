@@ -1,5 +1,5 @@
 const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey(process.env.SENDGRID_API_KEY || "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");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 const enviarCorreo = (nombre, correo, tracking) => {

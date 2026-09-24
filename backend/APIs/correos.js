@@ -6,7 +6,7 @@ const enviarCorreo = async (nombre, correo, tracking) => {
   const mailgun = new Mailgun(FormData);
   const mg = mailgun.client({
     username: "api",
-    key: process.env.MAIL_API_KEY || "430283f598517e299390483fd15b324b-ea41613b-be3fdb32",
+    key: process.env.MAIL_API_KEY,
     
   });
   try {

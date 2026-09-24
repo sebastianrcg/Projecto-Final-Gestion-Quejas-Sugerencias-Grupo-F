@@ -1,0 +1,167 @@
+[33mcommit 7794cedf16f7339b1170848452ae5f884eb74de5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Thu Sep 24 18:59:22 2026 -0400
+
+    implementacion de correo automatico usando sendgrid API
+
+[33mcommit bf0e1cb8821daff45bfe2f99500cf4eedfed6a1f[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Thu Sep 24 00:07:08 2026 -0400
+
+    backend de registrar quejas, envio de formulario y generacion de tracking
+
+[33mcommit 74d82c6fe455ef5feedee2345bef07194a6c03fe[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Wed Sep 23 17:06:18 2026 -0400
+
+    crear tabla sql quejas
+
+[33mcommit 12efb5319d8c46bfdeb80e56126382f90c94bfc3[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Wed Sep 23 11:27:18 2026 -0400
+
+    Agregar campo de titulo en registro de queja
+
+[33mcommit 9eae0c8e763fa55d6de175ee1f3251682e8567c1[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Wed Sep 23 10:04:20 2026 -0400
+
+    implementar redireccion en frontend pagina de usuarios si el rol no es admin
+
+[33mcommit 7a86684e3ba8aecb440055219ca4ae629b9c461f[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Tue Sep 22 20:09:41 2026 -0400
+
+    terminado creacion de usuarios
+
+[33mcommit c6906484fba0345b0295f4ab5bf6b8df23460865[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Tue Sep 22 20:08:24 2026 -0400
+
+    terminado registro de usuarios
+
+[33mcommit 258c4f2dd84e80a3f549b8b8ccc1f59a20b94e99[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Tue Sep 22 19:00:28 2026 -0400
+
+    diseño inicial de formulario de registrar usuarios
+
+[33mcommit 28ee9d8b482c6ca1f860eb80d604b28f292eb85e[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Tue Sep 22 11:12:37 2026 -0400
+
+    crear ruta de obtener todos los usuarios, crear tabla de vista de usuarios
+
+[33mcommit 1769e109db34f3bc4b25b1d72e36230690d85bf6[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Tue Sep 22 09:39:51 2026 -0400
+
+    arreglar las dimensiones de la ventana para que el navbar tenga un tamaño fijo y la seccion de la aplicacion tenga scroll. Comenzar ventana de usuarios
+
+[33mcommit 665c1c72c9c185f125b7a4205fd40fd6d6b552d3[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Tue Sep 22 08:17:50 2026 -0400
+
+    crear navs diferentes para el admin y usuario. Redirigir dependiendo del rol
+
+[33mcommit 7b34b6da5efa38ca39a59b1a935a304ff3463f62[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Mon Sep 21 23:19:44 2026 -0400
+
+    Acabar 1er diseño NavBar de sesion
+
+[33mcommit 62d161649cf35e0717cda9733a8ae92f3e941d19[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Mon Sep 21 19:29:22 2026 -0400
+
+    terminardo logout
+
+[33mcommit 9264c5d4f7fef68b788974981fcd6d9cade601a4[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Mon Sep 21 19:03:34 2026 -0400
+
+    Terminado el login
+
+[33mcommit 65d49786948aa7ecea833db917347dd7ffd009ef[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Mon Sep 21 16:20:40 2026 -0400
+
+    agregar rutas de logout session y Contexto de session
+
+[33mcommit e1aedbb7884ed85b7d005790cb82f1bfad6bef79[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Mon Sep 21 12:32:21 2026 -0400
+
+    acabar ruta POST /login
+
+[33mcommit c32fb6f2af8f721417e91d1b056a57ba401631c7[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Mon Sep 21 11:25:46 2026 -0400
+
+    agregar dependencias, comenzarrutas de auth, login & register
+
+[33mcommit eb41a26ac9b9a2d19a5d851813545cf4e4d15079[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Mon Sep 21 11:00:10 2026 -0400
+
+    Comenzar backend, server stater, Postgres connection, users pg schema
+
+[33mcommit 3f4fbff2d13dc25c498ab56b177b5c8515ed0a28[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Sun Sep 20 21:58:01 2026 -0400
+
+    layout y diseño de pagina de login y estados agregados al username y password
+
+[33mcommit 2ad22be3ec65234ff5967e79c19e228367e29362[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Sun Sep 20 20:56:20 2026 -0400
+
+    comenzar login page
+
+[33mcommit 9596fa6e0f5368ebbaa277ffa9864ff8fad90c93[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Sun Sep 20 15:41:43 2026 -0400
+
+    terminar design inicial de registrar queja, reiniciar formulario..*** falta:Enviar formulario
+
+[33mcommit 676eb2cd2cf638663d4f4380883f5fc74a8ffb0f[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Sun Sep 20 14:09:21 2026 -0400
+
+    Primera version de diseño de pagina de quejas
+
+[33mcommit 0011d52da5be2a03e5c74dbd19aefd9c5d23e094[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Sat Sep 19 10:15:30 2026 -0400
+
+    Inicio pagina de registrar quejas
+
+[33mcommit 7122d77ee4aa97820f23c4948d07308cadf63bab[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Sat Sep 19 09:20:34 2026 -0400
+
+    Cambios en el landing page
+
+[33mcommit eafe21f1090fff65bb3647e51c8a60cb2bf9ffa6[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Fri Sep 18 23:29:33 2026 -0400
+
+    comenzar paginas principales sin accesso y hero del landing page
+
+[33mcommit bb8ae733784d50dcc959aa3d60f20308242a9f8f[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Fri Sep 18 10:32:58 2026 -0400
+
+    Inicio del layout inicial del proyecto
+
+[33mcommit 8c9c903567f706cdae498188284c7863998fac3d[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Tue Sep 15 21:14:52 2026 -0400
+
+    Definicion de descripcion general del proyecto
+
+[33mcommit 73dbd9d61147263d33264702d6d69b182b2c697d[m
+Author: Sebastian Cruz <sebalox92@gmail.com>
+Date:   Tue Sep 15 21:01:31 2026 -0400
+
+    primer commit
