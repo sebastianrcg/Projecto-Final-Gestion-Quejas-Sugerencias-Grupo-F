@@ -13,7 +13,7 @@ const enviarCorreo = async (nombre, correo, tracking) => {
     const data = await mg.messages.create("sandboxce0f199440d442eea28186f20fdb72e8.mailgun.org", {
       from: "Mailgun Sandbox <postmaster@sandboxce0f199440d442eea28186f20fdb72e8.mailgun.org>",
       to: [correo],
-      subject: "CAPA APP - Queja Recivida",
+      subject: "CAPA APP - Queja Recibida",
       text: ` Gracias ${nombre}, por tomar el tiempo de completar el formulario de quejas. Tu queja ha sido registrada exitosamente en nuestro sistema. El equipo de calidad iniciará la investigación correspondiente y podrás dar seguimiento con tu código de tracking: ${tracking}. \n 
       
       Gracias por ayudarnos a mejorar.`,
