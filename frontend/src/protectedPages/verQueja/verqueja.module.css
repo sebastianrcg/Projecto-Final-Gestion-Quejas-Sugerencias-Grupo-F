@@ -21,13 +21,25 @@
     background-color: #2b9ce2; 
     font-weight: bold;
     color: white;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .btnContainer button:hover {
     background-color: #2089ca;
 }
 
-p {
-    margin-left: 20px;
+
+.container {
+    width: 90%;
+    min-height: 60dvh;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color: black;
 }

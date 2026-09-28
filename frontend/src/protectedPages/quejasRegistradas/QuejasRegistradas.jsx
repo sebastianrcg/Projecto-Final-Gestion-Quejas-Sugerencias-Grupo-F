@@ -14,9 +14,9 @@ const QuejasRegistradas = () => {
 
     const navigate = useNavigate();
 
-    const topPageRef = useOutletContext(); 
+    const topPageRef = useOutletContext();
 
-    
+
 
     useEffect(() => {
 
@@ -39,23 +39,27 @@ const QuejasRegistradas = () => {
 
     const siguientePagina = () => {
         setPagina(pagina + 1);
-        
+
 
     }
 
     const paginaAnterior = () => {
         setPagina(pagina - 1);
-        
+
     }
 
     return (
         <>
-            
-            <h3   className={styles.title}>Quejas</h3>
 
-            
+            <h3 className={styles.title}>Quejas</h3>
+
+            <div className={styles.filtros}>
+                <p>Barra de filtros</p>
+            </div>
+
             <table className={styles.table}>
                 <thead>
+                    <th>ID</th>
                     <th>Solicitante</th>
                     <th>Tipo de Queja</th>
                     <th>Estado</th>
@@ -66,6 +70,7 @@ const QuejasRegistradas = () => {
                     {quejas.map(queja => {
                         return (
                             <tr>
+                                <td>{queja.id}</td>
                                 <td>{queja.nombre}</td>
                                 <td>{queja.tipoqueja}</td>
                                 <td>{queja.estado}</td>
@@ -76,7 +81,7 @@ const QuejasRegistradas = () => {
                     })}
                 </tbody>
             </table>
-            
+
 
             <div className={styles.pageBtns}>
                 <button disabled={pagina === 1}
@@ -84,7 +89,7 @@ const QuejasRegistradas = () => {
                 <span>{pagina} / {totalPaginas}</span>
                 <button disabled={pagina === totalPaginas} onClick={siguientePagina}>Next</button>
             </div>
-    
+
         </>
     )
 }
