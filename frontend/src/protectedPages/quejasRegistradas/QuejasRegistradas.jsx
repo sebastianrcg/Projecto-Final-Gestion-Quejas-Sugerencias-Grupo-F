@@ -50,10 +50,10 @@ const QuejasRegistradas = () => {
 
     return (
         <>
-            <div>
+            
             <h3   className={styles.title}>Quejas</h3>
 
-            <div >
+            
             <table className={styles.table}>
                 <thead>
                     <th>Solicitante</th>
@@ -76,7 +76,7 @@ const QuejasRegistradas = () => {
                     })}
                 </tbody>
             </table>
-            </div>
+            
 
             <div className={styles.pageBtns}>
                 <button disabled={pagina === 1}
@@ -84,7 +84,7 @@ const QuejasRegistradas = () => {
                 <span>{pagina} / {totalPaginas}</span>
                 <button disabled={pagina === totalPaginas} onClick={siguientePagina}>Next</button>
             </div>
-            </div>
+    
         </>
     )
 }
