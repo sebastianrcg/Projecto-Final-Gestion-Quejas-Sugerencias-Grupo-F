@@ -22,6 +22,19 @@ quejasRouter.post("/", async (req, res)=>{
     }
 });
 
+quejasRouter.get("/", async (req, res)=> {
+    try {
+        const sql = "SELECT * FROM quejas ORDER BY fechacreacion ASC";
+        const results = await pool.query(sql);
+
+        return res.json({quejas: results.rows});
+
+    } catch (error) {
+        return res.status(500).json({error: "Error obteniendo quejas."})
+    }
+
+})
+
 
 
 
