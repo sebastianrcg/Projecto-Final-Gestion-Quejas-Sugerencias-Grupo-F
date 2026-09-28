@@ -2,6 +2,8 @@ import styles from "./quejasregistradas.module.css";
 import { useState, useEffect } from "react";
 import axios from "../../axiosConfig";
 import { useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
+
 
 const QuejasRegistradas = () => {
 
@@ -11,6 +13,10 @@ const QuejasRegistradas = () => {
     const [limite, setLimite] = useState(20);
 
     const navigate = useNavigate();
+
+    const topPageRef = useOutletContext(); 
+
+    
 
     useEffect(() => {
 
@@ -27,15 +33,27 @@ const QuejasRegistradas = () => {
 
             }
         }
-
         getQuejas();
-
+        topPageRef.current.scrollTo({ top: 0, behavior: "instant" });
     }, [pagina])
+
+    const siguientePagina = () => {
+        setPagina(pagina + 1);
+        
+
+    }
+
+    const paginaAnterior = () => {
+        setPagina(pagina - 1);
+        
+    }
 
     return (
         <>
-            <h3 className={styles.title}>Quejas</h3>
+            <div>
+            <h3   className={styles.title}>Quejas</h3>
 
+            <div >
             <table className={styles.table}>
                 <thead>
                     <th>Solicitante</th>
@@ -58,11 +76,14 @@ const QuejasRegistradas = () => {
                     })}
                 </tbody>
             </table>
+            </div>
 
-            <div>
-                <button disabled={pagina === 1} onClick={() => setPagina(pagina - 1)}>Prev</button>
+            <div className={styles.pageBtns}>
+                <button disabled={pagina === 1}
+                    onClick={paginaAnterior}>Prev</button>
                 <span>{pagina} / {totalPaginas}</span>
-                <button disabled={pagina === totalPaginas} onClick={() => setPagina(pagina + 1)}>Next</button>
+                <button disabled={pagina === totalPaginas} onClick={siguientePagina}>Next</button>
+            </div>
             </div>
         </>
     )
