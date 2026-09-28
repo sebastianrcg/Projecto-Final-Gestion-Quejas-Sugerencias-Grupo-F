@@ -22,9 +22,9 @@ const AdminProtectedNav = ({style}) => {
             <nav className={style}>
                 <img src={logo2} alt="Logo Image" className={styles.logo
                 }/>
-                <NavLink className={styles.link}><IoHomeOutline /> <p>Home</p></NavLink>
+                <NavLink to="/app" className={styles.link}><IoHomeOutline /> <p>Home</p></NavLink>
                 <NavLink className={styles.link}><AiOutlineDashboard /> <p>Dashboard</p></NavLink>
-                <NavLink className={styles.link}><VscCommentDiscussionSparkle /> <p>Quejas</p></NavLink>
+                <NavLink to="/app/quejas" className={styles.link}><VscCommentDiscussionSparkle /> <p>Quejas</p></NavLink>
                 <NavLink className={styles.link}><LuFileSearch /> <p>Investigacion</p></NavLink>
                 <NavLink className={styles.link}><SiGithubactions /><p>Acciones Correctivas</p> </NavLink>
                 <NavLink to="/app/usuarios" className={styles.link}><FaRegUser /><p>Usuarios</p></NavLink>

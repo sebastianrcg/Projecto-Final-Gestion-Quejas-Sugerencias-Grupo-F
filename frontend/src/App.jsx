@@ -12,6 +12,7 @@ import ProtectedRoute from "./protectedRoute/ProtectedRoute"
 import Main from "./protectedPages/main/Main"
 import Usuarios from "./protectedPages/usuarios/Usuarios"
 import RegistrarUsuario from "./protectedPages/nuevoUsuario/RegistrarUsuario"
+import QuejasRegistradas from "./protectedPages/quejasRegistradas/QuejasRegistradas"
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         <Route index element={<Main />}/>
         <Route path="usuarios" element={<Usuarios />}/>
         <Route path="usuarios/nuevoUsuario" element={<RegistrarUsuario />} />
+        <Route path="quejas" element={<QuejasRegistradas />}/>
  
 
       </Route>
