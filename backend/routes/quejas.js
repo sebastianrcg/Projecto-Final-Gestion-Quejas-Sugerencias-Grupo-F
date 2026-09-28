@@ -4,8 +4,8 @@ const enviarCorreo = require("../APIs/correosApi");
 
 const quejasRouter = express.Router();
 
-quejasRouter.post("/", async (req, res)=>{
-    const {titulo, nombre, correo, producto, lote, tipoQueja, tracking, comentario, foto} = req.body;
+quejasRouter.post("/", async (req, res) => {
+    const { titulo, nombre, correo, producto, lote, tipoQueja, tracking, comentario, foto } = req.body;
 
     try {
         const values = [titulo, nombre, correo, producto, lote, tipoQueja, tracking, comentario, foto];
@@ -15,26 +15,39 @@ quejasRouter.post("/", async (req, res)=>{
 
         enviarCorreo(nombre, correo, tracking);
 
-        return res.json({mensaje: "Queja registrada."});
+        return res.json({ mensaje: "Queja registrada." });
 
     } catch (error) {
-        return res.status(500).json({error: "Error registrando queja, intenta de nuevo"})
+        return res.status(500).json({ error: "Error registrando queja, intenta de nuevo" })
     }
 });
 
-quejasRouter.get("/", async (req, res)=> {
-    try {
-        const sql = "SELECT * FROM quejas ORDER BY fechacreacion ASC";
-        const results = await pool.query(sql);
+quejasRouter.get("/", async (req, res) => {
 
-        return res.json({quejas: results.rows});
+    const pagina = parseInt(req.query.pagina) || 1;
+    const limite = parseInt(req.query.limite) || 20;
+    const offset = (pagina - 1) * limite;
+
+    try {
+        const values = [limite, offset];
+        const sql = "SELECT * FROM quejas ORDER BY fechacreacion ASC LIMIT $1 OFFSET $2";
+        const results = await pool.query(sql, values);
+
+        const sql2 = "SELECT COUNT(*) FROM quejas";
+        const total = await pool.query(sql2);
+
+        return res.json({
+            quejas: results.rows,
+            total: parseInt(total.rows[0].count),
+            totalPaginas: Math.ceil(total.rows[0].count / limite)
+        });
 
     } catch (error) {
-        return res.status(500).json({error: "Error obteniendo quejas."})
+        return res.status(500).json({ error: "Error obteniendo quejas." })
     }
 })
 
-quejasRouter.get("/:id", async (req, res)=> {
+quejasRouter.get("/:id", async (req, res) => {
 
     const id = req.params.id;
     try {
@@ -42,10 +55,10 @@ quejasRouter.get("/:id", async (req, res)=> {
         const values = [id];
         const results = await pool.query(sql, values);
 
-        return res.json({queja: results.rows});
+        return res.json({ queja: results.rows });
 
     } catch (error) {
-        return res.status(500).json({error: "Error obteniendo queja."})
+        return res.status(500).json({ error: "Error obteniendo queja." })
     }
 
 })

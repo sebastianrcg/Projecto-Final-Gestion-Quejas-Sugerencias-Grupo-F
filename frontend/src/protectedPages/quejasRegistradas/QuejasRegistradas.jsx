@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 const QuejasRegistradas = () => {
 
     const [quejas, setQuejas] = useState([]);
+    const [pagina, setPagina] = useState(1);
+    const [totalPaginas, setTotalPaginas] = useState(0);
+    const [limite, setLimite] = useState(20);
 
     const navigate = useNavigate();
 
@@ -13,10 +16,11 @@ const QuejasRegistradas = () => {
 
         const getQuejas = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/quejas");
+                const response = await axios.get(`http://localhost:5000/quejas?pagina=${pagina}&limite=${limite}`);
 
                 if (response.data.quejas) {
                     setQuejas(response.data.quejas)
+                    setTotalPaginas(response.data.totalPaginas)
                 }
 
             } catch (error) {
@@ -26,7 +30,7 @@ const QuejasRegistradas = () => {
 
         getQuejas();
 
-    }, [])
+    }, [pagina])
 
     return (
         <>
@@ -48,12 +52,18 @@ const QuejasRegistradas = () => {
                                 <td>{queja.tipoqueja}</td>
                                 <td>{queja.estado}</td>
                                 <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
-                                <td><div className={styles.acciones}><button onClick={()=> navigate(`/app/quejas/${queja.id}`)}>Ver</button> <button>Asignar</button></div></td>
+                                <td><div className={styles.acciones}><button onClick={() => navigate(`/app/quejas/${queja.id}`)}>Ver</button> <button>Asignar</button></div></td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
+
+            <div>
+                <button disabled={pagina === 1} onClick={() => setPagina(pagina - 1)}>Prev</button>
+                <span>{pagina} / {totalPaginas}</span>
+                <button disabled={pagina === totalPaginas} onClick={() => setPagina(pagina + 1)}>Next</button>
+            </div>
         </>
     )
 }
