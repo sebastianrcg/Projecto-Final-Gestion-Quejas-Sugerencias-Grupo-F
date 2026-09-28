@@ -9,7 +9,8 @@ import Login from "./pages/login/Login"
 import { AuthProvider } from "./context/AuthContext"
 import ProtectedRoute from "./protectedRoute/ProtectedRoute"
 
-import Main from "./protectedPages/main/Main"
+
+import HomeApp from "./protectedPages/main/HomeApp"
 import Usuarios from "./protectedPages/usuarios/Usuarios"
 import RegistrarUsuario from "./protectedPages/nuevoUsuario/RegistrarUsuario"
 import QuejasRegistradas from "./protectedPages/quejasRegistradas/QuejasRegistradas"
@@ -27,7 +28,7 @@ function App() {
       </Route>
 
       <Route path="/app" element={<ProtectedRoute />}>
-        <Route index element={<Main />}/>
+        <Route index element={<HomeApp />}/>
         <Route path="usuarios" element={<Usuarios />}/>
         <Route path="usuarios/nuevoUsuario" element={<RegistrarUsuario />} />
         <Route path="quejas" element={<QuejasRegistradas />}/>

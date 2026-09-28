@@ -47,7 +47,7 @@ const QuejasRegistradas = () => {
                                 <td>{queja.nombre}</td>
                                 <td>{queja.tipoqueja}</td>
                                 <td>{queja.estado}</td>
-                                <td>{queja.fechacreacion}</td>
+                                <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
                                 <td><div className={styles.acciones}><button onClick={()=> navigate(`/app/quejas/${queja.id}`)}>Ver</button> <button>Asignar</button></div></td>
                             </tr>
                         )
