@@ -13,6 +13,7 @@ import Main from "./protectedPages/main/Main"
 import Usuarios from "./protectedPages/usuarios/Usuarios"
 import RegistrarUsuario from "./protectedPages/nuevoUsuario/RegistrarUsuario"
 import QuejasRegistradas from "./protectedPages/quejasRegistradas/QuejasRegistradas"
+import VerQueja from "./protectedPages/verQueja/VerQueja"
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="usuarios" element={<Usuarios />}/>
         <Route path="usuarios/nuevoUsuario" element={<RegistrarUsuario />} />
         <Route path="quejas" element={<QuejasRegistradas />}/>
+        <Route path="quejas/:id" element={<VerQueja />} />
  
 
       </Route>

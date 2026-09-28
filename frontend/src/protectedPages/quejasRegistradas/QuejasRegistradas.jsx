@@ -1,10 +1,13 @@
 import styles from "./quejasregistradas.module.css";
 import { useState, useEffect } from "react";
 import axios from "../../axiosConfig";
+import { useNavigate } from "react-router-dom";
 
 const QuejasRegistradas = () => {
 
     const [quejas, setQuejas] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -45,7 +48,7 @@ const QuejasRegistradas = () => {
                                 <td>{queja.tipoqueja}</td>
                                 <td>{queja.estado}</td>
                                 <td>{queja.fechacreacion}</td>
-                                <td><div className={styles.acciones}><button>Ver</button> <button>Asignar</button></div></td>
+                                <td><div className={styles.acciones}><button onClick={()=> navigate(`/app/quejas/${queja.id}`)}>Ver</button> <button>Asignar</button></div></td>
                             </tr>
                         )
                     })}

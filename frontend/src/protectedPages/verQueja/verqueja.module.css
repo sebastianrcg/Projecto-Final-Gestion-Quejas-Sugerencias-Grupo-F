@@ -1,0 +1,33 @@
+.title {
+    margin-top: 30px;
+    text-align: center;
+    color: black;
+    font-size: 35px;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: start;
+    margin-top: 15px;
+    margin-left: 40px;
+}
+
+.btnContainer button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    background-color: #2b9ce2; 
+    font-weight: bold;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.btnContainer button:hover {
+    background-color: #2089ca;
+}
+
+p {
+    margin-left: 20px;
+}

@@ -32,6 +32,21 @@ quejasRouter.get("/", async (req, res)=> {
     } catch (error) {
         return res.status(500).json({error: "Error obteniendo quejas."})
     }
+})
+
+quejasRouter.get("/:id", async (req, res)=> {
+
+    const id = req.params.id;
+    try {
+        const sql = "SELECT * FROM quejas WHERE id=$1";
+        const values = [id];
+        const results = await pool.query(sql, values);
+
+        return res.json({queja: results.rows});
+
+    } catch (error) {
+        return res.status(500).json({error: "Error obteniendo queja."})
+    }
 
 })
 

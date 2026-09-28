@@ -18,13 +18,13 @@
     cursor: pointer;
     border-radius: 50px;
     border: none;
-    background-color: #edea24;
+    background-color: #2b9ce2; 
     font-weight: bold;
     color: white;
 }
 
 .btnContainer button:hover {
-    background-color: #dad621;
+    background-color: #2089ca;
 }
 
 .form { 
