@@ -4,13 +4,21 @@ import axios from "../../axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 
+import { useSearchParams } from "react-router-dom";
+
 
 const QuejasRegistradas = () => {
 
     const [quejas, setQuejas] = useState([]);
-    const [pagina, setPagina] = useState(1);
     const [totalPaginas, setTotalPaginas] = useState(0);
     const [limite, setLimite] = useState(20);
+
+    const [searchParams, setSearchParams] = useSearchParams();
+    const pagina = parseInt(searchParams.get("pagina")) || 1;
+
+
+    
+    // const [pagina, setPagina] = useState(1);
 
     const navigate = useNavigate();
 
@@ -28,7 +36,6 @@ const QuejasRegistradas = () => {
                     setQuejas(response.data.quejas)
                     setTotalPaginas(response.data.totalPaginas)
                 }
-
             } catch (error) {
 
             }
@@ -37,16 +44,17 @@ const QuejasRegistradas = () => {
         topPageRef.current.scrollTo({ top: 0, behavior: "instant" });
     }, [pagina])
 
+    const irPagina = (nuevaPagina) => {
+        setSearchParams({pagina: nuevaPagina})
+    }
     const siguientePagina = () => {
-        setPagina(pagina + 1);
-
-
+        irPagina(pagina + 1);
     }
 
     const paginaAnterior = () => {
-        setPagina(pagina - 1);
-
+        irPagina(pagina - 1);
     }
+
 
     return (
         <>
