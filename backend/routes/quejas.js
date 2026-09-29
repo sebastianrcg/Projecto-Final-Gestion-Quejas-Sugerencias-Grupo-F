@@ -60,7 +60,21 @@ quejasRouter.get("/:id", async (req, res) => {
     } catch (error) {
         return res.status(500).json({ error: "Error obteniendo queja." })
     }
+})
 
+quejasRouter.get("/tracking/:tracking", async (req, res) => {
+
+    const tracking = req.params.tracking;
+    try {
+        const sql = "SELECT id, correo, tracking, estado, fechacreacion, nombre FROM quejas WHERE tracking=$1";
+        const values = [tracking];
+        const results = await pool.query(sql, values);
+
+        return res.json({ queja: results.rows });
+
+    } catch (error) {
+        return res.status(500).json({ error: "Error obteniendo queja." })
+    }
 })
 
 
