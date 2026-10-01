@@ -6,13 +6,27 @@ import { useAuth } from "../../context/AuthContext";
 
 const Usuarios = () => {
     const [usuarios, setUsuarios] = useState([]);
+    const [cambioEstado, setCambioEstado] = useState(false);
 
     const navigate = useNavigate();
 
-    const {session} = useAuth();
+    const {session} = useAuth(); 
+
+    const cambiarEstado = async (id) => {
+
+        try{
+            const response = await axios.put(`http://localhost:5000/usuarios/cambiarEstado/${id}`)
+            setCambioEstado(true);
+
+        } catch (error){
+
+        }
+    }
 
     useEffect(()=> {
 
+
+        setCambioEstado(false);
         const getUsuarios = async () => {
             try{
                 const response = await axios.get("http://localhost:5000/usuarios");
@@ -26,7 +40,7 @@ const Usuarios = () => {
             }
         }
         getUsuarios();
-    }, [])
+    }, [cambioEstado])
 
     if (session.user.role !== "admin"){
         return <Navigate to="/app/" />
@@ -57,7 +71,7 @@ const Usuarios = () => {
                                 <td>{usuario.role}</td>
                                 <td>{usuario.fechanacimiento.split("T")[0]}</td>
                                 <td>{usuario.estado ? "Activo" : "Inactivo"}</td>
-                                <td><div className={styles.acciones}><button className={styles.btnVer}>Ver</button> <button className={styles.btnEditar}>Editar</button> <button className={styles.btnEstado}>Deshabilitar</button></div></td> 
+                                <td><div className={styles.acciones}><button className={styles.btnVer}>Ver</button> <button className={styles.btnEditar}>Editar</button> <button className={styles.btnEstado} disabled={session.user.id === usuario.id} onClick={()=> cambiarEstado(usuario.id)}>{usuario.estado ? "Deshabilitar" : "Habilitar"}</button></div></td> 
                             </tr>
                         )
                     })}

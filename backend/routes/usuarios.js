@@ -40,6 +40,23 @@ usuariosRouter.post("/", async (req, res)=>{
     }
 })
 
+usuariosRouter.put("/cambiarEstado/:id", async (req, res) => {
+    const id = req.params.id; 
+
+    try{
+        const sql = 'UPDATE users SET estado = NOT estado WHERE id = $1';
+        const value = [id];
+
+        const results = await pool.query(sql,value);
+
+        return res.json({menjase: "Usuario actualizado"});
+
+    } catch (error) {
+        return res.status(500).json({error: "Error cambiando estado de usuario"})
+    }
+
+})
+
 
 
 module.exports = usuariosRouter;
