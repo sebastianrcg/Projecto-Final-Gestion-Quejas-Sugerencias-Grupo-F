@@ -71,7 +71,7 @@ const Usuarios = () => {
                                 <td>{usuario.role}</td>
                                 <td>{usuario.fechanacimiento.split("T")[0]}</td>
                                 <td>{usuario.estado ? "Activo" : "Inactivo"}</td>
-                                <td><div className={styles.acciones}><button className={styles.btnVer}>Ver</button> <button className={styles.btnEditar}>Editar</button> <button className={styles.btnEstado} disabled={session.user.id === usuario.id} onClick={()=> cambiarEstado(usuario.id)}>{usuario.estado ? "Deshabilitar" : "Habilitar"}</button></div></td> 
+                                <td><div className={styles.acciones}><button className={styles.btnVer}>Ver</button> <button className={styles.btnEditar}>Editar</button> <button className={styles.btnEstado} disabled={session.user.id === usuario.id} onClick={()=> cambiarEstado(usuario.id)}>{usuario.estado ? "Deshabilitar" : "Habilitar"}</button></div></td>
                             </tr>
                         )
                     })}

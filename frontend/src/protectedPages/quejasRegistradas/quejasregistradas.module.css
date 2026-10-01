@@ -13,30 +13,32 @@
     margin: 0 auto;
     margin-top: 40px;
     display: flex;
+    padding: 0 20px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.table{
+.table {
     width: 90%;
     margin: 20px auto;
     /* margin-top: 20px; */
     background-color: white;
     /* padding: 10px; */
     border-radius: 5px;
-    border: 2px solid #a3a9ad;   
-    border-collapse:inherit;
+    border: 2px solid #a3a9ad;
+    border-collapse: inherit;
     color: black;
     margin-bottom: 30px;
 
 }
 
-.table th{
+.table th {
     text-align: center;
     background-color: #ced4da;
 }
 
-.table th,td {
+.table th,
+td {
     padding: 8px;
     border: 1px solid #ced4da;
 }
@@ -69,7 +71,7 @@
     background-color: #4bdf5f;
     font-weight: bold;
     color: white;
-} 
+}
 
 .btnAsignar:hover {
     background-color: #3eb84f;
@@ -92,7 +94,7 @@
     cursor: pointer;
     border-radius: 50px;
     border: none;
-    background-color: #2b9ce2; 
+    background-color: #2b9ce2;
     font-weight: bold;
     color: white;
 
@@ -100,4 +102,17 @@
 
 .pageBtns button:hover {
     background-color: #2089ca;
+}
+
+button:disabled {
+    background-color: #a1a1a1;
+    color: #535353;
+    opacity: 0.7;
+    cursor: default;
+}
+
+button:disabled:hover {
+    background-color: #a1a1a1;
+    color: #535353;
+    opacity: 0.7;
 }

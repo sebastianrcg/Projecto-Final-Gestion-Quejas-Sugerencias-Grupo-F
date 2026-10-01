@@ -11,19 +11,42 @@ const QuejasRegistradas = () => {
 
     const [quejas, setQuejas] = useState([]);
     const [totalPaginas, setTotalPaginas] = useState(0);
-    const [limite, setLimite] = useState(20);
-
-    const [searchParams, setSearchParams] = useSearchParams();
-    const pagina = parseInt(searchParams.get("pagina")) || 1;
-
-
     
+    const [searchParams, setSearchParams] = useSearchParams();
+
+
+    const pagina = parseInt(searchParams.get("pagina")) || 1;
+    const limite = parseInt(searchParams.get("limite")) || 20; 
+    
+    
+    // const [limite, setLimite] = useState(20);
     // const [pagina, setPagina] = useState(1);
 
     const navigate = useNavigate();
 
     const topPageRef = useOutletContext();
 
+    const setParams = (nuevaPagina, nuevoLimite = limite) => {
+        setSearchParams({pagina: nuevaPagina, limite: nuevoLimite});
+    }
+
+    
+
+    const irPagina = (nuevaPagina) => {
+        setParams(nuevaPagina)
+    }
+    const siguientePagina = () => {
+        irPagina(pagina + 1);
+    }
+
+    const paginaAnterior = () => {
+        irPagina(pagina - 1);
+    }
+
+    const cambiarLimite = (event) => {
+        const nuevoLimite = parseInt(event.target.value);
+        setParams(1, nuevoLimite);
+    }
 
 
     useEffect(() => {
@@ -42,19 +65,7 @@ const QuejasRegistradas = () => {
         } 
         getQuejas();
         topPageRef.current.scrollTo({ top: 0, behavior: "instant" });
-    }, [pagina])
-
-    const irPagina = (nuevaPagina) => {
-        setSearchParams({pagina: nuevaPagina})
-    }
-    const siguientePagina = () => {
-        irPagina(pagina + 1);
-    }
-
-    const paginaAnterior = () => {
-        irPagina(pagina - 1);
-    }
-
+    }, [pagina, limite])
 
     return (
         <>
@@ -63,6 +74,12 @@ const QuejasRegistradas = () => {
 
             <div className={styles.filtros}>
                 <p>Barra de filtros</p>
+                <select  title="Numedo de Registros" value={limite} onChange={cambiarLimite}>
+                    <option value={10}>10</option>
+                    <option value={20} selected>20</option>
+                    <option value={30}>30</option>
+                    <option value={40}>40</option>
+                </select>
             </div>
 
             <table className={styles.table}>
