@@ -47,6 +47,34 @@
     gap: 5px;
 }
 
+.btnVer {
+    background-color: #007BFF;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.btnVer:hover {
+    background-color: #0168d6;
+}
+
+.btnAsignar {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    background-color: #4bdf5f;
+    font-weight: bold;
+    color: white;
+} 
+
+.btnAsignar:hover {
+    background-color: #3eb84f;
+}
+
 .pageBtns {
     display: flex;
     justify-content: center;

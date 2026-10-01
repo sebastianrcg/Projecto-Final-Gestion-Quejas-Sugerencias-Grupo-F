@@ -54,3 +54,46 @@
     justify-content: center;
     gap: 5px;
 }
+
+
+.btnVer {
+    background-color: #007BFF;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.btnVer:hover {
+    background-color: #0168d6;
+}
+
+.btnEditar {
+    background-color: #4bdf5f;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    color: white;
+} 
+
+.btnEditar:hover {
+    background-color: #3eb84f;
+}
+
+.btnEstado {
+    background-color: #DC3545; 
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.btnEstado:hover {
+    background-color: #b62c3a; 
+}

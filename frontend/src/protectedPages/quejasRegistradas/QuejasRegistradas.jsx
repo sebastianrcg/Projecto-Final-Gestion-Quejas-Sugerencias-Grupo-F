@@ -39,7 +39,7 @@ const QuejasRegistradas = () => {
             } catch (error) {
 
             }
-        }
+        } 
         getQuejas();
         topPageRef.current.scrollTo({ top: 0, behavior: "instant" });
     }, [pagina])
@@ -83,7 +83,7 @@ const QuejasRegistradas = () => {
                                 <td>{queja.tipoqueja}</td>
                                 <td>{queja.estado}</td>
                                 <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
-                                <td><div className={styles.acciones}><button onClick={() => navigate(`/app/quejas/${queja.id}`)}>Ver</button> <button>Asignar</button></div></td>
+                                <td><div className={styles.acciones}><button onClick={() => navigate(`/app/quejas/${queja.id}`)} className={styles.btnVer}>Ver</button> <button className={styles.btnAsignar}>Asignar</button></div></td>
                             </tr>
                         )
                     })}

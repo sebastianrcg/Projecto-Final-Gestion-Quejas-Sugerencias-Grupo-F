@@ -75,7 +75,7 @@ const Tracking = () => {
                     {
                         showData && 
                         <div>
-                            <p>La solicitud con el codigo de seguimiento <b>#: {data.tracking}</b>. Fue recibida en la fecha {data.fechacreacion.split("T")[0]} a las {data.fechacreacion.split("T")[1].split(".")[0]}. El estado actual de su solicitud es <b>{data.estado}</b>. Nuestro equipo esta trabajando con su solicitud y le enviaremos un correo con mas información de la resolución de su petición, lo mas pronto posible al correo: <b>{data.correo}</b> .</p>
+                            <p>La solicitud con el codigo de seguimiento <b>#: {data.tracking}</b>. Fue recibida en la fecha {data.fechacreacion.split("T")[0]} a las {data.fechacreacion.split("T")[1].split(".")[0]}. El estado actual de su solicitud es <b>{data.estado}</b>.<br/> Nuestro equipo esta trabajando con su solicitud y le enviaremos un correo con mas información de la resolución de su petición, lo mas pronto posible al correo: <b>{data.correo}</b> .</p>
                             <br/>
                             <p>Gracias, {data.nombre}, por preferirnos y tomar el tiempo de comunicar su inquietud.</p>
                             
