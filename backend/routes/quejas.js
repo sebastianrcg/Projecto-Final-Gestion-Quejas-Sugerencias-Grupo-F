@@ -1,14 +1,32 @@
 const express = require("express");
 const pool = require("../model/pgDatabase");
 const enviarCorreo = require("../APIs/correosApi");
+const multer = require("multer");
+const {v2} = require("cloudinary");
 
 const quejasRouter = express.Router();
+const upload = multer({dest: "uploads/"});
 
-quejasRouter.post("/", async (req, res) => {
-    const { titulo, nombre, correo, producto, lote, tipoQueja, tracking, comentario, foto } = req.body;
+v2.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET 
+})
+
+quejasRouter.post("/", upload.single("foto"), async (req, res) => {
+
+    const { titulo, nombre, correo, producto, lote, tipoQueja, tracking, comentario} = req.body;
 
     try {
-        const values = [titulo, nombre, correo, producto, lote, tipoQueja, tracking, comentario, foto];
+
+        let fotoUrl = null;
+
+        if (req.file) {
+            const imgUpload = await v2.uploader.upload(req.file.path);
+            fotoUrl = imgUpload.secure_url
+        }
+
+        const values = [titulo, nombre, correo, producto, lote, tipoQueja, tracking, comentario, fotoUrl];
         const sql = "INSERT INTO quejas (titulo, nombre, correo, producto, lote, tipoQueja, tracking, comentario, foto) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)";
 
         const results = await pool.query(sql, values);

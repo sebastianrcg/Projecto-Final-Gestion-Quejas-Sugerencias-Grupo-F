@@ -1,5 +1,6 @@
 import styles from "./quejas.module.css";
 import { useState } from "react";
+import { useRef } from "react";
 
 
 import { nanoid } from "nanoid"
@@ -13,11 +14,11 @@ const Quejas = () => {
         producto: "",
         lote: "",
         tipoQueja: "",
-        foto: "",
+        foto: null,
         comentario: ""
     })
 
-    const [showForm, setShowForm] = useState(true)
+    const [showForm, setShowForm] = useState(true);
 
     const [showMessage, setShowMessage] = useState(false);
     const [message, setMessage] = useState("");
@@ -25,9 +26,15 @@ const Quejas = () => {
     const [showError, setShowError] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
 
+    const fotoRef = useRef();
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setQueja(prev => ({ ...prev, [name]: value }))
+    }
+
+    const handleImgChange = (event) => {
+        setQueja(prev=> ({...prev, foto: event.target.files[0]}))
     }
     // Hacer handle change para el archivo de imagen y arreglar el resetForm para el archivo, archivos funcionan diferente
     const resetForm = (event) => {
@@ -39,7 +46,7 @@ const Quejas = () => {
             producto: "",
             lote: "",
             tipoQueja: "",
-            foto: "",
+            foto: null,
             comentario: ""
         })
     }
@@ -52,7 +59,24 @@ const Quejas = () => {
         try {
             const tracking = nanoid(15);
 
-            const response = await axios.post("http://localhost:5000/quejas", { ...queja, tracking: tracking });
+            const formData = new FormData();
+
+            formData.append("titulo", queja.titulo);
+            formData.append("nombre", queja.nombre);
+            formData.append("correo", queja.correo);
+            formData.append("producto", queja.producto);
+            formData.append("lote", queja.lote);
+            formData.append("tipoQueja", queja.tipoQueja);
+            formData.append("comentario", queja.comentario);
+            formData.append("tracking", tracking);
+
+            if (queja.foto) {
+                formData.append("foto", queja.foto);
+            }
+
+            const response = await axios.post("http://localhost:5000/quejas", formData, {
+                headers: {"Content-Type": "multipart/form-data"} 
+            });
 
             setMessage(`Queja registrada, gracias por su opinion y sugerencias.@Codigo de seguimiento: ${tracking}`);
             setShowForm(false);
@@ -80,9 +104,13 @@ const Quejas = () => {
             producto: "",
             lote: "",
             tipoQueja: "",
-            foto: "",
+            foto: null,
             comentario: ""
         });
+
+        if (fotoRef.current) {
+            fotoRef.current.value = "";
+        }
         setShowForm(true)
     }
 
@@ -156,7 +184,7 @@ const Quejas = () => {
 
                         </select>
 
-                        <input type="file" name="foto" accept="image/*" />
+                        <input type="file" name="foto" accept="image/*" ref={fotoRef} onChange={handleImgChange}/>
                     </div>
 
                     <div className={styles.commentBox}>

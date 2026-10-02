@@ -18,6 +18,11 @@
     justify-content: space-between;
 }
 
+.filtros select {
+    height: 60%;
+    width: 50px;
+}
+
 .table {
     width: 90%;
     margin: 20px auto;

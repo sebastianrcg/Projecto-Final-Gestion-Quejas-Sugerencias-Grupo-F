@@ -74,7 +74,7 @@ const QuejasRegistradas = () => {
 
             <div className={styles.filtros}>
                 <p>Barra de filtros</p>
-                <select  title="Numedo de Registros" value={limite} onChange={cambiarLimite}>
+                <select  title="Numero de Registros" value={limite} onChange={cambiarLimite}>
                     <option value={10}>10</option>
                     <option value={20} selected>20</option>
                     <option value={30}>30</option>
