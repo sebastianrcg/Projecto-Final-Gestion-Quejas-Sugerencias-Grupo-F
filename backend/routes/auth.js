@@ -19,15 +19,19 @@ authRouter.post("/login", async (req, res) => {
         const results = await pool.query(sql, [username]);
 
         if (results.rows.length === 0) {
-            return res.status(401).json({ error: "Credenciales invalidos." });
+            return res.status(401).json({ error: "Credenciales Invalidos" });
         }
 
         const user = results.rows[0];
 
+        if (!user.estado) {
+            return res.status(403).json({error: "Usuario Inactivo"})
+        }
+
         const match = await bcrypt.compare(password, user.password);
 
         if (!match) {
-            return res.status(401).json({ error: "Credenciales invalidos." });
+            return res.status(401).json({ error: "Credenciales Invalidos" });
         }
 
         delete user.password;

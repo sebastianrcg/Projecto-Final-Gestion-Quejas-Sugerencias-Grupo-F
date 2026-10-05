@@ -1,7 +1,7 @@
 import styles from "./protectednav.module.css";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth} from "../context/AuthContext";
 import logo2 from "../../public/logo2.png";
 
 import { IoHomeOutline } from "react-icons/io5";
@@ -14,14 +14,22 @@ import { VscCommentDiscussionSparkle } from "react-icons/vsc";
 import { SiGithubactions } from "react-icons/si";
 
 
+
 const AdminProtectedNav = ({style}) => {
-    const {signOut} = useAuth()
+    const {session, signOut} = useAuth()
     
     return (
         <>
             <nav className={style}>
                 <img src={logo2} alt="Logo Image" className={styles.logo
                 }/>
+                <div className={styles.user}>
+                    <div className={styles.userHeader}>
+                        {session.user.nombre.slice(0,1)}{session.user.apellido.slice(0,1)}
+                    </div>
+                    <p><b>{session.user.nombre} {session.user.apellido}</b></p>
+                    <p>{session.user.role}</p> 
+                </div>
                 <NavLink to="/app" className={styles.link}><IoHomeOutline /> <p>Home</p></NavLink>
                 <NavLink className={styles.link}><AiOutlineDashboard /> <p>Dashboard</p></NavLink>
                 <NavLink to="/app/quejas" className={styles.link}><VscCommentDiscussionSparkle /> <p>Quejas</p></NavLink>

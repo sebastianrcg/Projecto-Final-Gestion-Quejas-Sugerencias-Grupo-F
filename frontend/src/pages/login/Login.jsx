@@ -39,10 +39,7 @@ const Login = () => {
 
         try {
 
-
             const response = await axios.post("http://localhost:5000/auth/login", { username, password });
-
-
 
             if (response.data.error) {
                 setError(true)

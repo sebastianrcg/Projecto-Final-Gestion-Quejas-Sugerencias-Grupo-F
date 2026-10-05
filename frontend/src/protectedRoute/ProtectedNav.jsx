@@ -14,14 +14,21 @@ import { VscCommentDiscussionSparkle } from "react-icons/vsc";
 import { SiGithubactions } from "react-icons/si";
 
 
-const ProtectedNav = ({style}) => {
-    const {signOut} = useAuth()
-    
+const ProtectedNav = ({ style }) => {
+    const { signOut, session } = useAuth()
+
     return (
         <>
             <nav className={style}>
                 <img src={logo2} alt="Logo Image" className={styles.logo
-                }/>
+                } />
+                <div className={styles.user}>
+                    <div className={styles.userHeader}>
+                        {session.user.nombre.slice(0, 1)}{session.user.apellido.slice(0, 1)}
+                    </div>
+                    <p><b>{session.user.nombre} {session.user.apellido}</b></p>
+                    <p>{session.user.role}</p>
+                </div>
                 <NavLink to="/app" className={styles.link}><IoHomeOutline /> <p>Home</p></NavLink>
                 <NavLink className={styles.link}><AiOutlineDashboard /> <p>Dashboard</p></NavLink>
                 <NavLink to="/app/quejas" className={styles.link}><VscCommentDiscussionSparkle /> <p>Quejas</p></NavLink>
@@ -29,7 +36,7 @@ const ProtectedNav = ({style}) => {
                 <NavLink className={styles.link}><SiGithubactions /><p>Acciones Correctivas</p> </NavLink>
                 <NavLink className={styles.link}><HiOutlineDocumentReport /><p>Reportes</p></NavLink>
                 <NavLink className={styles.logOutBtn} onClick={signOut}>Cerrar sesion</NavLink>
-            </nav> 
+            </nav>
         </>
     )
 }

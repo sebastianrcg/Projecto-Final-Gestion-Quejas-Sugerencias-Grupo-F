@@ -49,7 +49,10 @@ const VerQueja = () => {
             <p><b>Lote: </b>{queja.lote}</p>
             <p><b>Tracking: </b>{queja.tracking}</p>
             <p><b>Comentario: </b>{queja.comentario}</p>
+            {
+                (queja.foto && queja.foto.length >= 0) &&
             <img src={queja.foto} alt={`Foto solicitud ${queja.id}`} />
+            }
             </div>
         </>
     )
