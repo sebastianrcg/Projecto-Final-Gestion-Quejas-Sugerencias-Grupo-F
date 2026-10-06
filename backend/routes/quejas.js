@@ -93,6 +93,22 @@ quejasRouter.get("/tracking/:tracking", async (req, res) => {
     } catch (error) {
         return res.status(500).json({ error: "Error obteniendo queja." })
     }
+});
+
+quejasRouter.put("/asignar/:id", async (req, res)=> {
+    const id = req.params.id;
+    const {usuarioId} = req.body;
+    try {
+        const sql = "UPDATE quejas SET asignada=true, estado='asignada', usuarioasignado=$1 WHERE id=$2";
+        const values =[usuarioId, id];
+
+        const results = await pool.query(sql,values);
+
+        return res.json({mensaje: "Queja asignada."})
+
+    } catch (error) {
+        return res.status(500).json({error: "Error asignando queja."});
+    }
 })
 
 

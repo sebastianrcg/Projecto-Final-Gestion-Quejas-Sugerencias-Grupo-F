@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "../../axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
+import {useAuth } from "../../context/AuthContext"
 
 import { useSearchParams } from "react-router-dom";
 
@@ -11,6 +12,8 @@ const QuejasRegistradas = () => {
 
     const [quejas, setQuejas] = useState([]);
     const [totalPaginas, setTotalPaginas] = useState(0);
+
+    const [asignada, setAsignada] = useState(false);
     
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -21,6 +24,21 @@ const QuejasRegistradas = () => {
     
     // const [limite, setLimite] = useState(20);
     // const [pagina, setPagina] = useState(1);
+
+    const {session} = useAuth();
+
+    const asignarQueja = async (quejaId, usuarioId) => { 
+        // id de queja, usuarioId
+        // cambiar estado de queja con el ID a asignada, cambiar asignada a true, agregar id de usuario
+        try{
+            const response = await axios.put(`http://localhost:5000/quejas/asignar/${quejaId}`, {usuarioId});
+            setAsignada(true)
+
+        } catch (error) {
+
+        }
+
+    }
 
     const navigate = useNavigate();
 
@@ -51,6 +69,8 @@ const QuejasRegistradas = () => {
 
     useEffect(() => {
 
+        setAsignada(false)
+
         const getQuejas = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/quejas?pagina=${pagina}&limite=${limite}`);
@@ -65,7 +85,7 @@ const QuejasRegistradas = () => {
         } 
         getQuejas();
         topPageRef.current.scrollTo({ top: 0, behavior: "instant" });
-    }, [pagina, limite])
+    }, [pagina, limite, asignada])
 
     return (
         <>
@@ -100,7 +120,7 @@ const QuejasRegistradas = () => {
                                 <td>{queja.tipoqueja}</td>
                                 <td>{queja.estado}</td>
                                 <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
-                                <td><div className={styles.acciones}><button onClick={() => navigate(`/app/quejas/${queja.id}`)} className={styles.btnVer}>Ver</button> <button className={styles.btnAsignar}>Asignar</button></div></td>
+                                <td><div className={styles.acciones}><button onClick={() => navigate(`/app/quejas/${queja.id}`)} className={styles.btnVer}>Ver</button> <button className={styles.btnAsignar} onClick={()=> asignarQueja(queja.id, session.user.id)} disabled={queja.estado === "asignada"}>Asignar</button></div></td>
                             </tr>
                         )
                     })}

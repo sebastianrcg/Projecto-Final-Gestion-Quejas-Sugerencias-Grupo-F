@@ -10,5 +10,7 @@ CREATE TABLE quejas (
     comentario text  NOT NULL,
     estado varchar(50) default 'registrada',
     foto varchar(200) default NULL,
-    fechacreacion TIMESTAMP default CURRENT_TIMESTAMP
+    fechacreacion TIMESTAMP default CURRENT_TIMESTAMP,
+    asignada boolean default false,
+    usuarioAsignado int REFERENCES users(id) default null
 )
