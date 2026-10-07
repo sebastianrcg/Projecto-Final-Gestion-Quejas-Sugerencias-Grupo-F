@@ -35,7 +35,7 @@ const AdminProtectedNav = ({style}) => {
                 <NavLink className={styles.link}><AiOutlineDashboard /> <p>Dashboard</p></NavLink>
                 <NavLink to="/app/quejas" className={styles.link}><VscCommentDiscussionSparkle /> <p>Quejas</p></NavLink>
                 {/* <NavLink className={styles.link}><LuFileSearch /> <p>Investigacion</p></NavLink> */}
-                <NavLink className={styles.link}><LuBookmarkCheck /><p>Tareas</p> </NavLink>
+                <NavLink to="/app/tareas" className={styles.link}><LuBookmarkCheck /><p>Tareas</p> </NavLink>
                 {/* <NavLink className={styles.link}><SiGithubactions /><p>Tareas</p> </NavLink> */}
                 <NavLink to="/app/usuarios" className={styles.link}><FaRegUser /><p>Usuarios</p></NavLink>
                 <NavLink className={styles.link}><HiOutlineDocumentReport /><p>Reportes</p></NavLink>

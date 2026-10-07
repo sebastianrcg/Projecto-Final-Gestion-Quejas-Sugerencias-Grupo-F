@@ -111,6 +111,25 @@ quejasRouter.put("/asignar/:id", async (req, res)=> {
     }
 })
 
+quejasRouter.get("/asignadas/:id", async (req, res)=> {
+
+    const id = req.params.id;
+
+    try {
+
+        const sql = "SELECT * FROM quejas WHERE asignada = true AND usuarioasignado=$1 ORDER BY fechacreacion ASC";
+        const values = [id];
+
+        const results = await pool.query(sql, values);
+
+        return res.json({quejas: results.rows});
+
+    } catch (error) {
+        res.status(500).json({error: "Error obteniendo quejas asignadas."})
+    }
+
+})
+
 
 
 
