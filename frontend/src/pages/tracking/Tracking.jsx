@@ -57,7 +57,7 @@ const Tracking = () => {
 
             <form onSubmit={chequearTracking}>
                 <div className={styles.inputContainer}>
-                    <input type="text" minLength="10" maxLength="20" placeholder="# tracking" value={tracking} onChange={handleChange} required />
+                    <input type="text" minLength="10" maxLength="20" placeholder="# Seguimiento" value={tracking} onChange={handleChange} required />
                     <IoSearchOutline className={styles.inputSearch} size={"22px"} />
                 </div>
                 <button className={styles.enviarBtn} type="submit">Chequear Solicitud</button>
