@@ -1,0 +1,14 @@
+.investigacionCard {
+    width: 100%;
+    min-height: fit-content;
+    padding: 10px 20px;
+    background-color: rgb(215, 222, 228);
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.investigacionCard img {
+    width: 70%;
+    display: block;
+    margin: 10px auto;
+}

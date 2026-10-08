@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../axiosConfig";
 import { useAuth } from "../../context/AuthContext";
+import InvestigacionCard from "./InvestigacionCard";
 
 const Acciones = () => {
     const [queja, setQueja] = useState([]);
@@ -16,7 +17,7 @@ const Acciones = () => {
     const [showAcciones, setShowAcciones] = useState(false)
 
     const { id } = useParams();
-    const {session} = useAuth();
+    const { session } = useAuth();
 
     const navigate = useNavigate();
 
@@ -34,7 +35,7 @@ const Acciones = () => {
             }
         }
 
-        const getInvestigaciones = async (quejaId, usuarioId )=> {
+        const getInvestigaciones = async (quejaId, usuarioId) => {
             try {
                 const response = await axios.get(`http://localhost:5000/investigaciones/queja?quejaid=${quejaId}&usuarioid=${usuarioId}`);
 
@@ -53,10 +54,14 @@ const Acciones = () => {
     }, [id])
     return (
         <>
-            <h3 className={styles.title}>Acciones</h3>
-            <div className={styles.btnContainer}>
-                <button onClick={() => navigate(-1)}>Atras</button>
+            <div className={styles.header}>
+                <h3 className={styles.title}>Acciones</h3>
+                <div className={styles.btnContainer}>
+                    <button onClick={() => navigate(-1)}>Atras</button>
+                </div>
+
             </div>
+
 
             <div className={styles.container}>
                 <div className={styles.infoContainer}>
@@ -79,7 +84,7 @@ const Acciones = () => {
                 </div>
                 <p><b>Comentario: </b>{queja.comentario}</p>
 
-                 {
+                {
                     (queja.foto && queja.foto.length >= 0) &&
                     <img src={queja.foto} alt={`Foto solicitud ${queja.id}`} />
                 }
@@ -88,33 +93,41 @@ const Acciones = () => {
 
                 </div>
 
-               
+
             </div>
 
             <div className={styles.container}>
                 <div className={styles.containerHeader}>
-                <h4 className={styles.sectionTitle}>Investigaciones</h4>
-                <button onClick={()=> setShowInvestigaciones(!showInvestigaciones)} className={styles.verBtn}>Ver Investigaciones</button>
+                    <h4 className={styles.sectionTitle}>Investigaciones</h4>
+                    <button onClick={() => setShowInvestigaciones(!showInvestigaciones)} className={styles.verBtn}>Ver Investigaciones</button>
                 </div>
-                { showInvestigaciones &&
+                {showInvestigaciones &&
                     <div>
-                        
-                            { (investigaciones.length === 0) ? <p>No hay investigaciones registradas</p> : investigaciones.map(investigacion=> {
-                                return(
-                                    <p>{investigacion.descripcion}</p>
-                                )
-                            })}
-                        
+
+                        {(investigaciones.length === 0) ? <p>No hay investigaciones registradas</p> : investigaciones.map((investigacion, i) => {
+                            return (
+                                <InvestigacionCard
+                                    id={i + 1}
+                                    tipo={investigacion.tip}
+                                    estado={investigacion.estado}
+                                    fecha_inicio={investigacion.fecha_inicio}
+                                    fecha_fin={investigacion.fecha_fin}
+                                    descripcion={investigacion.descripcion}
+                                    archivos={investigacion.archivos} />
+
+                            )
+                        })}
+
                     </div>
                 }
             </div>
             <div className={styles.container}>
                 <div className={styles.containerHeader}>
-                <h4 className={styles.sectionTitle}>Acciones Correctivas</h4>
-                <button onClick={()=> setShowAcciones(!showAcciones)} className={styles.verBtn}>Ver Acciones</button>
+                    <h4 className={styles.sectionTitle}>Acciones Correctivas</h4>
+                    <button onClick={() => setShowAcciones(!showAcciones)} className={styles.verBtn}>Ver Acciones</button>
                 </div>
 
-                { showAcciones &&
+                {showAcciones &&
                     <div>
                         <p>1</p>
                         <p>1</p>
