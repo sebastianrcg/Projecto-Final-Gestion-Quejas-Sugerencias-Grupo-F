@@ -7,5 +7,5 @@ CREATE TABLE investigaciones (
     archivos VARCHAR(250),  -- url cloudinary api or file, or multiple files
     estado VARCHAR(50) DEFAULT 'en progreso',
     fecha_inicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fecha_fin TIMESTAMP 
+    fecha_fin TIMESTAMP DEFAULT NULL
 )

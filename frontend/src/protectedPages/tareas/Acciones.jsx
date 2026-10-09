@@ -16,12 +16,76 @@ const Acciones = () => {
     const [showInvestigaciones, setShowInvestigaciones] = useState(false)
     const [showAcciones, setShowAcciones] = useState(false)
 
-    const [investigacionEnviada, setInvestigacionEnviada] = useState(false);
+    const [showImg, setShowImg] = useState(false);
+
+    const [showInvestigacionForm, setShowInvestigacionForm] = useState(false);
+    const [showAccionForm, setShowAccionForm] = useState(false);
+
+    const [nuevaInvestigacion, setNuevaInvestigacion] = useState({
+        tipo: "",
+        descripcion: "",
+        archivos: null
+    });
+
+     const [investigacionEnviada, setInvestigacionEnviada] = useState(false);
 
     const { id } = useParams();
     const { session } = useAuth();
 
     const navigate = useNavigate();
+
+    const handleInvestigacionChange = (event) => {
+        const {name, value} = event.target;
+        setNuevaInvestigacion(prev=> ({...prev, [name]: value}));
+    }
+
+    const handleInvestigacionImgChange = (event) => {
+        setNuevaInvestigacion(prev=> ({...prev, archivos: event.target.files[0]}))
+
+    }
+
+    const enviarInvestigacion =  async (event) => {
+        event.preventDefault();
+
+        try {
+            const investigacionForm = new FormData();
+
+            investigacionForm.append("tipo", nuevaInvestigacion.tipo);
+            investigacionForm.append("descripcion", nuevaInvestigacion.descripcion);
+            investigacionForm.append("queja_id", id);
+            investigacionForm.append("usuario_asignado", session.user.id);
+
+            if (nuevaInvestigacion.archivos) {
+                investigacionForm.append("archivos", nuevaInvestigacion.archivos);
+            }
+
+            const response = await axios.post("http://localhost:5000/investigaciones", investigacionForm, {headers: {"Content-Type": "multipart/form-data"}});
+
+            setInvestigacionEnviada(true);
+            setShowInvestigacionForm(false);
+            setNuevaInvestigacion({
+                tipo: "",
+                descripcion: "",
+                archivos: null
+            })
+
+        } catch (error) {
+
+        }
+    }
+
+    const cancelarInvestigacion = (event) => {
+        event.preventDefault();
+        setShowInvestigacionForm(false);
+        setNuevaInvestigacion({
+            tipo: "",
+            descripcion: "",
+            archivos: null
+        })
+    }
+
+
+   
 
     useEffect(() => {
 
@@ -51,7 +115,7 @@ const Acciones = () => {
         }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
 
         setInvestigacionEnviada(false)
         const getInvestigaciones = async (quejaId, usuarioId) => {
@@ -68,6 +132,7 @@ const Acciones = () => {
 
         getInvestigaciones(id, session.user.id)
     }, [id, investigacionEnviada])
+
     return (
         <>
             <div className={styles.header}>
@@ -75,9 +140,7 @@ const Acciones = () => {
                 <div className={styles.btnContainer}>
                     <button onClick={() => navigate(-1)}>Atras</button>
                 </div>
-
             </div>
-
 
             <div className={styles.container}>
                 <div className={styles.infoContainer}>
@@ -99,16 +162,52 @@ const Acciones = () => {
                     <p><b>Solicitud #: </b>{queja.tracking}</p>
                 </div>
                 <p><b>Comentario: </b>{queja.comentario}</p>
+                <button disabled={!queja.foto} onClick={() => setShowImg(!showImg)} className={styles.verImg}>{ showImg ? "Ocultar Imagen" : "Ver Imagen"}</button>
 
-                {
-                    (queja.foto && queja.foto.length >= 0) &&
-                    <img src={queja.foto} alt={`Foto solicitud ${queja.id}`} />
+                {showImg &&
+                    <div>
+                        {
+                            (queja.foto && queja.foto.length >= 0) ?
+                                <img src={queja.foto} alt={`Foto solicitud ${queja.id}`} /> : <p>No hay imagenes</p>
+                        }
+                    </div>
                 }
 
-                <div className={styles.infoContainer}>
+                <div className={styles.inputBtns}>
+                    <button onClick={()=> setShowInvestigacionForm(!showInvestigacionForm)} className={styles.investigacionBtn}>Nueva Investigacion</button>
+                    <button onClick={()=> setShowAccionForm(!showAccionForm)} className={styles.accionBtn}>Nueva Acción</button>
+                </div>
+                
+                { showInvestigacionForm &&
+                <div className={styles.investigacionForm}>
+                    <hr />
+                    <form onSubmit={enviarInvestigacion}>
+                    <div className={styles.formInput}>
+                    <select required name="tipo" value={nuevaInvestigacion.tipo} onChange={handleInvestigacionChange}>
+                        <option value="" selected disabled> Tipo </option>
+                        <option value="observacion"> Observación</option>
+                        <option value="Investigacion">Investigación</option>
+                    </select>
+                    <input type="file" name="archivos" accept="image/*" onChange={handleInvestigacionImgChange}/>
+                    </div>
+
+                    <textarea name="descripcion" placeholder="Descripción" value={nuevaInvestigacion.descripcion} onChange={handleInvestigacionChange} required></textarea>
+
+                    <div className={styles.formBtns}>
+                        <button className={styles.guardarBtn} type="submit">Agregar Investigación</button>
+                        <button type="reset" onClick={cancelarInvestigacion} className={styles.cancelarBtn}>Cancelar</button>
+                    </div>
+                    </form>
 
                 </div>
+                }
 
+                {
+                    showAccionForm && 
+                    <div className={styles.accionForm}> 
+
+                    </div>
+                }
 
             </div>
 
@@ -130,9 +229,9 @@ const Acciones = () => {
                                     fecha_inicio={investigacion.fecha_inicio}
                                     fecha_fin={investigacion.fecha_fin}
                                     descripcion={investigacion.descripcion}
-                                    archivos={investigacion.archivos} 
+                                    archivos={investigacion.archivos}
                                     cerrarInvestigacion={cerrarInvestigation}
-                                    id={investigacion.id}/>
+                                    id={investigacion.id} />
 
                             )
                         })}
