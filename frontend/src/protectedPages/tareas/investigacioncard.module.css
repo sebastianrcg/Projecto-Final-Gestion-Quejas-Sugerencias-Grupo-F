@@ -2,13 +2,56 @@
     width: 100%;
     min-height: fit-content;
     padding: 10px 20px;
-    background-color: rgb(215, 222, 228);
+    background-color: rgb(208, 210, 211);
     border-radius: 10px;
     margin: 10px auto;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .investigacionCard img {
     width: 70%;
     display: block;
     margin: 10px auto;
+}
+
+.btnVer {
+    background-color: #007BFF;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.btnVer:hover {
+    background-color: #0168d6;
+}
+
+.btnCerrar {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    background-color: #4bdf5f;
+    font-weight: bold;
+    color: white;
+}
+
+.btnCerrar:hover {
+    background-color: #3eb84f;
+}
+
+button {
+    margin: 0 5px;
+}
+
+hr {
+    margin: 20px;
 }

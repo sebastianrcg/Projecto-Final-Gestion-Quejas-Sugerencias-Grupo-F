@@ -16,6 +16,8 @@ const Acciones = () => {
     const [showInvestigaciones, setShowInvestigaciones] = useState(false)
     const [showAcciones, setShowAcciones] = useState(false)
 
+    const [investigacionEnviada, setInvestigacionEnviada] = useState(false);
+
     const { id } = useParams();
     const { session } = useAuth();
 
@@ -35,6 +37,23 @@ const Acciones = () => {
             }
         }
 
+        getQueja(id);
+
+    }, [id])
+
+    const cerrarInvestigation = async (id) => {
+        try {
+            const response = await axios.put(`http://localhost:5000/investigaciones/cerrar/${id}`);
+            setInvestigacionEnviada(true)
+
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(()=> {
+
+        setInvestigacionEnviada(false)
         const getInvestigaciones = async (quejaId, usuarioId) => {
             try {
                 const response = await axios.get(`http://localhost:5000/investigaciones/queja?quejaid=${quejaId}&usuarioid=${usuarioId}`);
@@ -45,13 +64,10 @@ const Acciones = () => {
             } catch (error) {
 
             }
-
         }
 
-        getQueja(id);
         getInvestigaciones(id, session.user.id)
-
-    }, [id])
+    }, [id, investigacionEnviada])
     return (
         <>
             <div className={styles.header}>
@@ -107,13 +123,16 @@ const Acciones = () => {
                         {(investigaciones.length === 0) ? <p>No hay investigaciones registradas</p> : investigaciones.map((investigacion, i) => {
                             return (
                                 <InvestigacionCard
-                                    id={i + 1}
-                                    tipo={investigacion.tip}
+                                    key={investigacion.id}
+                                    numero={i + 1}
+                                    tipo={investigacion.tipo}
                                     estado={investigacion.estado}
                                     fecha_inicio={investigacion.fecha_inicio}
                                     fecha_fin={investigacion.fecha_fin}
                                     descripcion={investigacion.descripcion}
-                                    archivos={investigacion.archivos} />
+                                    archivos={investigacion.archivos} 
+                                    cerrarInvestigacion={cerrarInvestigation}
+                                    id={investigacion.id}/>
 
                             )
                         })}

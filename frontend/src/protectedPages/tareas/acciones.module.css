@@ -70,6 +70,10 @@
     margin-bottom: 20px;
 }
 
+.containerHeader h4 {
+    font-size: 24px;
+}
+
 .verBtn {
     position: absolute;
     right: 0;

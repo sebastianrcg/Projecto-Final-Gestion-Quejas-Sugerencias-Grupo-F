@@ -21,6 +21,23 @@ investigacionesRouter.get("/queja", async (req, res) => {
 
 })
 
+investigacionesRouter.put("/cerrar/:id", async (req, res)=> {
+    const id = req.params.id;
+
+    try {
+        const sql = "UPDATE investigaciones SET estado='completada', fecha_fin= CURRENT_TIMESTAMP WHERE id=$1";
+        const values = [id];
+
+        const results = await pool.query(sql, values);
+
+        return res.json({mensaje: "Investigacion Cerrada"});
+
+    } catch (error) {
+        return res.status(500).json({error: "Error cerrando investigacion"})
+    }
+
+})
+
 
 
 module.exports = investigacionesRouter;
