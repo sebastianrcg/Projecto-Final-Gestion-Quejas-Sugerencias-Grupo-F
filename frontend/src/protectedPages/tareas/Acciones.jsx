@@ -27,7 +27,15 @@ const Acciones = () => {
         archivos: null
     });
 
-     const [investigacionEnviada, setInvestigacionEnviada] = useState(false);
+    const [nuevaAccion, setNuevaAccion] = useState({
+        descripcion: "",
+        resultado: "",
+        archivos: null
+        // maybe investigacion ID, y hacer un select con el id de las investigaciones.
+    })
+
+    const [investigacionEnviada, setInvestigacionEnviada] = useState(false);
+    const [accionEnviada, setAccionEnviada] = useState(false);
 
     const { id } = useParams();
     const { session } = useAuth();
@@ -35,16 +43,25 @@ const Acciones = () => {
     const navigate = useNavigate();
 
     const handleInvestigacionChange = (event) => {
-        const {name, value} = event.target;
-        setNuevaInvestigacion(prev=> ({...prev, [name]: value}));
+        const { name, value } = event.target;
+        setNuevaInvestigacion(prev => ({ ...prev, [name]: value }));
     }
 
     const handleInvestigacionImgChange = (event) => {
-        setNuevaInvestigacion(prev=> ({...prev, archivos: event.target.files[0]}))
+        setNuevaInvestigacion(prev => ({ ...prev, archivos: event.target.files[0] }))
 
     }
 
-    const enviarInvestigacion =  async (event) => {
+    const handleAccionChange = (event) => {
+        const {name, value} = event.target;
+        setNuevaAccion(prev=> ({...prev, [name]: value}));
+    }
+
+    const handleAccionImgChange = (event) => {
+        setNuevaAccion(prev=> ({...prev, archivos: event.target.files[0]}));
+    }
+
+    const enviarInvestigacion = async (event) => {
         event.preventDefault();
 
         try {
@@ -59,7 +76,7 @@ const Acciones = () => {
                 investigacionForm.append("archivos", nuevaInvestigacion.archivos);
             }
 
-            const response = await axios.post("http://localhost:5000/investigaciones", investigacionForm, {headers: {"Content-Type": "multipart/form-data"}});
+            const response = await axios.post("http://localhost:5000/investigaciones", investigacionForm, { headers: { "Content-Type": "multipart/form-data" } });
 
             setInvestigacionEnviada(true);
             setShowInvestigacionForm(false);
@@ -74,6 +91,38 @@ const Acciones = () => {
         }
     }
 
+    const enviarAccion = async (event) => {
+        event.preventDefault();
+
+        try {
+
+            const accionForm = new FormData();
+
+            accionForm.append("queja_id", id);
+            accionForm.append("usuario_asignado", session.user.id);
+            accionForm.append("descripcion", nuevaAccion.descripcion);
+            accionForm.append("resultado", nuevaAccion.resultado);
+
+            if (nuevaAccion.archivos) {
+                accionForm.append("archivos", nuevaAccion.archivos);
+            }
+
+            const response = await axios.post("http://localhost:5000/accionesCorrectivas", accionForm, { headers: { "Content-Type": "multipart/form-data" } });
+
+            setAccionEnviada(true);
+            setShowAccionForm(false);
+            setNuevaAccion({
+                descripcion: "",
+                resultado: "",
+                archivos: null
+            })
+
+        } catch (error) {
+
+        }
+
+    }
+
     const cancelarInvestigacion = (event) => {
         event.preventDefault();
         setShowInvestigacionForm(false);
@@ -84,8 +133,18 @@ const Acciones = () => {
         })
     }
 
+    const cancelarAccion = (event) => {
+        event.preventDefault();
+        setShowAccionForm(false);
+        setNuevaAccion({
+            descripcion: "",
+            resultado: "",
+            archivos: null
+        })
+    }
 
-   
+
+
 
     useEffect(() => {
 
@@ -113,6 +172,20 @@ const Acciones = () => {
         } catch (error) {
 
         }
+    }
+
+    const showInvestigacionFormBtn = () => {
+        if (showAccionForm) {
+            setShowAccionForm(false);
+        }
+        setShowInvestigacionForm(!showInvestigacionForm)
+    }
+
+    const showAccionFormBtn = () => {
+        if (showInvestigacionForm) {
+            setShowInvestigacionForm(false);
+        }
+        setShowAccionForm(!showAccionForm);
     }
 
     useEffect(() => {
@@ -153,6 +226,7 @@ const Acciones = () => {
                 <div className={styles.infoContainer}>
                     <p><b>Correo: </b>{queja.correo}</p>
                     <p><b>Fecha Creacion: </b>{queja.fechacreacion}</p>
+                    {/* <p><b>Fecha Creacion: </b>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</p> */}
                     <p><b>Estado: </b>{queja.estado}</p>
                 </div>
 
@@ -162,7 +236,7 @@ const Acciones = () => {
                     <p><b>Solicitud #: </b>{queja.tracking}</p>
                 </div>
                 <p><b>Comentario: </b>{queja.comentario}</p>
-                <button disabled={!queja.foto} onClick={() => setShowImg(!showImg)} className={styles.verImg}>{ showImg ? "Ocultar Imagen" : "Ver Imagen"}</button>
+                <button disabled={!queja.foto} onClick={() => setShowImg(!showImg)} className={styles.verImg}>{showImg ? "Ocultar Imagen" : "Ver Imagen"}</button>
 
                 {showImg &&
                     <div>
@@ -174,38 +248,48 @@ const Acciones = () => {
                 }
 
                 <div className={styles.inputBtns}>
-                    <button onClick={()=> setShowInvestigacionForm(!showInvestigacionForm)} className={styles.investigacionBtn}>Nueva Investigacion</button>
-                    <button onClick={()=> setShowAccionForm(!showAccionForm)} className={styles.accionBtn}>Nueva Acción</button>
+                    <button onClick={() => showInvestigacionFormBtn()} className={styles.investigacionBtn}>Nueva Investigacion</button>
+                    <button onClick={() => showAccionFormBtn()} className={styles.accionBtn}>Nueva Acción</button>
                 </div>
-                
-                { showInvestigacionForm &&
-                <div className={styles.investigacionForm}>
-                    <hr />
-                    <form onSubmit={enviarInvestigacion}>
-                    <div className={styles.formInput}>
-                    <select required name="tipo" value={nuevaInvestigacion.tipo} onChange={handleInvestigacionChange}>
-                        <option value="" selected disabled> Tipo </option>
-                        <option value="observacion"> Observación</option>
-                        <option value="Investigacion">Investigación</option>
-                    </select>
-                    <input type="file" name="archivos" accept="image/*" onChange={handleInvestigacionImgChange}/>
+
+                {showInvestigacionForm &&
+                    <div className={styles.investigacionForm}>
+                        <hr />
+                        <form onSubmit={enviarInvestigacion}>
+                            <div className={styles.formInput}>
+                                <select required name="tipo" value={nuevaInvestigacion.tipo} onChange={handleInvestigacionChange}>
+                                    <option value="" selected disabled> Tipo </option>
+                                    <option value="observacion"> Observación</option>
+                                    <option value="Investigacion">Investigación</option>
+                                </select>
+                                <input type="file" name="archivos" accept="image/*" onChange={handleInvestigacionImgChange} />
+                            </div>
+
+                            <textarea name="descripcion" placeholder="Descripción" value={nuevaInvestigacion.descripcion} onChange={handleInvestigacionChange} required></textarea>
+
+                            <div className={styles.formBtns}>
+                                <button className={styles.guardarBtn} type="submit">Agregar Investigación</button>
+                                <button type="reset" onClick={cancelarInvestigacion} className={styles.cancelarBtn}>Cancelar</button>
+                            </div>
+                        </form>
+
                     </div>
-
-                    <textarea name="descripcion" placeholder="Descripción" value={nuevaInvestigacion.descripcion} onChange={handleInvestigacionChange} required></textarea>
-
-                    <div className={styles.formBtns}>
-                        <button className={styles.guardarBtn} type="submit">Agregar Investigación</button>
-                        <button type="reset" onClick={cancelarInvestigacion} className={styles.cancelarBtn}>Cancelar</button>
-                    </div>
-                    </form>
-
-                </div>
                 }
 
                 {
-                    showAccionForm && 
-                    <div className={styles.accionForm}> 
+                    showAccionForm &&
+                    <div className={styles.accionForm}>
+                        <hr />
+                        <form onSubmit={enviarAccion}>
+                            <textarea name="descripcion" placeholder="Descripción" onChange={handleAccionChange} value={nuevaAccion.descripcion}></textarea>
+                            <textarea name="resultado" placeholder="Resultado" onChange={handleAccionChange} value={nuevaAccion.resultado}></textarea>
+                            <input type="file" name="archivos" accept="image/*" className={styles.fileInput} onChange={handleAccionImgChange}/>
 
+                            <div className={styles.formBtns}>
+                                <button className={styles.guardarBtn} type="submit">Agregar Acción</button>
+                                <button type="reset" className={styles.cancelarBtn} onClick={cancelarAccion}>Cancelar</button>
+                            </div>
+                        </form>
                     </div>
                 }
 

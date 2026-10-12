@@ -67,7 +67,7 @@ investigacionesRouter.post("/", upload.single("archivos"), async (req, res)=> {
 
         const results = await pool.query(sql, values);
 
-        return res.json({mensaje: "Investigacion registrada"})
+        return res.json({mensaje: "Investigacion registrada"});
 
     } catch (error) {
         res.status(500).json({error: "Error registrando investigacion."})

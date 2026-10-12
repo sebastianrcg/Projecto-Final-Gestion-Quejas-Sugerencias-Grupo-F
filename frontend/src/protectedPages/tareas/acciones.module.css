@@ -231,3 +231,9 @@ textarea {
     background-color: #b62c3a; 
 }
 
+.fileInput {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
