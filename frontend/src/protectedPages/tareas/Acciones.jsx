@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "../../axiosConfig";
 import { useAuth } from "../../context/AuthContext";
 import InvestigacionCard from "./InvestigacionCard";
+import AccionesCorrectivasCard from "./AccionesCorrectivasCard";
 
 const Acciones = () => {
     const [queja, setQueja] = useState([]);
@@ -174,6 +175,16 @@ const Acciones = () => {
         }
     }
 
+    const cerrarAccionCorrectiva = async (id) =>{
+        try {
+            const response = await axios.put(`http://localhost:5000/accionesCorrectivas/cerrar/${id}`);
+            setAccionEnviada(true)
+
+        } catch (error) {
+
+        }
+    }
+
     const showInvestigacionFormBtn = () => {
         if (showAccionForm) {
             setShowAccionForm(false);
@@ -187,7 +198,25 @@ const Acciones = () => {
         }
         setShowAccionForm(!showAccionForm);
     }
+    useEffect(()=> {
 
+        setAccionEnviada(false);
+        const getAccionesCorrectivas = async (quejaId, usuarioId) => {
+            try {
+                const response = await axios.get(`http://localhost:5000/accionesCorrectivas/queja?quejaid=${quejaId}&usuarioid=${usuarioId}`);
+
+                if (response.data.accionesCorrectivas) {
+                    setAccionesCorrectivas(response.data.accionesCorrectivas)
+                }
+            } catch (error) {
+
+            }
+        }
+
+        getAccionesCorrectivas(id, session.user.id)
+
+    }, [id, accionEnviada])
+    
     useEffect(() => {
 
         setInvestigacionEnviada(false)
@@ -331,15 +360,24 @@ const Acciones = () => {
 
                 {showAcciones &&
                     <div>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
+
+                        {(accionesCorrectivas.length === 0) ? <p>No hay Acciones pendientes.</p> : accionesCorrectivas.map((accionCorrectiva, i) => {
+                            return (
+                                <AccionesCorrectivasCard
+                                    key={accionCorrectiva.id}
+                                    numero={i + 1}
+                                    estado={accionCorrectiva.estado}
+                                    fecha_inicio={accionCorrectiva.fecha_inicio}
+                                    fecha_fin={accionCorrectiva.fecha_fin}
+                                    descripcion={accionCorrectiva.descripcion}
+                                    resultado={accionCorrectiva.resultado}
+                                    archivos={accionCorrectiva.archivos}
+                                    cerrarAccionCorrectiva = {cerrarAccionCorrectiva} 
+                                    id={accionCorrectiva.id} />
+
+                            )
+                        })}
+
                     </div>
                 }
 
