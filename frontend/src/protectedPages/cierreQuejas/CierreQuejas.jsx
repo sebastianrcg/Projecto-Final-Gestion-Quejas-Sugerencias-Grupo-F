@@ -5,10 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
 import axios from "../../axiosConfig";
+import Swal from "sweetalert2";
 
 const CierreQuejas = () => {
 
     const [quejas, setQuejas] = useState([]);
+
+    const [quejaCerrada, setQuejaCerrada] = useState(false);
 
     const {session} = useAuth();
 
@@ -19,6 +22,8 @@ const CierreQuejas = () => {
     }
 
     useEffect(()=> {
+
+        setQuejaCerrada(false)
 
         const getQuejasPorCerrar = async ()=> {
             try {
@@ -32,7 +37,40 @@ const CierreQuejas = () => {
 
         getQuejasPorCerrar();
 
-    }, [])
+    }, [quejaCerrada])
+
+    const cerrarQueja = async (quejaId, usuarioId) =>{
+        try {
+
+            Swal.fire({
+                    text: "Seguro que desea cerrar la soliccitud?",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: "#43d630",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Cerrar Solicitud",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axios.put(`http://localhost:5000/quejas/confirmarCierre/${quejaId}`, {usuario_cierre: usuarioId}).then(result2 => {
+                            
+                            Swal.fire({
+                                title: "Solicitud cerrada!",
+                                text: "Solicitud verificada y cerrada exitosamente",
+                                icon: "success" 
+                            })
+                            setQuejaCerrada(true);
+                        })
+
+                    }
+
+
+                })
+
+        } catch (error) {
+
+        }
+    }
     
     return (
         <>
@@ -56,7 +94,7 @@ const CierreQuejas = () => {
                                             <td>{queja.tipoqueja}</td>
                                             <td>{queja.estado}</td>
                                             <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
-                                            <td><div className={styles.acciones}><button className={styles.btnVer} onClick={()=> navigate(`/app/cierreQuejas/queja/${queja.id}`)}>Ver</button><button className={styles.btnCerrar}>Confirmar Cierre</button></div></td>
+                                            <td><div className={styles.acciones}><button className={styles.btnVer} onClick={()=> navigate(`/app/cierreQuejas/queja/${queja.id}`)}>Ver</button><button disabled={queja.estado === "cerrada"} className={styles.btnCerrar} onClick={()=> cerrarQueja(queja.id, session.user.id)}>Confirmar Cierre</button></div></td>
                                         </tr>
                                     )
                                 })}

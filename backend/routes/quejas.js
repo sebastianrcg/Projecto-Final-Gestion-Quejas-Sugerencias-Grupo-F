@@ -207,6 +207,23 @@ quejasRouter.put("/cambioEstado/:id", async (req, res)=> {
     } catch (error) {
         return res.status(500).json({error: "Error actualizando estado"});
     }
+});
+
+quejasRouter.put("/confirmarCierre/:id", async (req,res) =>{
+    const id = req.params.id;
+    const {usuario_cierre} = req.body;
+
+    try {
+        const sql = "UPDATE quejas SET estado='cerrada', fecha_cierre=CURRENT_TIMESTAMP, usuario_cierre=$1 WHERE id=$2";
+        const values = [usuario_cierre, id];
+
+        const results = await pool.query(sql, values);
+
+        return res.json({mensaje: "Solicitud verificada y cerrada"});
+
+    } catch (error) {
+        return res.status(500).json({error: "Error cerrando queja."})
+    }
 })
 
 
