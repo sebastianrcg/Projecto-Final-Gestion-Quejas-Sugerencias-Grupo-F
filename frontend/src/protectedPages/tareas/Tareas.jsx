@@ -55,6 +55,21 @@ const Tareas = () => {
         }
     }
 
+    const trabajarQueja = async (id, estado)=>{
+
+        if (estado === "asignada"){
+            try {
+                const response = await axios.put(`http://localhost:5000/quejas/cambioEstado/${id}`)
+
+            } catch (error) {
+
+            }
+        }
+
+        navigate(`/app/tareas/acciones/${id}`)
+
+    }
+
     return (
         <>
             <h3 className={styles.title}>Pendientes</h3>
@@ -77,7 +92,7 @@ const Tareas = () => {
                                 <td>{queja.tipoqueja}</td>
                                 <td>{queja.estado}</td>
                                 <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
-                                <td><div className={styles.acciones}><button onClick={() => navigate(`/app/tareas/acciones/${queja.id}`)} className={styles.btnTrabajar}>Trabajar</button><button className={styles.btnCerrar} onClick={() => cerrarQueja(queja.id)}>Cerrar</button></div></td>
+                                <td><div className={styles.acciones}><button onClick={() => trabajarQueja(queja.id, queja.estado)} className={styles.btnTrabajar} disabled={queja.estado === "verificacion"}>Trabajar</button><button className={styles.btnCerrar} onClick={() => cerrarQueja(queja.id)} disabled={queja.estado === "verificacion"}>Cerrar</button></div></td>
                             </tr>
                         )
                     })}

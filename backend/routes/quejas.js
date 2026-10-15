@@ -181,7 +181,22 @@ quejasRouter.put("/cierreForzado/:id", async (req, res)=> {
     } catch (error) {
         return res.status(500).json({error: "Error cerrando queja"});
     }
+});
 
+quejasRouter.put("/cambioEstado/:id", async (req, res)=> {
+    const id = req.params.id;
+
+    try {
+        const sql = "UPDATE quejas SET estado = 'trabajando' WHERE id = $1";
+        const values = [id];
+
+        const results = await pool.query(sql, values);
+
+        return res.json({mensaje: "Estado actualizado"});
+
+    } catch (error) {
+        return res.status(500).json({error: "Error actualizando estado"});
+    }
 })
 
 
