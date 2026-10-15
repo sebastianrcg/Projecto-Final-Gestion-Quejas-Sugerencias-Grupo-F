@@ -120,7 +120,7 @@ const QuejasRegistradas = () => {
                                 <td>{queja.tipoqueja}</td>
                                 <td>{queja.estado}</td>
                                 <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
-                                <td><div className={styles.acciones}><button onClick={() => navigate(`/app/quejas/${queja.id}`)} className={styles.btnVer}>Ver</button> <button className={styles.btnAsignar} onClick={()=> asignarQueja(queja.id, session.user.id)} disabled={queja.estado === "asignada"}>Asignar</button></div></td>
+                                <td><div className={styles.acciones}><button onClick={() => navigate(`/app/quejas/${queja.id}`)} className={styles.btnVer}>Ver</button> <button className={styles.btnAsignar} onClick={()=> asignarQueja(queja.id, session.user.id)} disabled={queja.estado === "asignada" || queja.estado === "trabajando" || queja.estado === "verificacion"}>Asignar</button></div></td>
                             </tr>
                         )
                     })}

@@ -12,5 +12,10 @@ CREATE TABLE quejas (
     foto varchar(200) default NULL,
     fechacreacion TIMESTAMP default CURRENT_TIMESTAMP,
     asignada boolean default false,
-    usuarioAsignado int REFERENCES users(id) default null
+    usuarioAsignado int REFERENCES users(id) default null,
+    fecha_asignada TIMESTAMP default NULL,
+    fecha_trabajo TIMESTAMP default NULL,
+    fecha_verificacion TIMESTAMP default NULL,
+    fecha_cierre TIMESTAMP default NULL,
+    usuario_cierre int REFERENCES users(id) default NULL
 )

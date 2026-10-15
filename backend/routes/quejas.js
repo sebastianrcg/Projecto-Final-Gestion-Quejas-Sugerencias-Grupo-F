@@ -65,6 +65,16 @@ quejasRouter.get("/", async (req, res) => {
     }
 })
 
+quejasRouter.get("/porconfirmar", async (req, res)=> {
+    try {
+        const sql = "SELECT * FROM quejas WHERE estado='verificacion' ORDER BY fechacreacion ASC";
+        const results = await pool.query(sql);
+        return res.json({quejas: results.rows});
+    } catch (error) {
+        return res.status(500).json({error: "Error obteniendo quejas por confirmar"});
+    }
+});
+
 quejasRouter.get("/:id", async (req, res) => {
 
     const id = req.params.id;
@@ -99,7 +109,7 @@ quejasRouter.put("/asignar/:id", async (req, res)=> {
     const id = req.params.id;
     const {usuarioId} = req.body;
     try {
-        const sql = "UPDATE quejas SET asignada=true, estado='asignada', usuarioasignado=$1 WHERE id=$2";
+        const sql = "UPDATE quejas SET asignada=true, estado='asignada', usuarioasignado=$1, fecha_asignada= CURRENT_TIMESTAMP WHERE id=$2";
         const values =[usuarioId, id];
 
         const results = await pool.query(sql,values);
@@ -157,7 +167,7 @@ quejasRouter.put("/cierre/:id", async (req, res)=> {
             return res.json({cierre: false, confirmar: true, mensaje: "Queja sin investigaciones ni acciones" , resultados});
         } else {
 
-            const sql2 = "UPDATE quejas SET estado = 'verificacion' WHERE id = $1";
+            const sql2 = "UPDATE quejas SET estado = 'verificacion', fecha_verificacion= CURRENT_TIMESTAMP WHERE id = $1";
             const results2 = await pool.query(sql2, values);
             return res.json({cierre: true, mensaje: "queja cerrada, pendiente de verificacion", resultados})
         }
@@ -171,7 +181,7 @@ quejasRouter.put("/cierreForzado/:id", async (req, res)=> {
     const id = req.params.id;
 
     try {
-        const sql = "UPDATE quejas SET estado = 'verificacion' WHERE id = $1";
+        const sql = "UPDATE quejas SET estado = 'verificacion', fecha_verificacion= CURRENT_TIMESTAMP WHERE id = $1";
         const values = [id];
 
         const results = await pool.query(sql, values);
@@ -187,7 +197,7 @@ quejasRouter.put("/cambioEstado/:id", async (req, res)=> {
     const id = req.params.id;
 
     try {
-        const sql = "UPDATE quejas SET estado = 'trabajando' WHERE id = $1";
+        const sql = "UPDATE quejas SET estado = 'trabajando', fecha_trabajo= CURRENT_TIMESTAMP WHERE id = $1";
         const values = [id];
 
         const results = await pool.query(sql, values);
@@ -198,6 +208,8 @@ quejasRouter.put("/cambioEstado/:id", async (req, res)=> {
         return res.status(500).json({error: "Error actualizando estado"});
     }
 })
+
+
 
 
 
