@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 
-const Tareas = () => {
+const Tareas = () => { 
     const [pendientes, setPendientes] = useState([]);
 
     const [quejaCerrada, setQuejaCerrada] = useState(false);
