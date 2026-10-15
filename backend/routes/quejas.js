@@ -140,7 +140,6 @@ quejasRouter.put("/cierre/:id", async (req, res)=> {
 
         const results = await pool.query(sql, values);
 
-
     //     {
     //     "total_investigaciones": "7",
     //     "total_acciones": "4",
@@ -162,13 +161,29 @@ quejasRouter.put("/cierre/:id", async (req, res)=> {
             const results2 = await pool.query(sql2, values);
             return res.json({cierre: true, mensaje: "queja cerrada, pendiente de verificacion", resultados})
         }
+    } catch (error) {
+        return res.status(500).json({error: "Error cerrando queja"});
+    }
 
+});
+
+quejasRouter.put("/cierreForzado/:id", async (req, res)=> {
+    const id = req.params.id;
+
+    try {
+        const sql = "UPDATE quejas SET estado = 'verificacion' WHERE id = $1";
+        const values = [id];
+
+        const results = await pool.query(sql, values);
+
+        return res.json({mensaje: "Queja sin investigaciones ni acciones cerrada"});
 
     } catch (error) {
-
+        return res.status(500).json({error: "Error cerrando queja"});
     }
 
 })
+
 
 
 

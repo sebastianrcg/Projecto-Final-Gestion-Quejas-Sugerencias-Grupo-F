@@ -9,11 +9,15 @@ import { useNavigate } from "react-router-dom";
 const Tareas = () => {
     const [pendientes, setPendientes] = useState([]);
 
-    const {session} = useAuth();
+    const [quejaCerrada, setQuejaCerrada] = useState(false);
+
+    const { session } = useAuth();
 
     const navigate = useNavigate()
 
-    useEffect(()=> {
+    useEffect(() => {
+
+        setQuejaCerrada(false);
 
         const getQuejasAsignadas = async (userId) => {
             try {
@@ -28,36 +32,57 @@ const Tareas = () => {
 
         getQuejasAsignadas(session.user.id);
 
-    }, [])
+    }, [quejaCerrada])
 
-    return(
+    const cerrarQueja = async (id) => {
+        try {
+            const response = await axios.put(`http://localhost:5000/quejas/cierre/${id}`);
+
+            if (response.data.confirmar) {
+                if (window.confirm("Solicitud sin tareas creadas, seguro que quieres cerrar la solicitud")) {
+                    const response2 = await axios.put(`http://localhost:5000/quejas/cierreForzado/${id}`);
+                    setQuejaCerrada(true);
+                    window.alert("Queja cerrada, pendiente de verificación")
+                }
+            } else if (!response.data.cierre) {
+                window.alert("Tareas pendientes, completar antes de cerrar solicitud");
+            } else if (response.data.cierre) {
+                setQuejaCerrada(true);
+                window.alert("Queja cerrada, pendiente de verificación")
+            }
+        } catch (error) {
+
+        }
+    }
+
+    return (
         <>
             <h3 className={styles.title}>Pendientes</h3>
 
             <table className={styles.table}>
-                            <thead>
-                                <th>ID</th>
-                                <th>Solicitante</th>
-                                <th>Tipo de Queja</th>
-                                <th>Estado</th>
-                                <th>Fecha Creacion</th>
-                                <th>Acciones</th>
-                            </thead>
-                            <tbody>
-                                {pendientes.map(queja => {
-                                    return (
-                                        <tr>
-                                            <td>{queja.id}</td>
-                                            <td>{queja.nombre}</td>
-                                            <td>{queja.tipoqueja}</td>
-                                            <td>{queja.estado}</td>
-                                            <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
-                                            <td><div className={styles.acciones}><button onClick={()=> navigate(`/app/tareas/acciones/${queja.id}`)} className={styles.btnTrabajar}>Trabajar</button><button className={styles.btnCerrar}>Cerrar</button></div></td> 
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
+                <thead>
+                    <th>ID</th>
+                    <th>Solicitante</th>
+                    <th>Tipo de Queja</th>
+                    <th>Estado</th>
+                    <th>Fecha Creacion</th>
+                    <th>Acciones</th>
+                </thead>
+                <tbody>
+                    {pendientes.map(queja => {
+                        return (
+                            <tr>
+                                <td>{queja.id}</td>
+                                <td>{queja.nombre}</td>
+                                <td>{queja.tipoqueja}</td>
+                                <td>{queja.estado}</td>
+                                <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
+                                <td><div className={styles.acciones}><button onClick={() => navigate(`/app/tareas/acciones/${queja.id}`)} className={styles.btnTrabajar}>Trabajar</button><button className={styles.btnCerrar} onClick={() => cerrarQueja(queja.id)}>Cerrar</button></div></td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
         </>
     )
 }
