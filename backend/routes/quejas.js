@@ -128,6 +128,46 @@ quejasRouter.get("/asignadas/:id", async (req, res)=> {
         res.status(500).json({error: "Error obteniendo quejas asignadas."})
     }
 
+});
+
+
+quejasRouter.put("/cierre/:id", async (req, res)=> {
+    const id = req.params.id;
+
+    try {
+        const values = [id];
+        const sql = " SELECT (SELECT COUNT(*) FROM investigaciones WHERE queja_id = $1) AS total_investigaciones, (SELECT COUNT(*) from acciones_correctivas WHERE queja_id = $1) AS total_acciones, (SELECT COUNT(*) FROM investigaciones WHERE queja_id = $1 AND estado = 'en progreso') AS investigaciones_pendientes, (SELECT COUNT(*) FROM acciones_correctivas WHERE queja_id = $1 AND estado = 'pendiente') AS acciones_pendientes";
+
+        const results = await pool.query(sql, values);
+
+
+    //     {
+    //     "total_investigaciones": "7",
+    //     "total_acciones": "4",
+    //     "investigaciones_pendientes": "2",
+    //     "acciones_pendientes": "1"
+    // }
+
+        const resultados = results.rows[0];
+        
+        // return res.json(results.rows[0]);
+
+        if (resultados.investigaciones_pendientes > 0 || resultados.acciones_pendientes > 0) {
+            return res.json({cierre: false, mensaje: "Tareas pendientes" , resultados: resultados})
+        } else if (resultados.total_investigaciones == 0 && resultados.total_acciones == 0){
+            return res.json({cierre: false, confirmar: true, mensaje: "Queja sin investigaciones ni acciones" , resultados});
+        } else {
+
+            const sql2 = "UPDATE quejas SET estado = 'verificacion' WHERE id = $1";
+            const results2 = await pool.query(sql2, values);
+            return res.json({cierre: true, mensaje: "queja cerrada, pendiente de verificacion", resultados})
+        }
+
+
+    } catch (error) {
+
+    }
+
 })
 
 
