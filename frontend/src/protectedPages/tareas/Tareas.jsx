@@ -6,6 +6,8 @@ import { useAuth } from "../../context/AuthContext";
 
 import { useNavigate } from "react-router-dom";
 
+import Swal from "sweetalert2";
+
 const Tareas = () => {
     const [pendientes, setPendientes] = useState([]);
 
@@ -39,25 +41,62 @@ const Tareas = () => {
             const response = await axios.put(`http://localhost:5000/quejas/cierre/${id}`);
 
             if (response.data.confirmar) {
-                if (window.confirm("Solicitud sin tareas creadas, seguro que quieres cerrar la solicitud")) {
-                    const response2 = await axios.put(`http://localhost:5000/quejas/cierreForzado/${id}`);
-                    setQuejaCerrada(true);
-                    window.alert("Queja cerrada, pendiente de verificación")
-                }
+
+                Swal.fire({
+                    text: "Solicitud sin tareas creadas, seguro que quieres cerrar la solicitud!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#43d630",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Cerrar Solicitud",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axios.put(`http://localhost:5000/quejas/cierreForzado/${id}`).then(result2 => {
+                            setQuejaCerrada(true);
+                            Swal.fire({
+                                title: "Solicitud cerrada!",
+                                text: "Pendiente de verificacion.",
+                                icon: "warning"
+                            })
+                        })
+
+                    }
+
+
+                });
+
+                // if (window.confirm("Solicitud sin tareas creadas, seguro que quieres cerrar la solicitud")) {
+                //     const response2 = await axios.put(`http://localhost:5000/quejas/cierreForzado/${id}`);
+                //     setQuejaCerrada(true);
+                //     Swal.fire({
+                //         title: "Solicitud cerrada!",
+                //         text: "Pendiente de verificacion.",
+                //         icon: "warning"
+                //     })
+
+                //     // window.alert("Queja cerrada, pendiente de verificación")
+                // }
             } else if (!response.data.cierre) {
-                window.alert("Tareas pendientes, completar antes de cerrar solicitud");
+                Swal.fire({ text: "Tareas pendientes, completar antes de cerrar solicitud.", icon: "error" });
+                // window.alert("Tareas pendientes, completar antes de cerrar solicitud");
             } else if (response.data.cierre) {
                 setQuejaCerrada(true);
-                window.alert("Queja cerrada, pendiente de verificación")
+                Swal.fire({
+                    title: "Solicitud cerrada!",
+                    text: "Pendiente de verificacion.",
+                    icon: "success"
+                })
+                // window.alert("Queja cerrada, pendiente de verificación");
             }
         } catch (error) {
 
         }
     }
 
-    const trabajarQueja = async (id, estado)=>{
+    const trabajarQueja = async (id, estado) => {
 
-        if (estado === "asignada"){
+        if (estado === "asignada") {
             try {
                 const response = await axios.put(`http://localhost:5000/quejas/cambioEstado/${id}`)
 
