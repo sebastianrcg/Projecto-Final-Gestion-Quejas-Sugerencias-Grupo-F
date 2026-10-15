@@ -12,6 +12,8 @@ const CierreQuejas = () => {
 
     const {session} = useAuth();
 
+    const navigate = useNavigate();
+
     if (session.user.role === "analista"){
        return <Navigate to="/app"/> 
     }
@@ -54,7 +56,7 @@ const CierreQuejas = () => {
                                             <td>{queja.tipoqueja}</td>
                                             <td>{queja.estado}</td>
                                             <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
-                                            <td><div className={styles.acciones}><button className={styles.btnVer} >Ver</button><button className={styles.btnCerrar}>Confirmar Cierre</button></div></td>
+                                            <td><div className={styles.acciones}><button className={styles.btnVer} onClick={()=> navigate(`/app/cierreQuejas/queja/${queja.id}`)}>Ver</button><button className={styles.btnCerrar}>Confirmar Cierre</button></div></td>
                                         </tr>
                                     )
                                 })}

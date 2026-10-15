@@ -18,6 +18,7 @@ import VerQueja from "./protectedPages/verQueja/VerQueja"
 import Tareas from "./protectedPages/tareas/Tareas"
 import Acciones from "./protectedPages/tareas/Acciones"
 import CierreQuejas from "./protectedPages/cierreQuejas/CierreQuejas"
+import VistaCierre from "./protectedPages/cierreQuejas/VistaCierre"
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="tareas" element={<Tareas />}/>
         <Route path="tareas/acciones/:id" element={<Acciones />}/>
         <Route path="cierreQuejas" element={<CierreQuejas />} />
+        <Route path="cierreQuejas/queja/:id" element={<VistaCierre />}/>
  
 
       </Route>
