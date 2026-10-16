@@ -11,6 +11,7 @@ const usuariosRouter = require('./routes/usuarios.js');
 const quejasRouter = require("./routes/quejas.js");
 const investigacionesRouter = require('./routes/investigaciones.js');
 const accionesCorrectivasRouter = require("./routes/accionesCorrectivas.js");
+const analyticsRouter = require("./routes/dashboard.js");
 
 
 
@@ -43,6 +44,7 @@ app.use("/usuarios", usuariosRouter);
 app.use("/quejas", quejasRouter);
 app.use("/investigaciones", investigacionesRouter);
 app.use("/accionesCorrectivas", accionesCorrectivasRouter);
+app.use("/analytics", analyticsRouter);
 
 
 app.listen(PORT, ()=> { 

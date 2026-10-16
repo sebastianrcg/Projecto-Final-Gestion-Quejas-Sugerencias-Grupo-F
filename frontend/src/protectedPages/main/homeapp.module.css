@@ -1,0 +1,36 @@
+.title {
+    text-align: center;
+    color: black;
+    margin-top: 50px;
+    font-size: 40px;
+}
+
+.dashboard {
+    margin-top: 50px;
+    display: flex;
+    width: 95%;
+    justify-content: space-evenly;
+}
+
+.data{
+    width: 150px;
+    height: 120px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart {
+    width: 60%;
+    display: block;
+    margin: 30px auto;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    
+}
