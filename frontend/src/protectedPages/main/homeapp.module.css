@@ -12,6 +12,12 @@
     justify-content: space-evenly;
 }
 
+.dashboardTitle {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
 .data{
     width: 150px;
     height: 120px;
@@ -23,14 +29,26 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    color: black;
 }
 
 .chart {
-    width: 60%;
+    width: 70%;
     display: block;
     margin: 30px auto;
     background-color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    padding: 20px 0px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
     
+}
+
+.chartTitle {
+    font-size: 24px;
+    color: black;
 }
