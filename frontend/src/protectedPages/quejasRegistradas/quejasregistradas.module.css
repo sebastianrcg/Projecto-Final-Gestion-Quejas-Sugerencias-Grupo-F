@@ -6,21 +6,39 @@
 }
 
 .filtros {
-    width: 90%;
+    width: 95%; 
     height: 50px;
     border-radius: 10px;
-    background-color: white;
+    /* background-color: white; */
     margin: 0 auto;
     margin-top: 40px;
     display: flex;
-    padding: 0 20px;
+    padding: 0px;
     align-items: center;
     justify-content: space-between;
 }
 
 .filtros select {
-    height: 60%;
-    width: 50px;
+    height: 100%;
+    width: 100px;
+    font-size: 18px;
+    border-radius: 10px;
+    
+    text-align: center;
+
+}
+
+.filtrosContainer {
+    height: 100%;
+    display: flex;
+    gap: 5px;
+}
+
+.filtrosContainer select {
+    height: 100%;
+    width: fit-content;
+    font-size: 18px;
+    border-radius: 10px;
 }
 
 .table {
@@ -31,7 +49,7 @@
     /* padding: 10px; */
     border-radius: 5px;
     border: 2px solid #a3a9ad;
-    border-collapse: inherit;
+    border-collapse: collapse;
     color: black;
     margin-bottom: 30px;
 
@@ -46,6 +64,10 @@
 td {
     padding: 8px;
     border: 1px solid #ced4da;
+}
+
+.table tr:nth-child(even) {
+    background-color: rgb(236, 236, 245);
 }
 
 .acciones {

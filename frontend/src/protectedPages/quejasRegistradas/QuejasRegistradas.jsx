@@ -97,7 +97,7 @@ const QuejasRegistradas = () => {
         } 
         getQuejas();
         topPageRef.current.scrollTo({ top: 0, behavior: "instant" });
-    }, [pagina, limite, categoria, estado, asignada])
+    }, [pagina, limite, categoria, estado, asignada]) 
 
     return (
         <>
@@ -105,9 +105,10 @@ const QuejasRegistradas = () => {
             <h3 className={styles.title}>Quejas</h3>
 
             <div className={styles.filtros}>
-                <p>Barra de filtros</p>
+                
+                <div className={styles.filtrosContainer}>
 
-                <select value={categoria} onChange={cambiarCategoria} title="Tipo de Quejas">
+                <select className={styles.filtros1} value={categoria} onChange={cambiarCategoria} title="Tipo de Quejas">
                     <option value="" selected>Todas las Categorias</option>
                     <option value="defectosProducto">Defecto de Productos</option>
                     <option value="problemaProceso">Problemas de Proceso</option>
@@ -117,13 +118,14 @@ const QuejasRegistradas = () => {
                     <option value="otra">Otras</option>
                 </select>
 
-                <select value={estado} onChange={cambiarEstado}>
+                <select className={styles.filtros1} value={estado} onChange={cambiarEstado}>
                     <option value="">Todos los Estados</option>
                     <option value="registrada">Registradas</option>
                     <option value="asignada">Asignadas</option>
                     <option value="trabajando">En Proceso</option>
                     <option value="verificacion">Por Verificar</option>
                 </select>
+                </div>
 
                 <select  title="Numero de Registros" value={limite} onChange={cambiarLimite}>
                     <option value={10}>10</option>

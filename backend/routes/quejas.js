@@ -199,7 +199,7 @@ quejasRouter.get("/asignadas/:id", async (req, res) => {
 
     try {
 
-        const sql = "SELECT * FROM quejas WHERE asignada = true AND usuarioasignado=$1 ORDER BY fechacreacion ASC";
+        const sql = "SELECT * FROM quejas WHERE asignada = true AND usuarioasignado=$1 AND estado != 'cerrada' AND estado != 'verificacion' ORDER BY fechacreacion ASC";
         const values = [id];
 
         const results = await pool.query(sql, values);

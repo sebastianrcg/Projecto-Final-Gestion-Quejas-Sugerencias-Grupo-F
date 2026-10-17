@@ -27,7 +27,7 @@ function App() {
       <Route path="/" element={<RootSinAccesso />}>
         <Route index element={<Home />} />
         <Route path="reportarQueja" element={<Quejas />} />
-        <Route path="tracking" element={<Tracking />} />
+        <Route path="consulta" element={<Tracking />} />
         <Route path="login" element={<Login />} />
       </Route>
 

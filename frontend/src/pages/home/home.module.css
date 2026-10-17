@@ -4,94 +4,203 @@
     background-image: url("../../../public/landingHero2.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; 
     margin: 0;
     z-index: -10;
     color: black;
     padding: 30px;
 }
 
-.hero h1 {
-    /* margin-top: 20px; */
-    margin-top: 10px;
-    margin-left: 20px;
+.heroHeader {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #1677ff;
 }
 
-.hero h2{
-    margin-left: 20px;
-    margin-top: 25px;
+.hero {
+    width: 100%;
+    min-height: calc(100dvh - 64px);
+    background-image: url("../../../public/landingHero2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    padding: 45px 5% 60px;
+    color: #111827;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
 }
+
+.hero h1 {
+    margin: 0 0 20px 0;
+    max-width: 720px;
+    font-family: "Nunito", sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    color: #0f172a;
+}
+
+.hero h2 {
+    margin: 0 0 20px 0;
+    max-width: 700px;
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    line-height: 1.4;
+    color: #1e3a5f;
+}
+
 
 .hero p {
-    margin-left: 20px;
-    margin-top: 50px;
+    margin: 0 0 10px 0;
+    max-width: 650px;
+    font-family: "Nunito", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #1f2733;
 }
+
+
+
 
 .hero p + p {
-    margin-top: 10px;
-    width: 45%;
+    margin-top: 0;
+    width: auto;
+    max-width: 620px;
 }
+
 
 .heroBtns {
-    margin-left: 20px;
-    margin-top: 100px;
+    margin: 42px 0 0 0;
     display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
 }
+
 
 .heroBtns button {
-    font-size: 18px;
-    font-family: "Nunito";
-    margin: 10px;
-    
-    padding: 5px 15px;
-    
+    font-family: "Nunito", sans-serif;
 }
 
 
-/* Shared button styles */
+
 .heroButton {
-  height: 62px;
-  padding: 0 32px;
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  transition: all 0.25s ease;
+    height: 60px;
+    padding: 0 30px;
+    border-radius: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+    box-sizing: border-box;
 }
 
 
 .primaryButton {
-  background: #1677ff;
-  color: white;
-  border: 2px solid #1677ff;
-  min-width: 240px;
-  box-shadow: 0 5px 14px rgba(22, 119, 255, 0.20);
+    min-width: 230px;
+    background: #1677ff;
+    color: white;
+    border: 2px solid #1677ff;
+    box-shadow:
+        0 6px 18px rgba(22, 119, 255, 0.22);
 }
 
 .primaryButton:hover {
-  background: #0868e8;
-  border-color: #0868e8;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(22, 119, 255, 0.28);
+    background: #0868e8;
+    border-color: #0868e8;
+    transform: translateY(-3px);
+    box-shadow:
+        0 10px 24px rgba(22, 119, 255, 0.30);
 }
 
-
-
 .secondaryButton {
-  background: white;
-  color: #1677ff;
-  border: 2px solid #1677ff;
-  min-width: 250px;
+    min-width: 230px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1677ff;
+    border: 2px solid #1677ff;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
 }
 
 .secondaryButton:hover {
-  background: #f0f7ff;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 14px rgba(22, 119, 255, 0.12);
+    background: #f0f7ff;
+    transform: translateY(-3px);
+    box-shadow:
+        0 8px 18px rgba(22, 119, 255, 0.15);
+}
+
+
+
+@media (max-width: 900px) {
+
+    .hero {
+        padding: 35px 6%;
+        background-position: center;
+    }
+
+    .hero h1 {
+        max-width: 600px;
+    }
+
+    .hero h2 {
+        max-width: 600px;
+    }
+
+    .hero p {
+        max-width: 560px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: calc(100dvh - 64px);
+        padding: 35px 25px 50px;
+        background-position: 65% center;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        letter-spacing: -1px;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+        margin-bottom: 24px;
+    }
+
+    .hero p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .heroBtns {
+        margin-top: 30px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .heroButton {
+        width: 100%;
+        min-width: 0;
+    }
 }
 

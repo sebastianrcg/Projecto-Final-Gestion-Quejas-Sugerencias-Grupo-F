@@ -1,4 +1,4 @@
-import styles from "./quejas.module.css";
+import styles from "./quejas2.module.css";
 import { useState } from "react";
 import { useRef } from "react";
 
@@ -113,7 +113,7 @@ const Quejas = () => {
         }
         setShowForm(true)
     }
-
+ 
     return (
         <>
             <h2 className={styles.title}>Registrar Queja</h2>
@@ -122,7 +122,7 @@ const Quejas = () => {
                     <div className={styles.success}>
                         <p>{message.split("@")[0]}<br/><b>{message.split("@")[1].split(":")[0]}: </b>  {message.split("@")[1].split(":")[1]}</p>
                         
-                        <button onClick={otraQueja}>Registrar Otra Queja</button>
+                        <button onClick={otraQueja}>Registrar otra Queja</button>
                     </div>}
 
                 {showForm && <form onSubmit={enviarQueja}>
@@ -187,9 +187,9 @@ const Quejas = () => {
                         <input type="file" name="foto" accept="image/*" ref={fotoRef} onChange={handleImgChange}/>
                     </div>
 
-                    <div className={styles.commentBox}>
+                    <div className={styles.commentBox}> 
 
-                        <textarea name="comentario" placeholder="Ingresa detalles e informacion de la reclamación." value={queja.comentario} onChange={handleChange} required>
+                        <textarea name="comentario" placeholder="Ingresa detalles e informacion de su consulta o solicitud..." value={queja.comentario} onChange={handleChange} required>
                         </textarea>
                     </div>
                     {showError && <p className={styles.errorMsg}>{errorMsg}</p>}

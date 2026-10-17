@@ -29,7 +29,7 @@ const Tareas = () => {
 
             } catch (error) {
 
-            }
+            } 
         }
 
         getQuejasAsignadas(session.user.id);

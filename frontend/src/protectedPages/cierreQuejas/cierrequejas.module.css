@@ -30,7 +30,7 @@
 td {
     padding: 8px;
     border: 1px solid #ced4da;
-    border: 1px solid #92979b;
+    /* border: 1px solid #92979b; */
 }
 
 .table tr:nth-child(even) {

@@ -4,7 +4,7 @@ import axios from "axios";
 import { IoSearchOutline } from "react-icons/io5";
 
 
-const Tracking = () => {
+const Tracking = () => { 
     const [tracking, setTracking] = useState("");
 
     const [showData, setShowData] = useState(false);
@@ -53,7 +53,7 @@ const Tracking = () => {
     return (
         <>
             <h2 className={styles.title}>Seguimiento de solicitud</h2>
-            <p className={styles.text}>Ingrese el codigo de seguimiento generado al registrar su solicitud. Revisar el correo de confirmación automatico al enviar su solicitud para el codigo de traqueo de solicitud.</p>
+            <p className={styles.text}>Ingrese el codigo de seguimiento generado al registrar su solicitud. Revisar el correo de confirmación automatico al enviar su solicitud para el codigo de seguimiento de solicitud.</p>
 
             <form onSubmit={chequearTracking}>
                 <div className={styles.inputContainer}>
@@ -75,14 +75,22 @@ const Tracking = () => {
                     {
                         showData && 
                         <div>
-                            <p>La solicitud con el codigo de seguimiento <b>#: {data.tracking}</b>. Fue recibida en la fecha {data.fechacreacion.split("T")[0]} a las {data.fechacreacion.split("T")[1].split(".")[0]}. El estado actual de su solicitud es <b>{data.estado}</b>.<br/> Nuestro equipo esta trabajando con su solicitud y le enviaremos un correo con mas información de la resolución de su petición, lo mas pronto posible al correo: <b>{data.correo}</b> .</p>
+                            <p className={styles.succesTitle}>Solicitud#: <b>{data.tracking}</b>.</p>
+                            <p> <b>Recibida: </b>{data.fechacreacion.split("T")[0]} a las {data.fechacreacion.split("T")[1].split(".")[0]}.</p>
+                            <p>Estado: <b>{data.estado}</b>.</p>
+                            <p className={styles.messageText}>Nuestro equipo esta trabajando con su solicitud, le enviaremos un correo con mas información de la resolución de su petición, lo mas pronto posible al<br/> correo: <b>{data.correo}</b> .</p>
                             <br/>
-                            <p>Gracias, {data.nombre}, por preferirnos y tomar el tiempo de comunicar su inquietud.</p>
+                            <p>Gracias, <b>{data.nombre}</b>, por preferirnos y tomar el tiempo de comunicar su inquietud.</p>
                             
                         </div>
                     }
                 </div>
+
+                
             }
+            <div className={styles.add}>
+                 
+            </div>
         </>
     )
 }

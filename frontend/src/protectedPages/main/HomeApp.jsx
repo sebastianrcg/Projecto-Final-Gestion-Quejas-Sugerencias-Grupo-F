@@ -67,7 +67,7 @@ const HomeApp = () => {
             </div>
 
             <div className={styles.chart}>
-                <h4 className={styles.chartTitle}>Estados de Quejas</h4>
+                <h4 className={styles.chartTitle}>Estado de Quejas</h4>
                 <BarChart
                     style={{ width: '75%', maxWidth: '650px', maxHeight: '50vh', aspectRatio: 1 }}
                     responsive

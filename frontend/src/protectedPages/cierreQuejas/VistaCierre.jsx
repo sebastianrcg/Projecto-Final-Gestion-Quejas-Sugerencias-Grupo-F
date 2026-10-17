@@ -173,7 +173,7 @@ const VistaCierre = () => {
                 {showInvestigaciones &&
                     <div>
 
-                        {(investigaciones.length === 0) ? <p>No hay investigaciones registradas</p> : investigaciones.map((investigacion, i) => {
+                        {(investigaciones.length === 0) ? <p>No hay investigaciones registradas.</p> : investigaciones.map((investigacion, i) => {
                             return (
                                 <InvestigacionCard
                                     key={investigacion.id}
@@ -201,7 +201,7 @@ const VistaCierre = () => {
                 {showAcciones &&
                     <div>
 
-                        {(accionesCorrectivas.length === 0) ? <p>No hay Acciones pendientes.</p> : accionesCorrectivas.map((accionCorrectiva, i) => {
+                        {(accionesCorrectivas.length === 0) ? <p>No hay acciones registradas.</p> : accionesCorrectivas.map((accionCorrectiva, i) => {
                             return (
                                 <AccionesCorrectivasCard
                                     key={accionCorrectiva.id}
