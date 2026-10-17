@@ -21,6 +21,7 @@ const QuejasRegistradas = () => {
     const pagina = parseInt(searchParams.get("pagina")) || 1;
     const limite = parseInt(searchParams.get("limite")) || 20;
     const categoria = searchParams.get("categoria") || "";
+    const estado = searchParams.get("estado") || "";
     
     
     // const [limite, setLimite] = useState(20);
@@ -45,8 +46,8 @@ const QuejasRegistradas = () => {
 
     const topPageRef = useOutletContext();
 
-    const setParams = (nuevaPagina, nuevoLimite = limite, nuevaCategoria = categoria) => {
-        setSearchParams({pagina: nuevaPagina, limite: nuevoLimite, categoria: nuevaCategoria});
+    const setParams = (nuevaPagina, nuevoLimite = limite, nuevaCategoria = categoria, nuevoEstado = estado) => {
+        setSearchParams({pagina: nuevaPagina, limite: nuevoLimite, categoria: nuevaCategoria, estado: nuevoEstado});
     }
 
     
@@ -69,7 +70,12 @@ const QuejasRegistradas = () => {
 
     const cambiarCategoria = (event) => {
         const nuevaCategoria = event.target.value;
-        setParams(1, limite, nuevaCategoria)
+        setParams(1, limite, nuevaCategoria , estado);
+    }
+
+    const cambiarEstado = (event) => {
+        const nuevoEstado = event.target.value;
+        setParams(1, limite, categoria, nuevoEstado);
     }
 
 
@@ -79,7 +85,7 @@ const QuejasRegistradas = () => {
 
         const getQuejas = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/quejas?pagina=${pagina}&limite=${limite}&categoria=${categoria}`);
+                const response = await axios.get(`http://localhost:5000/quejas?pagina=${pagina}&limite=${limite}&categoria=${categoria}&estado=${estado}`);
 
                 if (response.data.quejas) {
                     setQuejas(response.data.quejas)
@@ -91,7 +97,7 @@ const QuejasRegistradas = () => {
         } 
         getQuejas();
         topPageRef.current.scrollTo({ top: 0, behavior: "instant" });
-    }, [pagina, limite, categoria, asignada])
+    }, [pagina, limite, categoria, estado, asignada])
 
     return (
         <>
@@ -101,14 +107,22 @@ const QuejasRegistradas = () => {
             <div className={styles.filtros}>
                 <p>Barra de filtros</p>
 
-                <select value={categoria} onChange={cambiarCategoria}>
-                    <option value="" selected>Todas</option>
+                <select value={categoria} onChange={cambiarCategoria} title="Tipo de Quejas">
+                    <option value="" selected>Todas las Categorias</option>
                     <option value="defectosProducto">Defecto de Productos</option>
                     <option value="problemaProceso">Problemas de Proceso</option>
                     <option value="distribucionLogistica">Distribución y Logistica</option>
                     <option value="atencionCliente">Atencion al Cliente</option>
                     <option value="cumplimientoNormas">Cumplimiento y Normas</option>
                     <option value="otra">Otras</option>
+                </select>
+
+                <select value={estado} onChange={cambiarEstado}>
+                    <option value="">Todos los Estados</option>
+                    <option value="registrada">Registradas</option>
+                    <option value="asignada">Asignadas</option>
+                    <option value="trabajando">En Proceso</option>
+                    <option value="verificacion">Por Verificar</option>
                 </select>
 
                 <select  title="Numero de Registros" value={limite} onChange={cambiarLimite}>
