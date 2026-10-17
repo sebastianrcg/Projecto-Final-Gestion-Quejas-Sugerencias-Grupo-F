@@ -31,7 +31,7 @@ const ProtectedNav = ({ style }) => {
                     <p>{session.user.role}</p>
                 </div>
                 <NavLink to="/app" className={styles.link}><IoHomeOutline /> <p>Home</p></NavLink>
-                <NavLink className={styles.link}><AiOutlineDashboard /> <p>Dashboard</p></NavLink>
+                {/* <NavLink className={styles.link}><AiOutlineDashboard /> <p>Dashboard</p></NavLink> */}
                 <NavLink to="/app/quejas" className={styles.link}><VscCommentDiscussionSparkle /> <p>Quejas</p></NavLink>
                 {/* <NavLink className={styles.link}><LuFileSearch /> <p>Investigacion</p></NavLink> */}
                 <NavLink to="/app/tareas" className={styles.link}><LuBookmarkCheck /><p>Tareas</p> </NavLink>

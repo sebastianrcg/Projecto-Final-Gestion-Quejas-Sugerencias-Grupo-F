@@ -19,7 +19,8 @@ const QuejasRegistradas = () => {
 
 
     const pagina = parseInt(searchParams.get("pagina")) || 1;
-    const limite = parseInt(searchParams.get("limite")) || 20; 
+    const limite = parseInt(searchParams.get("limite")) || 20;
+    const categoria = searchParams.get("categoria") || "";
     
     
     // const [limite, setLimite] = useState(20);
@@ -44,8 +45,8 @@ const QuejasRegistradas = () => {
 
     const topPageRef = useOutletContext();
 
-    const setParams = (nuevaPagina, nuevoLimite = limite) => {
-        setSearchParams({pagina: nuevaPagina, limite: nuevoLimite});
+    const setParams = (nuevaPagina, nuevoLimite = limite, nuevaCategoria = categoria) => {
+        setSearchParams({pagina: nuevaPagina, limite: nuevoLimite, categoria: nuevaCategoria});
     }
 
     
@@ -66,6 +67,11 @@ const QuejasRegistradas = () => {
         setParams(1, nuevoLimite);
     }
 
+    const cambiarCategoria = (event) => {
+        const nuevaCategoria = event.target.value;
+        setParams(1, limite, nuevaCategoria)
+    }
+
 
     useEffect(() => {
 
@@ -73,7 +79,7 @@ const QuejasRegistradas = () => {
 
         const getQuejas = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/quejas?pagina=${pagina}&limite=${limite}`);
+                const response = await axios.get(`http://localhost:5000/quejas?pagina=${pagina}&limite=${limite}&categoria=${categoria}`);
 
                 if (response.data.quejas) {
                     setQuejas(response.data.quejas)
@@ -85,7 +91,7 @@ const QuejasRegistradas = () => {
         } 
         getQuejas();
         topPageRef.current.scrollTo({ top: 0, behavior: "instant" });
-    }, [pagina, limite, asignada])
+    }, [pagina, limite, categoria, asignada])
 
     return (
         <>
@@ -94,6 +100,17 @@ const QuejasRegistradas = () => {
 
             <div className={styles.filtros}>
                 <p>Barra de filtros</p>
+
+                <select value={categoria} onChange={cambiarCategoria}>
+                    <option value="" selected>Todas</option>
+                    <option value="defectosProducto">Defecto de Productos</option>
+                    <option value="problemaProceso">Problemas de Proceso</option>
+                    <option value="distribucionLogistica">Distribución y Logistica</option>
+                    <option value="atencionCliente">Atencion al Cliente</option>
+                    <option value="cumplimientoNormas">Cumplimiento y Normas</option>
+                    <option value="otra">Otras</option>
+                </select>
+
                 <select  title="Numero de Registros" value={limite} onChange={cambiarLimite}>
                     <option value={10}>10</option>
                     <option value={20} selected>20</option>

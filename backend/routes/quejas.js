@@ -44,15 +44,60 @@ quejasRouter.get("/", async (req, res) => {
 
     const pagina = parseInt(req.query.pagina) || 1;
     const limite = parseInt(req.query.limite) || 20;
+    const categoria = req.query.categoria;
+
     const offset = (pagina - 1) * limite;
 
     try {
-        const values = [limite, offset];
-        const sql = "SELECT * FROM quejas ORDER BY fechacreacion ASC LIMIT $1 OFFSET $2";
-        const results = await pool.query(sql, values);
 
-        const sql2 = "SELECT COUNT(*) FROM quejas";
-        const total = await pool.query(sql2);
+        let results;
+        let total;
+
+        if (categoria) {
+
+            let search;
+            if (categoria === "defectosProducto") {
+                search = "('empaque_defectuoso', 'mal_olor_sabor', 'producto_contaminado', 'vencido_fechaIlegible', 'error_etiqueta', 'variacion_peso')";
+                
+            } else if (categoria === "problemaProceso") {
+                search = "('calibracion_maquinaria', 'temperatura_presion', 'mezcla_incorrecta', 'retraso_produccion', 'falta_calidad')";
+                
+            } else if (categoria === "distribucionLogistica") {
+                search = "('retraso_entrega', 'daños_transporte', 'error_cantidad', 'trazabilidad_lote')";
+            } else if (categoria === "atencionCliente") {
+                search = "('respuesta_tardia', 'trato_inadecuado', 'falta_informacion', 'comunicacion_confusa')";
+            } else if (categoria === "cumplimientoNormas"){
+                search = "('incumplimiento_normas', 'registro_inspeccion', 'documentation_incompleta')";
+            } else if (categoria === "otra") {
+                search = "('otra')";
+            }
+
+            const sql = `SELECT * FROM quejas WHERE tipoqueja IN ${search} AND estado != 'cerrada' ORDER BY fechacreacion ASC LIMIT $1 OFFSET $2`;
+
+            const values = [limite, offset];
+
+            results = await pool.query(sql, values);
+
+            const sql2 = `SELECT COUNT(*) FROM quejas WHERE tipoqueja IN ${search} AND estado != 'cerrada'`;
+
+            total = await pool.query(sql2);
+
+        } else {
+            const sql = "SELECT * FROM quejas WHERE estado != 'cerrada' ORDER BY fechacreacion ASC LIMIT $1 OFFSET $2";
+
+            results = await pool.query(sql, [limite, offset]);
+
+            const sql2 = "SELECT COUNT(*) FROM quejas WHERE estado != 'cerrada'";
+
+            total = await pool.query(sql2);
+        }
+
+        // const values = [limite, offset];
+        // const sql = "SELECT * FROM quejas ORDER BY fechacreacion ASC LIMIT $1 OFFSET $2";
+        // const results = await pool.query(sql, values);
+
+        // const sql2 = "SELECT COUNT(*) FROM quejas";
+        // const total = await pool.query(sql2);
 
         return res.json({
             quejas: results.rows,

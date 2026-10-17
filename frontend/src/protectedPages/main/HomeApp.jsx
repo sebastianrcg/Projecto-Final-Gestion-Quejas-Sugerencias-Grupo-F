@@ -47,6 +47,7 @@ const HomeApp = () => {
         {label: "Problema de Proceso", cantidad: stats2.problemaProceso, color: "#3b82f6"},
         {label: "Distribución y Logistica", cantidad: stats2.distribucionLogistica, color: "#10b981"},
         {label: "Atención al Cliente", cantidad: stats2.atencionCliente, color: "#f59e0b"},
+        {label: "Cumplimiento y Normas", cantidad: stats2.cumplimientoNormas, color: "#dbd814"},
         {label: "Otra", cantidad: stats2.otra, color: "#8b5cf6"},
     ];
 
@@ -81,7 +82,7 @@ const HomeApp = () => {
                     
                     <CartesianGrid />
                     <XAxis dataKey="label" />
-                    <YAxis width="auto" domain={["auto", "auto"]} ticks={[0, 10, 20, 30, 40, 50, 60]} />
+                    <YAxis width="auto" domain={["auto", "auto"]}  />
                     <Tooltip />
                     {/* <Legend /> */}
                     <Bar dataKey="cantidad" label={{position: "top", fill: "#000000", fontWeight: "bold"}} radius={[10, 10, 0, 0]}  >
@@ -109,7 +110,7 @@ const HomeApp = () => {
                     
                     <CartesianGrid />
                     <XAxis dataKey="label" tick={{fontSize: 12}}/>
-                    <YAxis width="auto"  />
+                    <YAxis width="auto" domain={["auto", "auto"]}  />
                     <Tooltip />
                     {/* <Legend /> */}
                     <Bar dataKey="cantidad" label={{position: "top", fill: "#000000", fontWeight: "bold"}} radius={[10, 10, 0, 0]} >

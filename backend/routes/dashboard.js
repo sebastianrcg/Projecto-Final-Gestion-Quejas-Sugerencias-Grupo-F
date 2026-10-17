@@ -68,6 +68,7 @@ analyticsRouter.get("/stats2", async (req, res) => {
         let problemaProceso = 0;
         let distribucionLogistica = 0;
         let atencionCliente = 0
+        let cumplimientoNormas = 0;
         let otra = 0
 
         for (const queja of quejas) {
@@ -82,12 +83,14 @@ analyticsRouter.get("/stats2", async (req, res) => {
                 distribucionLogistica += 1;
             } else if (categoria === "Atencion al Cliente") {
                 atencionCliente += 1;
+            } else if (categoria === "Cumplimiento y documentacion") {
+                cumplimientoNormas += 1;
             } else if (categoria === "otra"){
                 otra += 1;
             }
         }
 
-        return res.json({defectosProductos, problemaProceso, distribucionLogistica, atencionCliente, otra})
+        return res.json({defectosProductos, problemaProceso, distribucionLogistica, atencionCliente, cumplimientoNormas, otra})
 
     } catch (error) {
         return res.status(500).json({ error: "Error obteniendo metricas de categorias de quejas" });
