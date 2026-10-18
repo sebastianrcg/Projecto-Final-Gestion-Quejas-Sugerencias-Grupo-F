@@ -35,7 +35,7 @@
     /* padding: 10px; */
     border-radius: 5px;
     border: 2px solid #a3a9ad;   
-    border-collapse:inherit;
+    border-collapse:collapse;
     color: black;
 }
 
@@ -47,6 +47,10 @@
 .table th,td {
     padding: 8px;
     border: 1px solid #ced4da;
+}
+
+.table tr:nth-child(even) {
+    background-color: rgb(236, 236, 245);
 }
 
 .acciones {

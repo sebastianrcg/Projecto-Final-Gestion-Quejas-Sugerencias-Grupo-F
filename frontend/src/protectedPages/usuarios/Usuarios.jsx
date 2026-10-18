@@ -10,7 +10,7 @@ const Usuarios = () => {
 
     const navigate = useNavigate();
 
-    const {session} = useAuth(); 
+    const {session} = useAuth();  
 
     const cambiarEstado = async (id) => {
 

@@ -12,7 +12,7 @@ import ProtectedRoute from "./protectedRoute/ProtectedRoute"
 
 import HomeApp from "./protectedPages/main/HomeApp"
 import Usuarios from "./protectedPages/usuarios/Usuarios"
-import RegistrarUsuario from "./protectedPages/nuevoUsuario/RegistrarUsuario"
+import RegistrarUsuario from "./protectedPages/usuarios/nuevoUsuario/RegistrarUsuario"
 import QuejasRegistradas from "./protectedPages/quejasRegistradas/QuejasRegistradas"
 import VerQueja from "./protectedPages/verQueja/VerQueja"
 import Tareas from "./protectedPages/tareas/Tareas"

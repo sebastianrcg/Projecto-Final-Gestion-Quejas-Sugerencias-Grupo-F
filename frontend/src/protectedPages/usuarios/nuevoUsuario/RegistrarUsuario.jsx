@@ -1,9 +1,9 @@
 import styles from "./registrarusuario.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../../axiosConfig";
+import axios from "../../../axiosConfig";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext"; 
+import { useAuth } from "../../../context/AuthContext"; 
 
 const RegistrarUsuario = () => {
     const [usuario, setUsuario] = useState({

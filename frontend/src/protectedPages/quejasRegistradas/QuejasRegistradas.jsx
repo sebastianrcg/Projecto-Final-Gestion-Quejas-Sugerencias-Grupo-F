@@ -108,7 +108,7 @@ const QuejasRegistradas = () => {
                 
                 <div className={styles.filtrosContainer}>
 
-                <select className={styles.filtros1} value={categoria} onChange={cambiarCategoria} title="Tipo de Quejas">
+                <select className={styles.filtros1} value={categoria} onChange={cambiarCategoria} title="Filtrar quejas por categoria">
                     <option value="" selected>Todas las Categorias</option>
                     <option value="defectosProducto">Defecto de Productos</option>
                     <option value="problemaProceso">Problemas de Proceso</option>
@@ -118,7 +118,7 @@ const QuejasRegistradas = () => {
                     <option value="otra">Otras</option>
                 </select>
 
-                <select className={styles.filtros1} value={estado} onChange={cambiarEstado}>
+                <select title="Filtrar quejas por estado" className={styles.filtros1} value={estado} onChange={cambiarEstado}>
                     <option value="">Todos los Estados</option>
                     <option value="registrada">Registradas</option>
                     <option value="asignada">Asignadas</option>
@@ -127,7 +127,7 @@ const QuejasRegistradas = () => {
                 </select>
                 </div>
 
-                <select  title="Numero de Registros" value={limite} onChange={cambiarLimite}>
+                <select  title="Numero de Registros por Pagina" value={limite} onChange={cambiarLimite}>
                     <option value={10}>10</option>
                     <option value={20} selected>20</option>
                     <option value={30}>30</option>
