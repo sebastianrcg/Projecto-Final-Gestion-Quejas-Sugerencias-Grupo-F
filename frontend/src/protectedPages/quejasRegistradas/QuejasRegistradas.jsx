@@ -6,7 +6,7 @@ import { useOutletContext } from "react-router-dom";
 import {useAuth } from "../../context/AuthContext"
 
 import { useSearchParams } from "react-router-dom";
-
+ 
 
 const QuejasRegistradas = () => {
 
@@ -135,13 +135,14 @@ const QuejasRegistradas = () => {
                 </select>
             </div>
 
+            <div className={styles.tableContainer}>
             <table className={styles.table}>
                 <thead>
                     <th>ID</th>
                     <th>Solicitante</th>
                     <th>Tipo de Queja</th>
                     <th>Estado</th>
-                    <th>Fecha Creacion</th>
+                    <th>Fecha de Creacion</th>
                     <th>Acciones</th>
                 </thead>
                 <tbody>
@@ -151,7 +152,7 @@ const QuejasRegistradas = () => {
                                 <td>{queja.id}</td>
                                 <td>{queja.nombre}</td>
                                 <td>{queja.tipoqueja}</td>
-                                <td>{queja.estado}</td>
+                                <td><span className={`${styles.estado} ${styles[queja.estado]}`}>{queja.estado}</span></td>
                                 <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
                                 <td><div className={styles.acciones}><button onClick={() => navigate(`/app/quejas/${queja.id}`)} className={styles.btnVer}>Ver</button> <button className={styles.btnAsignar} onClick={()=> asignarQueja(queja.id, session.user.id)} disabled={queja.estado === "asignada" || queja.estado === "trabajando" || queja.estado === "verificacion"}>Asignar</button></div></td>
                             </tr>
@@ -159,6 +160,7 @@ const QuejasRegistradas = () => {
                     })}
                 </tbody>
             </table>
+            </div>
 
 
             <div className={styles.pageBtns}>

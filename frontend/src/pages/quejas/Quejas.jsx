@@ -112,7 +112,7 @@ const Quejas = () => {
             fotoRef.current.value = "";
         }
         setShowForm(true)
-    }
+    };
  
     return (
         <>

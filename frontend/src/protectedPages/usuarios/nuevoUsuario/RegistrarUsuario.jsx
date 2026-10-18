@@ -11,7 +11,7 @@ const RegistrarUsuario = () => {
         apellido: "",
         correo: "",
         role: "",
-        fechaNacimiento: "",
+        fechaNacimiento: "", 
         password: ""
     })
 
