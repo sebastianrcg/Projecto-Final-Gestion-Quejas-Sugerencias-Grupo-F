@@ -17,8 +17,7 @@
     color: black;
     border-radius: 5px;
     margin-bottom: 30px;
-
-}
+}  
 
 
 .table th {
@@ -38,10 +37,140 @@ td {
     background-color: rgb(236, 236, 245);
 } 
 
+.tableContainer {
+    width: 95%;
+    margin: 40px auto 35px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    margin: 0;
+    /* margin-top: 20px; */
+    background-color: white;
+    /* padding: 10px; */
+    border-radius: 5px;
+    border: 2px solid #a3a9ad;
+    border-collapse: collapse;
+    color: #1e293b;
+    font-family: "Nunito", sans-serif;
+    border: none;
+}
+
+.table th {
+    height: 48px;
+    padding: 0 14px;
+    background-color: #ced4da;
+    /* background-color: #f1f5f9; */
+    color: #334155;
+    text-align: center;
+    /* text-align: left; */
+    /* font-size: 15px; */
+    font-weight: 800;
+    border-bottom: 1px solid #334155;
+    white-space: nowrap;
+}
+
+.table th,
+td {
+    padding: 8px;
+    border: 1px solid #ced4da;
+}
+
+.table td {
+    height: 48px;
+    padding: 8px 14px;
+    font-size: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    border-left: none;
+    border-right: none;
+    vertical-align: middle;
+}
+
+.table tbody tr {
+    background-color: #ffffff;
+    transition:
+        background-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.table tr:nth-child(even) {
+    /* background-color: rgb(236, 236, 245); */
+    background-color: #f8fafc;
+}
+
+.table tbody tr:hover {
+    background-color: #eef6ff;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.estado {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* Registrada */
+
+.registrada {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+
+/* Trabajando */
+
+.trabajando {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+
+/* Verificación */
+
+.verificacion {
+    background-color: #ede9fe;
+    color: #6d28d9;
+}
+
+
+/* Asignada */
+
+.asignada {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+
+/* Cerrada */
+
+.cerrada {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
 .acciones {
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: 8px;
 }
 
 .btnVer {
@@ -72,6 +201,38 @@ td {
     background-color: #3eb84f;
 }
 
+.btnTrabajar {
+    min-width: 65px;
+    padding: 6px 12px;
+    cursor: pointer;
+    /* border-radius: 50px; */
+    border-radius: 7px;
+    border: none;
+    /* background-color: #4bdf5f; */
+    background-color: #22c55e;
+    font-weight: bold;
+    color: white;
+
+    font-family: "Nunito", sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btnTrabajar:hover {
+    /* background-color: #3eb84f; */
+    background-color: #16a34a;
+    box-shadow:
+        0 4px 10px rgba(34, 197, 94, 0.25);
+}
+
 .btnCerrar {
     background-color: #DC3545; 
     padding: 5px 10px;
@@ -93,43 +254,35 @@ td {
   opacity: 0.7;             
 } */
 
-.pageBtns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-    gap: 10px;
-    color: #186291;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.pageBtns button {
-    padding: 5px 10px;
-    font-size: 18px;
+.btnCerrar {
+    min-width: 65px;
+    padding: 6px 12px;
     cursor: pointer;
-    border-radius: 50px;
+    /* border-radius: 50px; */
+    border-radius: 7px;
     border: none;
-    background-color: #2b9ce2;
+    /* background-color: #4bdf5f; */
+    background-color: #DC3545;
     font-weight: bold;
     color: white;
 
+    font-family: "Nunito", sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.pageBtns button:hover {
-    background-color: #2089ca;
+.btnCerrar:hover {
+    /* background-color: #3eb84f; */
+    background-color: #b62c3a;
+    box-shadow:
+        0 4px 10px rgba(197, 34, 34, 0.25);
 }
 
-
-button:disabled {
-    background-color: #a1a1a1;
-    color: #535353;
-    opacity: 0.7;
-    cursor: default;
-}
-
-button:disabled:hover {
-    background-color: #a1a1a1;
-    color: #535353;
-    opacity: 0.7;
-}

@@ -143,12 +143,12 @@ const QuejasRegistradas = () => {
                     <th>Tipo de Queja</th>
                     <th>Estado</th>
                     <th>Fecha de Creacion</th>
-                    <th>Acciones</th>
+                    <th>Acciones</th> 
                 </thead>
                 <tbody>
                     {quejas.map(queja => {
                         return (
-                            <tr>
+                            <tr> 
                                 <td>{queja.id}</td>
                                 <td>{queja.nombre}</td>
                                 <td>{queja.tipoqueja}</td>

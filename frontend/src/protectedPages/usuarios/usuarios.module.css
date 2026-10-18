@@ -27,24 +27,62 @@
     background-color: #45ca57;
 }
 
-.table{
+.tableContainer {
     width: 95%;
+    margin: 25px auto 35px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+/* .table{
+    width: 100%;
     margin: 0 auto;
-    margin-top: 20px;
     background-color: white;
-    /* padding: 10px; */
+     padding: 10px;
     border-radius: 5px;
     border: 2px solid #a3a9ad;   
     border-collapse:collapse;
     color: black;
+} */
+
+.table {
+    width: 100%;
+    margin: 0;
+    /* margin-top: 20px; */
+    background-color: white;
+    /* padding: 10px; */
+    border-radius: 5px;
+    border: 2px solid #a3a9ad;
+    border-collapse: collapse;
+    color: #1e293b;
+    font-family: "Nunito", sans-serif;
+    border: none;
 }
 
-.table th{
+/* .table th{
     text-align: center;
     background-color: #ced4da;
+} */
+
+.table th {
+    height: 48px;
+    padding: 0 14px;
+    background-color: #ced4da;
+    /* background-color: #f1f5f9; */
+    color: #334155;
+    text-align: center;
+    /* text-align: left; */
+    /* font-size: 15px; */
+    font-weight: 800;
+    border-bottom: 1px solid #334155;
+    white-space: nowrap;
 }
 
-.table th,td {
+.table th,
+td {
     padding: 8px;
     border: 1px solid #ced4da;
 }
@@ -53,9 +91,46 @@
     background-color: rgb(236, 236, 245);
 }
 
+.table td {
+    height: 48px;
+    padding: 8px 14px;
+    font-size: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    border-left: none;
+    border-right: none;
+    vertical-align: middle;
+}
+
+.table tbody tr {
+    background-color: #ffffff;
+    transition:
+        background-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.table tr:nth-child(even) {
+    /* background-color: rgb(236, 236, 245); */
+    background-color: #f8fafc;
+}
+
+.table tbody tr:hover {
+    background-color: #eef6ff;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* .acciones {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+} */
+
 .acciones {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 5px;
 }
 
@@ -74,6 +149,37 @@
     background-color: #0168d6;
 }
 
+.btnVer {
+    min-width: 45px;
+    background-color: #007BFF;
+    background-color: #1677ff;
+    padding: 6px 12px;
+    cursor: pointer;
+    /* border-radius: 50px; */
+    border-radius: 7px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    font-family: "Nunito", sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btnVer:hover {
+    background-color: #0168d6;
+    background-color: #0868e8;
+    box-shadow:
+        0 4px 10px rgba(22, 119, 255, 0.25);
+}
+
 .btnEditar {
     background-color: #4bdf5f;
     padding: 5px 10px;
@@ -82,14 +188,47 @@
     border: none;
     font-weight: bold;
     color: white;
-} 
+}
 
 .btnEditar:hover {
     background-color: #3eb84f;
 }
 
+.btnEditar {
+    min-width: 65px;
+    padding: 6px 12px;
+    cursor: pointer;
+    /* border-radius: 50px; */
+    border-radius: 7px;
+    border: none;
+    /* background-color: #4bdf5f; */
+    background-color: #22c55e;
+    font-weight: bold;
+    color: white;
+
+    font-family: "Nunito", sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btnEditar:hover {
+    /* background-color: #3eb84f; */
+    background-color: #16a34a;
+    box-shadow:
+        0 4px 10px rgba(34, 197, 94, 0.25);
+}
+
+
 .btnEstado {
-    background-color: #DC3545; 
+    background-color: #DC3545;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 50px;
@@ -99,12 +238,44 @@
 }
 
 .btnEstado:hover {
-    background-color: #b62c3a; 
+    background-color: #b62c3a;
+}
+
+.btnEstado {
+    min-width: 65px;
+    padding: 6px 12px;
+    cursor: pointer;
+    /* border-radius: 50px; */
+    border-radius: 7px;
+    border: none;
+    /* background-color: #4bdf5f; */
+    background-color: #DC3545;
+    font-weight: bold;
+    color: white;
+
+    font-family: "Nunito", sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btnEstado:hover {
+    /* background-color: #3eb84f; */
+    background-color: #b62c3a;
+    box-shadow:
+        0 4px 10px rgba(197, 34, 34, 0.25);
 }
 
 button:disabled {
-  background-color: #ccc;   
-  color: #666;              
-  cursor: not-allowed;      
-  opacity: 0.7;             
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.7;
 }

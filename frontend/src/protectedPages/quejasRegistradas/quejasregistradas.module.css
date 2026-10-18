@@ -72,10 +72,7 @@
     border-collapse: collapse;
     color: #1e293b;
     font-family: "Nunito", sans-serif;
-
     border: none;
-
-
 }
 
 .table th {
@@ -83,7 +80,6 @@
     padding: 0 14px;
     background-color: #ced4da;
     /* background-color: #f1f5f9; */
-
     color: #334155;
     text-align: center;
     /* text-align: left; */
@@ -101,22 +97,16 @@ td {
 
 .table td {
     height: 48px;
-
     padding: 8px 14px;
-
     font-size: 15px;
-
     border-bottom: 1px solid #e2e8f0;
-
     border-left: none;
     border-right: none;
-
     vertical-align: middle;
 }
 
 .table tbody tr {
     background-color: #ffffff;
-
     transition:
         background-color 0.15s ease,
         box-shadow 0.15s ease;
@@ -229,7 +219,7 @@ td {
         0 4px 10px rgba(22, 119, 255, 0.25);
 }
 
-.btnAsignar {
+.btnAsignar { 
     min-width: 65px;
     padding: 6px 12px;
     cursor: pointer;

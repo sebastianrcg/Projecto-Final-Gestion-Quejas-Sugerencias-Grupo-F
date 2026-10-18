@@ -113,6 +113,7 @@ const Tareas = () => {
         <>
             <h3 className={styles.title}>Pendientes</h3>
 
+            <div className={styles.tableContainer}>
             <table className={styles.table}>
                 <thead>
                     <th>ID</th>
@@ -129,7 +130,7 @@ const Tareas = () => {
                                 <td>{queja.id}</td>
                                 <td>{queja.nombre}</td>
                                 <td>{queja.tipoqueja}</td>
-                                <td>{queja.estado}</td>
+                                <td><span className={`${styles.estado} ${styles[queja.estado]}`}>{queja.estado}</span></td>
                                 <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
                                 <td><div className={styles.acciones}><button onClick={() => trabajarQueja(queja.id, queja.estado)} className={styles.btnTrabajar} disabled={queja.estado === "verificacion"}>Trabajar</button><button className={styles.btnCerrar} onClick={() => cerrarQueja(queja.id)} disabled={queja.estado === "verificacion"}>Cerrar</button></div></td>
                             </tr>
@@ -137,6 +138,7 @@ const Tareas = () => {
                     })}
                 </tbody>
             </table>
+            </div>
         </>
     )
 }

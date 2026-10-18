@@ -10,7 +10,7 @@ const Usuarios = () => {
 
     const navigate = useNavigate();
 
-    const {session} = useAuth();  
+    const {session} = useAuth();   
 
     const cambiarEstado = async (id) => {
 
@@ -53,6 +53,7 @@ const Usuarios = () => {
                 <button onClick={()=> navigate("/app/usuarios/nuevoUsuario")}>Registrar Usuario</button>
             </div>
 
+            <div className={styles.tableContainer}>
             <table className={styles.table}>
                 <thead>
                     <th>Nombre</th>
@@ -77,6 +78,7 @@ const Usuarios = () => {
                     })}
                 </tbody>
             </table>
+            </div>
             
         </>
     )
