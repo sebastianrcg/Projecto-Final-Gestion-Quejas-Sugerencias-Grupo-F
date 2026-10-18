@@ -21,23 +21,7 @@ const CierreQuejas = () => {
         return <Navigate to="/app" />
     }
 
-    useEffect(() => {
-
-        setQuejaCerrada(false)
-
-        const getQuejasPorCerrar = async () => {
-            try {
-                const response = await axios.get("http://localhost:5000/quejas/porconfirmar");
-                setQuejas(response.data.quejas);
-            } catch (error) {
-
-            }
-
-        }
-
-        getQuejasPorCerrar();
-
-    }, [quejaCerrada])
+    
 
     const cerrarQueja = async (quejaId, usuarioId) => {
         try {
@@ -70,7 +54,37 @@ const CierreQuejas = () => {
         } catch (error) {
 
         }
+    };
+
+    const reabrirQueja = async (quejaId)=> {
+        try {
+            const response = await axios.put(`http://localhost:5000/quejas/reabrir/${quejaId}`);
+            setQuejaCerrada(true);
+
+        } catch (error) {
+
+
+        }
     }
+
+
+    useEffect(() => {
+
+        setQuejaCerrada(false)
+
+        const getQuejasPorCerrar = async () => {
+            try {
+                const response = await axios.get("http://localhost:5000/quejas/porconfirmar");
+                setQuejas(response.data.quejas);
+            } catch (error) {
+
+            }
+
+        }
+
+        getQuejasPorCerrar();
+
+    }, [quejaCerrada]);
 
     return (
         <>
@@ -95,7 +109,9 @@ const CierreQuejas = () => {
                                     <td>{queja.tipoqueja}</td>
                                     <td><span className={`${styles.estado} ${styles[queja.estado]}`}>{queja.estado}</span></td>
                                     <td>{queja.fechacreacion.split("T")[0]} - {queja.fechacreacion.split("T")[1].split(".")[0]}</td>
-                                    <td><div className={styles.acciones}><button className={styles.btnVer} onClick={() => navigate(`/app/cierreQuejas/queja/${queja.id}`)}>Ver</button><button disabled={queja.estado === "cerrada"} className={styles.btnCerrar} onClick={() => cerrarQueja(queja.id, session.user.id)}>Confirmar Cierre</button></div></td>
+                                    <td><div className={styles.acciones}><button className={styles.btnVer} onClick={() => navigate(`/app/cierreQuejas/queja/${queja.id}`)}>Ver</button>
+                                    <button className={styles.btnAsignar} onClick={()=> reabrirQueja(queja.id)}>Reabrir</button>
+                                    <button disabled={queja.estado === "cerrada"} className={styles.btnCerrar} onClick={() => cerrarQueja(queja.id, session.user.id)}>Confirmar Cierre</button></div></td>
                                 </tr>
                             )
                         })}

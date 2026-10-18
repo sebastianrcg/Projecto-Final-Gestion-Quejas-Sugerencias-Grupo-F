@@ -204,7 +204,7 @@ td {
 .acciones {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 5px;
 }
 
 .btnCerrar {
@@ -274,4 +274,36 @@ td {
     background-color: #0868e8;
     box-shadow:
         0 4px 10px rgba(22, 119, 255, 0.25);
+}
+
+.btnAsignar { 
+    
+    padding: 6px 12px;
+    cursor: pointer;
+    /* border-radius: 50px; */
+    border-radius: 7px;
+    border: none;
+    /* background-color: #4bdf5f; */
+    background-color: #22c55e;
+    font-weight: bold;
+    color: white;
+
+    font-family: "Nunito", sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btnAsignar:hover {
+    /* background-color: #3eb84f; */
+    background-color: #16a34a;
+    box-shadow:
+        0 4px 10px rgba(34, 197, 94, 0.25);
 }

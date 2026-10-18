@@ -147,7 +147,7 @@ const QuejasRegistradas = () => {
                 </thead>
                 <tbody>
                     {quejas.map(queja => {
-                        return (
+                        return ( 
                             <tr> 
                                 <td>{queja.id}</td>
                                 <td>{queja.nombre}</td>

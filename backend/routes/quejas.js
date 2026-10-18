@@ -191,6 +191,22 @@ quejasRouter.put("/asignar/:id", async (req, res) => {
     } catch (error) {
         return res.status(500).json({ error: "Error asignando queja." });
     }
+});
+
+quejasRouter.put("/reabrir/:id", async (req, res)=>{
+    const id = req.params.id;
+
+    try {
+        const sql = "UPDATE quejas SET estado= 'asignada' WHERE id=$1";
+        const results = await pool.query(sql, [id]);
+
+        return res.json({mensaje: "Queja reabierta."})
+
+
+    } catch (error) {
+        return res.status(500).json({error: "Error reabriendo quejas."})
+    }
+
 })
 
 quejasRouter.get("/asignadas/:id", async (req, res) => {
