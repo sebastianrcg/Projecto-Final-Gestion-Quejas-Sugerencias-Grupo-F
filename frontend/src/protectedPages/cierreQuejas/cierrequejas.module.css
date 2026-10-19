@@ -147,54 +147,33 @@ td {
 
 .estado {
     display: inline-flex;
-
     align-items: center;
-
     padding: 5px 10px;
-
     border-radius: 6px;
-
     font-size: 13px;
-
     font-weight: 700;
-
     white-space: nowrap;
 }
-
-
-/* Registrada */
 
 .registrada {
     background-color: #dbeafe;
     color: #1d4ed8;
 }
 
-
-/* Trabajando */
-
 .trabajando {
     background-color: #fef3c7;
     color: #b45309;
 }
-
-
-/* Verificación */
 
 .verificacion {
     background-color: #ede9fe;
     color: #6d28d9;
 }
 
-
-/* Asignada */
-
 .asignada {
     background-color: #dcfce7;
     color: #15803d;
 }
-
-
-/* Cerrada */
 
 .cerrada {
     background-color: #e2e8f0;
@@ -218,14 +197,10 @@ td {
     background-color: #DC3545;
     font-weight: bold;
     color: white;
-
     font-family: "Nunito", sans-serif;
-
     font-size: 14px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -257,12 +232,9 @@ td {
     font-weight: bold;
     color: white;
     font-family: "Nunito", sans-serif;
-
     font-size: 14px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -287,14 +259,10 @@ td {
     background-color: #22c55e;
     font-weight: bold;
     color: white;
-
     font-family: "Nunito", sans-serif;
-
     font-size: 14px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,

@@ -13,15 +13,11 @@
 
 .heroHeader {
     display: inline-block;
-
     margin-bottom: 16px;
-
     font-family: "Nunito", sans-serif;
     font-size: 14px;
     font-weight: 800;
-
     letter-spacing: 2px;
-
     color: #1677ff;
 }
 
@@ -58,13 +54,10 @@
     font-size: 22px;
     font-family: "Nunito";
     margin: 10px;
-    
     padding: 5px 15px;
     
 }
 
-
-/* Shared button styles */
 .heroButton {
   height: 62px;
   padding: 0 32px;

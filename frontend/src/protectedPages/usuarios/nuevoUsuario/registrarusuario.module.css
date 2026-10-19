@@ -55,18 +55,12 @@
     padding: 0 10px;
     font-size: 20px;
     font-family: "Nunito", sans-serif;
-
     color: #1e293b;
-
     background-color: #ffffff;
-
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-
     outline: none;
-
     box-sizing: border-box;
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
@@ -77,23 +71,15 @@ select{
     height: 40px;
     width: 40%;
     padding: 0 10px;
-
     font-family: "Nunito", sans-serif;
     font-size: 17px;
-
     color: #1e293b;
-
     background-color: #ffffff;
-
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-
     outline: none;
-
     cursor: pointer;
-
     box-sizing: border-box;
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
@@ -111,23 +97,15 @@ select{
     height: 40px;
     width: 40%;
     padding: 0 12px;
-
     font-family: "Nunito", sans-serif;
     font-size: 17px;
-
     color: #1e293b;
-
     background-color: #ffffff;
-
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-
     outline: none;
-
     cursor: pointer;
-
     box-sizing: border-box;
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;

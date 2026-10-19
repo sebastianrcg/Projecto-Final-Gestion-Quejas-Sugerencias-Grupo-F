@@ -61,7 +61,7 @@ hr {
     width: 100%;
     background: #fffaf0;
     border: 1px solid #f1dfb8;
-    border-left: 5px solid #f0a500;
+    /* border-left: 5px solid #f0a500; */
     border-radius: 12px;
     margin: 14px 0;
     padding: 0;
@@ -76,54 +76,27 @@ hr {
 }
 
 
-/* =========================
-   MAIN INFORMATION
-   ========================= */
-
 .cardContainer {
     min-height: 85px;
     display: grid;
-
-    /*
-       Number
-       Estado
-       Fecha Inicio
-       Fecha Fin
-       Buttons
-    */
     grid-template-columns: 45px 1fr 1.3fr 1.3fr auto;
-
     align-items: center;
     gap: 25px;
     padding: 18px 22px;
 }
 
-
-/* =========================
-   NUMBER
-   ========================= */
-
 .cardContainer>p:first-child {
     width: 34px;
     height: 34px;
     margin: 0;
-
     border-radius: 50%;
-
     background: #fff0cc;
     color: #c47d00;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-weight: 700;
 }
-
-
-/* =========================
-   INFORMATION
-   ========================= */
 
 .cardContainer>div {
     display: flex;
@@ -135,7 +108,6 @@ hr {
     color: #6b5a3a;
     font-size: 13px;
     font-weight: 700;
-
     text-transform: uppercase;
     letter-spacing: 0.3px;
 }
@@ -146,62 +118,34 @@ hr {
     color: #292929;
 }
 
-
-/* =========================
-   STATUS
-   ========================= */
-
 .cardContainer>div:nth-child(2) p {
     width: fit-content;
-
     padding: 4px 11px;
-
     border-radius: 20px;
-
     background: #fff0cc;
     color: #a86d00;
-
     font-size: 13px;
     font-weight: 700;
 }
 
-
-/* =========================
-   BUTTON CONTAINER
-   ========================= */
-
 .cardContainer>div:last-child {
     display: flex;
     flex-direction: row;
-
     align-items: center;
     justify-content: flex-end;
-
     gap: 6px;
-
     white-space: nowrap;
 }
 
-
-/* =========================
-   EXPAND BUTTON
-   ========================= */
-
 .btnVer {
     border: none;
-
     background: #1677ff;
     color: white;
-
     padding: 8px 15px;
-
     border-radius: 20px;
-
     font-size: 14px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition: all 0.2s ease;
 }
 
@@ -210,26 +154,15 @@ hr {
     transform: translateY(-1px);
 }
 
-
-/* =========================
-   COMPLETE BUTTON
-   ========================= */
-
 .btnCerrar {
     border: none;
-
     background: #43d95a;
     color: white;
-
     padding: 8px 15px;
-
     border-radius: 20px;
-
     font-size: 14px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition: all 0.2s ease;
 }
 
@@ -238,99 +171,54 @@ hr {
     transform: translateY(-1px);
 }
 
-
-/* =========================
-   DISABLED BUTTON
-   ========================= */
-
 .btnCerrar:disabled {
     background: #d1d5db;
     color: #6b7280;
-
     cursor: not-allowed;
     opacity: 0.8;
 }
 
 
-/* =========================
-   EXPANDED SECTION
-   ========================= */
-
 .accionCard hr {
     border: none;
     border-top: 1px solid #eadfca;
-
     margin: 0 22px;
 }
 
 
 .contentContainer {
     background: #fffdf8;
-
     padding: 22px 28px 25px;
-
     color: #1f2937;
 }
 
-
-/* Labels */
-
 .contentContainer b {
     display: block;
-
     margin-bottom: 8px;
-
     color: #5c4b2e;
-
     font-size: 15px;
 }
 
-
-/* Description / Result */
-
 .contentContainer p {
     margin: 0 0 18px;
-
     padding: 14px 16px;
-
     background: white;
-
     border: 1px solid #eadfca;
-
     border-radius: 8px;
-
     line-height: 1.6;
-
     color: #4b5563;
 }
 
-
-/* =========================
-   IMAGE
-   ========================= */
-
 .accionCard img {
     display: block;
-
     width: min(70%, 700px);
-
     max-height: 450px;
-
     object-fit: contain;
-
     margin: 22px auto 5px;
-
     border-radius: 10px;
-
     border: 1px solid #e1d8c6;
-
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
-
-
-/* =========================
-   RESPONSIVE
-   ========================= */
 
 @media (max-width: 1000px) {
 
@@ -346,7 +234,6 @@ hr {
 
     .cardContainer>div:last-child {
         grid-column: 2 / -1;
-
         justify-content: flex-start;
     }
 }
@@ -356,9 +243,7 @@ hr {
 
     .cardContainer {
         grid-template-columns: 40px 1fr;
-
         padding: 16px;
-
         gap: 12px;
     }
 
@@ -368,9 +253,7 @@ hr {
 
     .cardContainer>div:last-child {
         grid-column: 1 / -1;
-
         justify-content: flex-start;
-
         margin-top: 5px;
     }
 

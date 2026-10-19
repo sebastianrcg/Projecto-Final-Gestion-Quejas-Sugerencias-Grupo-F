@@ -34,7 +34,6 @@
 .cerrarBtn{
     background-color: #4bdf5f;
     width: 100%;
-    
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 50px;
@@ -79,8 +78,7 @@
     margin-bottom: 10px;
 }
 
-.verImg:hover{
-    
+.verImg:hover{ 
     background-color: #0168d6;
 }
 
@@ -185,62 +183,41 @@
     background-color: #3eb84f;
 }
 
-
-/* ================================
-   PAGE HEADER
-================================ */
-
 .header {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin-top: 35px;
     margin-bottom: 30px;
-
     min-height: 50px;
 }
 
 .title {
     margin: 0;
-
     color: #111827;
     font-size: 35px;
     font-weight: 700;
-
     text-align: center;
 }
-
-
-/* ================================
-   BACK BUTTON
-================================ */
 
 .btnContainer {
     position: absolute;
     left: 0;
-
     display: flex;
     align-items: center;
-
     margin-left: 25px;
 }
 
 .btnContainer button {
     padding: 10px 22px;
-
     border: none;
     border-radius: 50px;
-
     background: #2b9ce2;
     color: white;
-
     font-size: 17px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition: all 0.2s ease;
 }
 
@@ -249,30 +226,17 @@
     transform: translateY(-1px);
 }
 
-
-/* ================================
-   MAIN CARD
-================================ */
-
 .container {
     width: 95%;
-
     margin: 0 auto 20px;
-
     padding: 26px 28px;
-
     background: #ffffff;
-
     border: 1px solid #e5e7eb;
     border-radius: 14px;
-
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
-
     color: #111827;
-
     display: flex;
     flex-direction: column;
-
     box-sizing: border-box;
 }
 
@@ -280,28 +244,17 @@
     margin-top: 20px;
 }
 
-
-/* ================================
-   INFORMATION
-================================ */
-
 .infoContainer {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 12px 35px;
-
     margin-bottom: 5px;
 }
 
 .infoContainer p {
     margin: 0;
-
     padding: 10px 0;
-
     color: #374151;
-
     font-size: 16px;
     line-height: 1.4;
 }
@@ -311,16 +264,9 @@
     font-weight: 700;
 }
 
-
-/* ================================
-   COMMENT
-================================ */
-
 .container > p {
     margin: 12px 0;
-
     color: #374151;
-
     font-size: 16px;
     line-height: 1.6;
 }
@@ -329,29 +275,17 @@
     color: #111827;
 }
 
-
-/* ================================
-   VIEW IMAGE
-================================ */
-
 .verImg {
     width: fit-content;
-
     margin: 8px 0 15px;
-
     padding: 9px 20px;
-
     border: none;
     border-radius: 50px;
-
     background: #2b9ce2;
     color: white;
-
     font-size: 15px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition: all 0.2s ease;
 }
 
@@ -363,121 +297,71 @@
 .verImg:disabled {
     background: #d1d5db;
     color: #6b7280;
-
     cursor: not-allowed;
-
     transform: none;
 }
 
-
-/* ================================
-   IMAGE
-================================ */
-
 .container img {
     display: block;
-
     width: min(70%, 750px);
     max-height: 450px;
-
     object-fit: contain;
-
     margin: 10px auto 20px;
-
     border-radius: 10px;
-
     border: 1px solid #e5e7eb;
-
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
 
-
-/* ================================
-   CLOSE REQUEST AREA
-================================ */
-
 .inputBtns {
     width: 100%;
-
     margin-top: 15px;
-
     padding-top: 20px;
-
     border-top: 1px solid #e5e7eb;
-
     display: flex;
 }
 
-
-/*
-    Main action of this page
-*/
-
 .cerrarBtn {
     width: 100%;
-
     padding: 13px 22px;
-
     border: none; 
     border-radius: 8px;
-
     background: #43d95a;
     color: white;
-
     font-size: 17px;
     font-weight: 700;
-
     cursor: pointer;
-
     box-shadow: 0 3px 8px rgba(67, 217, 90, 0.20);
-
     transition: all 0.2s ease;
 }
 
 .cerrarBtn:hover:not(:disabled) {
     background: #32bd49;
-
     transform: translateY(-1px);
-
     box-shadow: 0 5px 12px rgba(67, 217, 90, 0.28);
 }
 
 .cerrarBtn:disabled {
     background: #d1d5db;
     color: #6b7280;
-
     cursor: not-allowed;
-
     box-shadow: none;
 }
 
-
-/* ================================
-   SECTION HEADER
-================================ */
-
 .containerHeader {
     position: relative;
-
     width: 100%;
-
     min-height: 45px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin-bottom: 18px;
-
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 12px;
 }
 
 .containerHeader h4 {
     margin: 0;
-
     color: #111827;
-
     font-size: 23px;
     font-weight: 700;
 }
@@ -486,58 +370,32 @@
     text-align: center;
 }
 
-
-/* ================================
-   SHOW SECTION BUTTON
-================================ */
-
 .verBtn {
     position: absolute;
     right: 0;
-
     padding: 9px 18px;
-
     border: none;
     border-radius: 50px;
-
     background: #1677ff;
     color: white;
-
     font-size: 14px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition: all 0.2s ease;
 }
 
 .verBtn:hover {
     background: #0868e8;
-
     transform: translateY(-1px);
 }
 
 
-/* ================================
-   EMPTY SECTION MESSAGE
-================================ */
-
 .container > div > p {
     text-align: center;
-
     padding: 20px;
-
     color: #6b7280;
-
     font-size: 16px;
 }
-
-
-
-
-/* ================================
-   RESPONSIVE
-================================ */
 
 @media (max-width: 900px) {
 
@@ -564,33 +422,27 @@
 
     .btnContainer {
         position: static;
-
         margin: 0;
-
         justify-content: center;
     }
 
     .header {
         flex-direction: column;
-
         gap: 15px;
     }
 
     .infoContainer {
         grid-template-columns: 1fr;
-
         gap: 0;
     }
 
     .container {
         width: 92%;
-
         padding: 20px 18px;
     }
 
     .containerHeader {
         flex-direction: column;
-
         gap: 12px;
     }
 
@@ -603,71 +455,44 @@
     }
 }
 
-
-/* =========================================
-   PAGE
-========================================= */
-
 .header {
     width: 95%;
     max-width: 1200px;
-
     margin: 30px auto 25px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: relative;
 }
 
 .title {
     margin: 0;
-
     color: #0f172a;
-
     font-family: "Nunito", sans-serif;
-
     font-size: 36px;
     font-weight: 800;
-
     letter-spacing: -0.5px;
-
     text-align: center;
 }
-
-
-/* =========================================
-   BACK BUTTON
-========================================= */
 
 .btnContainer {
     position: absolute;
     left: 0;
-
     display: flex;
     align-items: center;
 }
 
 .btnContainer button {
     height: 42px;
-
     padding: 0 18px;
-
     border: none;
     border-radius: 8px;
-
     background-color: #1677ff;
-
     color: white;
-
     font-family: "Nunito", sans-serif;
-
     font-size: 16px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -676,100 +501,60 @@
 
 .btnContainer button:hover {
     background-color: #0868e8;
-
     transform: translateX(-2px);
-
     box-shadow:
         0 5px 14px rgba(22, 119, 255, 0.25);
 }
 
-
-/* =========================================
-   MAIN CARD
-========================================= */
-
 .container {
     width: 95%;
     max-width: 1200px;
-
     margin: 0 auto 25px;
-
     padding: 32px 38px;
-
     background-color: #ffffff;
-
     border: 1px solid #e2e8f0;
-
     border-radius: 16px;
-
     box-shadow:
         0 8px 25px rgba(15, 23, 42, 0.08);
 
     color: #1e293b;
-
     font-family: "Nunito", sans-serif;
-
     box-sizing: border-box;
 }
 
-
-/* =========================================
-   COMPLAINT INFORMATION HEADER
-========================================= */
-
 .complaintHeader {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
     gap: 20px;
-
     padding-bottom: 25px;
-
     border-bottom: 1px solid #e2e8f0;
 }
 
 .complaintLabel {
     display: block;
-
     margin-bottom: 5px;
-
     color: #1677ff;
-
     font-size: 13px;
     font-weight: 800;
-
     letter-spacing: 1.5px;
 }
 
 .complaintHeader h2 {
     margin: 0;
-
     color: #0f172a;
-
     font-size: 24px;
     font-weight: 800;
 }
 
-
-/* =========================================
-   STATUS
-========================================= */
-
 .estado {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     padding: 7px 14px;
-
     border-radius: 7px;
-
     font-size: 14px;
     font-weight: 800;
-
     white-space: nowrap;
 }
 
@@ -799,63 +584,37 @@
 }
 
 
-/* =========================================
-   INFORMATION GRID
-========================================= */
-
 .infoContainer {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 15px 20px;
-
     margin-top: 28px;
-
     margin-bottom: 5px;
 }
 
 .infoContainer p {
     min-height: 68px;
-
     margin: 0;
-
     padding: 13px 16px;
-
     background-color: #f8fafc;
-
     border: 1px solid #e2e8f0;
-
     border-radius: 9px;
-
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: start;
-
     box-sizing: border-box;
-
     color: #1e293b;
-
     font-size: 15px;
-
     line-height: 1.4;
 }
 
 .infoContainer p b {
     margin-bottom: 5px;
-
     color: #64748b;
-
     font-size: 13px;
-
     font-weight: 700;
 }
-
-
-/* =========================================
-   COMMENT
-========================================= */
 
 .commentSection {
     margin-top: 25px;
@@ -863,47 +622,27 @@
 
 .commentSection > span {
     display: block;
-
     margin-bottom: 8px;
-
     color: #475569;
-
     font-size: 14px;
-
     font-weight: 800;
 }
 
 .comment {
     min-height: 80px;
-
     padding: 16px;
-
     background-color: #f8fafc;
-
     border: 1px solid #e2e8f0;
-
     border-radius: 9px;
-
     color: #334155;
-
     font-size: 16px;
-
     line-height: 1.6;
-
     white-space: pre-wrap;
 }
 
-
-/*
-    Fallback for your current JSX where
-    the comment is still a direct <p>
-*/
-
 .container > p {
     color: #334155;
-
     font-size: 16px;
-
     line-height: 1.6;
 }
 
@@ -911,36 +650,19 @@
     color: #475569;
 }
 
-
-/* =========================================
-   VIEW IMAGE BUTTON
-========================================= */
-
 .verImg {
     align-self: flex-start;
-
     margin-top: 15px;
-
     height: 40px;
-
     padding: 0 16px;
-
     border: none;
-
     border-radius: 8px;
-
     background-color: #1677ff;
-
     color: white;
-
     font-family: "Nunito", sans-serif;
-
     font-size: 15px;
-
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -949,123 +671,67 @@
 
 .verImg:hover:not(:disabled) {
     background-color: #0868e8;
-
     transform: translateY(-1px);
-
     box-shadow:
         0 5px 12px rgba(22, 119, 255, 0.20);
 }
 
 .verImg:disabled {
     background-color: #e2e8f0;
-
     color: #94a3b8;
-
     cursor: not-allowed;
 }
 
-
-/* =========================================
-   IMAGE CONTAINER
-========================================= */
-
 .imageContainer {
     margin-top: 15px;
-
     padding: 15px;
-
     background-color: #f8fafc;
-
     border: 1px solid #e2e8f0;
-
     border-radius: 10px;
-
     display: flex;
     justify-content: center;
 }
 
 .imageContainer img {
     max-width: 100%;
-
     max-height: 500px;
-
     border-radius: 8px;
-
     object-fit: contain;
-
     box-shadow:
         0 4px 15px rgba(15, 23, 42, 0.10);
 }
-
-
-/*
-    If you haven't added imageContainer
-    to your JSX yet, this still styles
-    the image correctly.
-*/
 
 .container > img {
     display: block;
-
     max-width: 100%;
-
     max-height: 500px;
-
     margin: 15px auto;
-
     border-radius: 8px;
-
     object-fit: contain;
-
     box-shadow:
         0 4px 15px rgba(15, 23, 42, 0.10);
 }
 
-
-/* =========================================
-   CLOSE REQUEST AREA
-========================================= */
-
 .inputBtns {
     width: 100%;
-
     margin-top: 30px;
-
     padding-top: 25px;
-
     border-top: 1px solid #e2e8f0;
-
     display: flex;
 }
 
-
-/* =========================================
-   CLOSE BUTTON
-========================================= */
-
 .cerrarBtn {
     width: 100%;
-
     height: 48px;
-
     padding: 0 22px;
-
     border: none;
-
     border-radius: 9px;
-
     background-color: #22c55e;
-
     color: white;
-
     font-family: "Nunito", sans-serif;
-
     font-size: 16px;
-
     font-weight: 800;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -1074,81 +740,44 @@
 
 .cerrarBtn:hover:not(:disabled) {
     background-color: #16a34a;
-
     transform: translateY(-2px);
-
     box-shadow:
         0 6px 15px rgba(34, 197, 94, 0.22);
 }
 
 .cerrarBtn:disabled {
     background-color: #e2e8f0;
-
     color: #94a3b8;
-
     cursor: not-allowed;
-
     transform: none;
-
     box-shadow: none;
 }
 
-
-/* =========================================
-   SECTION HEADER
-========================================= */
-
 .containerHeader {
     width: 100%;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 20px;
-
     padding-bottom: 20px;
-
     border-bottom: 1px solid #e2e8f0;
-
     box-sizing: border-box;
 }
 
-
-/* =========================================
-   SECTION LABEL
-========================================= */
-
 .sectionLabel {
     display: block;
-
     margin-bottom: 3px;
-
     color: #1677ff;
-
     font-size: 12px;
-
     font-weight: 800;
-
     letter-spacing: 1.4px;
 }
 
-
-/* =========================================
-   SECTION TITLE
-========================================= */
-
 .sectionTitle {
     margin: 0;
-
     color: #0f172a;
-
     font-size: 22px;
-
     font-weight: 800;
-
     text-align: left;
 }
 
@@ -1156,34 +785,18 @@
     margin: 0;
 }
 
-
-/* =========================================
-   SHOW / HIDE SECTION BUTTON
-========================================= */
-
 .verBtn {
     height: 40px;
-
     padding: 0 16px;
-
     border: 1px solid #1677ff;
-
     border-radius: 8px;
-
     background-color: white;
-
     color: #1677ff;
-
     font-family: "Nunito", sans-serif;
-
     font-size: 14px;
-
     font-weight: 800;
-
     cursor: pointer;
-
     white-space: nowrap;
-
     transition:
         background-color 0.2s ease,
         color 0.2s ease,
@@ -1192,65 +805,36 @@
 
 .verBtn:hover {
     background-color: #1677ff;
-
     color: white;
-
     transform: translateY(-1px);
 }
-
-
-/* =========================================
-   RECORDS CONTAINER
-========================================= */
 
 .recordsContainer {
     padding-top: 20px;
 }
 
-
-/* =========================================
-   EMPTY RECORD MESSAGE
-========================================= */
-
 .emptyMessage {
     margin: 25px 0;
-
     padding: 25px;
-
     text-align: center;
-
     background-color: #f8fafc;
-
     border: 1px dashed #cbd5e1;
-
     border-radius: 9px;
-
     color: #64748b;
-
     font-size: 15px;
 }
-
-
-/* =========================================
-   LEGACY EMPTY MESSAGE
-========================================= */
 
 .container > div > p {
     color: #64748b;
-
     font-size: 15px;
 }
 
 
-/* =========================================
-   RESPONSIVE — TABLET
-========================================= */
 
 @media (max-width: 900px) {
 
     .container {
         width: 92%;
-
         padding: 28px 25px;
     }
 
@@ -1261,19 +845,12 @@
 }
 
 
-/* =========================================
-   RESPONSIVE — MOBILE
-========================================= */
-
 @media (max-width: 650px) {
 
     .header {
         width: 92%;
-
         margin-top: 25px;
-
         flex-direction: column;
-
         gap: 15px;
     }
 
@@ -1283,21 +860,17 @@
 
     .btnContainer {
         position: static;
-
         order: 2;
     }
 
     .container {
         width: 92%;
-
         padding: 22px 18px;
-
         border-radius: 12px;
     }
 
     .complaintHeader {
         align-items: flex-start;
-
         flex-direction: column;
     }
 
@@ -1307,15 +880,12 @@
 
     .infoContainer {
         grid-template-columns: 1fr;
-
         gap: 12px;
     }
 
     .containerHeader {
         align-items: flex-start;
-
         flex-direction: column;
-
         gap: 15px;
     }
 
@@ -1329,22 +899,16 @@
 
     .cerrarBtn {
         height: 46px;
-
         font-size: 15px;
     }
 
 }
 
 
-/* =========================================
-   RESPONSIVE — SMALL MOBILE
-========================================= */
-
 @media (max-width: 400px) {
 
     .container {
         width: 94%;
-
         padding: 20px 15px;
     }
 

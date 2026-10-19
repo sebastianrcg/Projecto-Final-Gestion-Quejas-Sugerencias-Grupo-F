@@ -86,7 +86,7 @@ const VistaCierre = () => {
         try {
 
             Swal.fire({
-                text: "Seguro que desea cerrar la soliccitud?",
+                text: "Seguro que desea cerrar la solicitud?",
                 icon: "question",
                 showCancelButton: true,
                 confirmButtonColor: "#43d630",

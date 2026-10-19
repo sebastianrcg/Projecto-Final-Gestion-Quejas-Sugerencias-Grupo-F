@@ -74,11 +74,6 @@ hr {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-
-/* =========================
-   MAIN CARD INFORMATION
-   ========================= */
-
 .cardContainer {
     min-height: 85px;
     display: grid;
@@ -88,8 +83,6 @@ hr {
     padding: 18px 22px;
 }
 
-
-/* Number */
 
 .cardContainer > p:first-child {
     width: 34px;
@@ -104,8 +97,6 @@ hr {
     font-weight: 700;
 }
 
-
-/* Information blocks */
 
 .cardContainer > div {
     display: flex;
@@ -127,17 +118,6 @@ hr {
     color: #111827;
 }
 
-
-/* =========================
-   STATUS
-   ========================= */
-
-/*
-   You can also make estado look like a badge.
-   This assumes the Estado <div> is the third
-   information block.
-*/
-
 .cardContainer > div:nth-child(3) p {
     width: fit-content;
     padding: 4px 10px;
@@ -148,11 +128,6 @@ hr {
     font-weight: 700;
 }
 
-
-/* =========================
-   BUTTON CONTAINER
-   ========================= */
-
 .cardContainer > div:last-child {
     display: flex;
     flex-direction: row;
@@ -162,10 +137,6 @@ hr {
     white-space: nowrap;
 }
 
-
-/* =========================
-   EXPAND BUTTON
-   ========================= */
 
 .btnVer {
     border: none;
@@ -185,10 +156,6 @@ hr {
 }
 
 
-/* =========================
-   COMPLETE BUTTON
-   ========================= */
-
 .btnCerrar {
     border: none;
     background: #43d95a;
@@ -206,9 +173,6 @@ hr {
     transform: translateY(-1px);
 }
 
-
-/* Disabled */
-
 .btnCerrar:disabled {
     background: #d1d5db;
     color: #6b7280;
@@ -216,10 +180,6 @@ hr {
     opacity: 0.8;
 }
 
-
-/* =========================
-   EXPANDED CONTENT
-   ========================= */
 
 .investigacionCard hr {
     border: none;
@@ -254,10 +214,6 @@ hr {
 }
 
 
-/* =========================
-   IMAGE
-   ========================= */
-
 .investigacionCard img {
     display: block;
     width: min(70%, 700px);
@@ -282,9 +238,6 @@ hr {
     font-weight: 700;
 }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
 
 @media (max-width: 1000px) {
 

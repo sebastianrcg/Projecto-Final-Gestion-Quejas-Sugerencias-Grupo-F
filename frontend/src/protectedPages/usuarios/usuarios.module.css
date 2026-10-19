@@ -161,12 +161,9 @@ td {
     font-weight: bold;
     color: white;
     font-family: "Nunito", sans-serif;
-
     font-size: 14px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -205,14 +202,10 @@ td {
     background-color: #22c55e;
     font-weight: bold;
     color: white;
-
     font-family: "Nunito", sans-serif;
-
     font-size: 14px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -252,14 +245,10 @@ td {
     background-color: #DC3545;
     font-weight: bold;
     color: white;
-
     font-family: "Nunito", sans-serif;
-
     font-size: 14px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,

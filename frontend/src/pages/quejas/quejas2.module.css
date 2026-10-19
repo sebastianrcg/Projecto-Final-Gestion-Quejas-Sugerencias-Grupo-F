@@ -1,16 +1,10 @@
-
-
 .title {
     margin: 30px 0 35px;
-
     text-align: center;
-
     color: #0f172a;
-
     font-family: "Nunito", sans-serif;
     font-size: 36px;
     font-weight: 800;
-
     letter-spacing: -0.5px;
 }
 
@@ -19,22 +13,16 @@
     width: 70%;
     max-width: 1000px;
     min-height: 60dvh;
-
     margin: 0 auto 40px;
-
     padding: 25px 45px;
-
     background-color: #ffffff;
-
     border: 1px solid #e2e8f0;
     border-radius: 16px;
-
     box-shadow:
         0 10px 30px rgba(15, 23, 42, 0.10);
 
     display: flex;
     flex-direction: column;
-
     box-sizing: border-box;
 }
 
@@ -45,39 +33,25 @@
     width: 70%;
     max-width: 1000px;
     min-height: 60dvh;
-
     margin: 0 auto 40px;
-
     padding: 40px;
-
     background-color: #ffffff;
-
     border: 1px solid #e2e8f0;
     border-radius: 16px;
-
     box-shadow:
         0 10px 30px rgba(15, 23, 42, 0.10);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     box-sizing: border-box;
 }
-
-
-/* ================================
-   INPUT ROWS
-================================ */
 
 .inputContainer,
 .inputContainerSubject {
     width: 100%;
-
     display: flex;
     align-items: center;
-
     gap: 30px;
     margin: 10px 0;
 }
@@ -87,51 +61,33 @@
 .inputContainer input {
     width: 50%;
     height: 40px;
-
     padding: 0 14px;
-
     font-family: "Nunito", sans-serif;
     font-size: 17px;
-
     color: #1e293b;
-
     background-color: #ffffff;
-
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-
     outline: none;
-
     box-sizing: border-box;
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
 }
 
 
-/* Subject */
-
 .inputContainerSubject input {
     width: 100%;
     height: 40px;
-
     padding: 0 14px;
-
     font-family: "Nunito", sans-serif;
     font-size: 17px;
-
     color: #1e293b;
-
     background-color: #ffffff;
-
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-
     outline: none;
-
     box-sizing: border-box;
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
@@ -142,55 +98,35 @@
 .inputContainer select {
     width: 50%;
     height: 40px;
-
     padding: 0 12px;
-
     font-family: "Nunito", sans-serif;
     font-size: 17px;
-
     color: #1e293b;
-
     background-color: #ffffff;
-
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-
     outline: none;
-
     cursor: pointer;
-
     box-sizing: border-box;
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-
-/* File input */
-
 .inputContainer input[type="file"] {
     width: 50%;
-
     height: 40px;
-
     padding: 5px;
-
     font-family: "Nunito", sans-serif;
     font-size: 15px;
-
     color: #475569;
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: #f8fafc;
-
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-
     cursor: pointer;
-
     box-sizing: border-box;
 }
 
@@ -217,9 +153,7 @@
 
 .commentBox {
     width: 100%;
-
     margin-top: 10px;
-
     display: flex;
     justify-content: center;
 }
@@ -227,34 +161,22 @@
 
 .commentBox textarea {
     width: 100%;
-
     min-width: 100%;
     max-width: 100%;
-
     height: 120px;
-
     min-height: 120px;
     max-height: 120px;
-
     padding: 14px;
-
     font-family: "Nunito", sans-serif;
     font-size: 17px;
     line-height: 1.5;
-
     color: #1e293b;
-
     background-color: #ffffff;
-
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-
     outline: none;
-
     resize: vertical;
-
     box-sizing: border-box;
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
@@ -263,21 +185,13 @@
 
 .commentBox textarea:focus {
     border-color: #1677ff;
-
     box-shadow:
         0 0 0 3px rgba(22, 119, 255, 0.12);
 }
 
-
-/* ================================
-   BUTTON CONTAINER
-================================ */
-
 .formBtns {
     width: 100%;
-
     margin-top: 15px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -285,34 +199,22 @@
 }
 
 
-/* ================================
-   SAVE BUTTON
-================================ */
-
 .saveBtn {
 
     min-width: 155px;
     height: 46px;
-
     padding: 0 24px;
-
     border: none;
     border-radius: 8px;
-
     background-color: #16a34a;
-
     font-family: "Nunito", sans-serif;
     font-size: 17px;
     font-weight: 700;
-
     color: white;
-
     cursor: pointer;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -322,9 +224,7 @@
 
 .saveBtn:hover {
     background-color: #15803d;
-
     transform: translateY(-2px);
-
     box-shadow:
         0 5px 14px rgba(22, 163, 74, 0.25);
 }
@@ -334,35 +234,22 @@
     transform: translateY(0);
 }
 
-
-/* ================================
-   RESET BUTTON
-================================ */
-
 .btnReset {
 
     min-width: 175px;
     height: 46px;
-
     padding: 0 24px;
-
     border: none;
     border-radius: 8px;
-
     background-color: #ef4444;
-
     font-family: "Nunito", sans-serif;
     font-size: 17px;
     font-weight: 700;
-
     color: white;
-
     cursor: pointer;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -372,9 +259,7 @@
 
 .btnReset:hover {
     background-color: #dc2626;
-
     transform: translateY(-2px);
-
     box-shadow:
         0 5px 14px rgba(239, 68, 68, 0.25);
 }
@@ -384,57 +269,36 @@
     transform: translateY(0);
 }
 
-
-/* ================================
-   ERROR MESSAGE
-================================ */
-
 .errorMsg {
 
     margin: 15px 0 0;
-
     text-align: center;
-
     color: #dc2626;
-
     font-family: "Nunito", sans-serif;
     font-size: 16px;
     font-weight: 700;
 }
 
-
-/* ================================
-   SUCCESS MESSAGE
-================================ */
-
 .success {
 
     width: 100%;
     min-height: 300px;
-
     padding: 30px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     box-sizing: border-box;
-
     color: #0f172a;
-
     font-family: "Nunito", sans-serif;
     font-size: 26px;
-
     /* text-align: center; */
 }
 
 
 .success p {
     max-width: 600px;
-
     margin: 10px 0;
-
     line-height: 1.5;
 }
 
@@ -442,28 +306,19 @@
 .success button {
 
     margin-top: 25px;
-
     min-width: 180px;
     height: 50px;
-
     padding: 0 25px;
-
     border: none;
     border-radius: 8px;
-
     background-color: #1677ff;
-
     font-family: "Nunito", sans-serif;
     font-size: 20px;
     font-weight: 700;
-
     color: white;
-
     cursor: pointer;
-
     box-shadow:
         0 5px 14px rgba(22, 119, 255, 0.20);
-
     transition:
         background-color 0.2s ease,
         transform 0.2s ease,
@@ -474,30 +329,22 @@
 .success button:hover {
 
     background-color: #0868e8;
-
     transform: translateY(-2px);
-
     box-shadow:
         0 8px 18px rgba(22, 119, 255, 0.28);
 }
 
-
-/* ================================
-   RESPONSIVE
-================================ */
 
 @media (max-width: 800px) {
 
     .form,
     .formSuccess {
         width: 90%;
-
         padding: 30px 25px;
     }
 
     .inputContainer {
         flex-direction: column;
-
         gap: 12px;
     }
 
@@ -513,7 +360,6 @@
 
     .formBtns {
         flex-direction: column;
-
         gap: 12px;
     }
 
@@ -528,14 +374,12 @@
 
     .title {
         font-size: 30px;
-
         margin-top: 25px;
     }
 
     .form,
     .formSuccess {
         width: 94%;
-
         padding: 25px 18px;
     }
 
