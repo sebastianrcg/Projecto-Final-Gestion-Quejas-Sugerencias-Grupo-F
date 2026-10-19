@@ -34,7 +34,7 @@ const AccionesCorrectivasCard = ({numero, estado, fecha_inicio, fecha_fin, descr
                         </div>
                     </div>
         
-                    {show &&
+                    {show && 
                         <>
                         <hr />
                         <div className={styles.contentContainer}>

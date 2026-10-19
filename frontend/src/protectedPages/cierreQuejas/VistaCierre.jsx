@@ -28,7 +28,7 @@ const VistaCierre = () => {
 
     const navigate = useNavigate();
 
-    useEffect(()=> {
+    useEffect(() => {
 
         setQuejaCerrada(false);
         const getQueja = async (id) => {
@@ -49,7 +49,7 @@ const VistaCierre = () => {
 
     useEffect(() => {
 
-        
+
 
         const getAccionesCorrectivas = async (quejaId, usuarioId) => {
             try {
@@ -74,41 +74,41 @@ const VistaCierre = () => {
 
             }
         }
-        
-        
+
+
         getInvestigaciones(id, session.user.id)
         getAccionesCorrectivas(id, session.user.id)
 
 
     }, [id])
 
-    const cerrarQueja = async (quejaId, usuarioId) =>{
+    const cerrarQueja = async (quejaId, usuarioId) => {
         try {
 
             Swal.fire({
-                    text: "Seguro que desea cerrar la soliccitud?",
-                    icon: "question",
-                    showCancelButton: true,
-                    confirmButtonColor: "#43d630",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Cerrar Solicitud",
-                    cancelButtonText: "Cancelar"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        axios.put(`http://localhost:5000/quejas/confirmarCierre/${quejaId}`, {usuario_cierre: usuarioId}).then(result2 => {
-                            
-                            Swal.fire({
-                                title: "Solicitud cerrada!",
-                                text: "Solicitud verificada y cerrada exitosamente",
-                                icon: "success" 
-                            })
-                            setQuejaCerrada(true);
+                text: "Seguro que desea cerrar la soliccitud?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#43d630",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Cerrar Solicitud",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.put(`http://localhost:5000/quejas/confirmarCierre/${quejaId}`, { usuario_cierre: usuarioId }).then(result2 => {
+
+                        Swal.fire({
+                            title: "Solicitud cerrada!",
+                            text: "Solicitud verificada y cerrada exitosamente",
+                            icon: "success"
                         })
+                        setQuejaCerrada(true);
+                    })
 
-                    }
+                }
 
 
-                })
+            })
 
         } catch (error) {
 
@@ -145,7 +145,13 @@ const VistaCierre = () => {
                     <p><b>Lote: </b>{queja.lote}</p>
                     <p><b>Solicitud #: </b>{queja.tracking}</p>
                 </div>
-                <p><b>Comentario: </b>{queja.comentario}</p>
+                <div className={styles.commentSection}>
+                    <span>Comentario</span>
+
+                    <div className={styles.comment}>
+                        {queja.comentario}
+                    </div>
+                </div>
                 <button disabled={!queja.foto} onClick={() => setShowImg(!showImg)} className={styles.verImg}>{showImg ? "Ocultar Imagen" : "Ver Imagen"}</button>
 
                 {showImg &&
@@ -158,8 +164,8 @@ const VistaCierre = () => {
                 }
 
                 <div className={styles.inputBtns}>
-                    <button disabled={queja.estado === "cerrada"} className={styles.cerrarBtn} onClick={()=> cerrarQueja(id, session.user.id)}>Cerrar Solicitud</button>
-                    
+                    <button disabled={queja.estado === "cerrada"} className={styles.cerrarBtn} onClick={() => cerrarQueja(id, session.user.id)}>Cerrar Solicitud</button>
+
                 </div>
 
 

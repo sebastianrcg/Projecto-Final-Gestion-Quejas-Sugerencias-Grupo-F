@@ -43,3 +43,270 @@
     flex-direction: column;
     color: black;
 }
+
+
+.title {
+    margin: 30px 0 20px;
+    text-align: center;
+    color: #0f172a;
+    font-family: "Nunito", sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+
+
+
+.btnContainer {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.btnContainer button {
+    height: 42px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1677ff;
+    color: white;
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.btnContainer button:hover {
+    background-color: #0868e8;
+    transform: translateX(-2px);
+    box-shadow:
+        0 4px 12px rgba(22, 119, 255, 0.25);
+}
+
+
+
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    padding: 35px 40px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.08);
+    color: #1e293b;
+    font-family: "Nunito", sans-serif;
+    box-sizing: border-box;
+}
+
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+
+.headerLabel {
+    display: block;
+    margin-bottom: 5px;
+    color: #1677ff;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+
+.header h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+
+
+.estado {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 14px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+
+.registrada {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+
+.trabajando {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+
+.verificacion {
+    background-color: #ede9fe;
+    color: #6d28d9;
+}
+
+
+.asignada {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+
+.cerrada {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+
+
+
+.section {
+    margin-top: 30px;
+}
+
+
+.section h4 {
+    margin: 0 0 18px;
+    color: #0f172a;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 20px;
+}
+
+
+.infoItem {
+    min-height: 70px;
+    padding: 14px 16px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+.infoItem span {
+    margin-bottom: 5px;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.infoItem strong {
+    color: #1e293b;
+    font-size: 16px;
+    font-weight: 700;
+    word-break: break-word;
+}
+
+
+
+
+.comment {
+    min-height: 120px;
+    padding: 18px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    color: #334155;
+    font-size: 16px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+
+
+
+.imageContainer {
+    padding: 15px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.imageContainer img {
+    display: block;
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 7px;
+    box-shadow:
+        0 4px 15px rgba(15, 23, 42, 0.10);
+}
+
+
+
+
+@media (max-width: 700px) {
+
+    .title {
+        font-size: 30px;
+        margin-top: 25px;
+    }
+
+
+    .container {
+        width: 94%;
+        padding: 25px 20px;
+    }
+
+
+    .btnContainer {
+        width: 94%;
+    }
+
+
+    .header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .infoGrid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .header h2 {
+        font-size: 21px;
+    }
+}
