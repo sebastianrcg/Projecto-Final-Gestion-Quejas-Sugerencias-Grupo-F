@@ -22,6 +22,7 @@ const QuejasRegistradas = () => {
     const limite = parseInt(searchParams.get("limite")) || 20;
     const categoria = searchParams.get("categoria") || "";
     const estado = searchParams.get("estado") || "";
+    const orden = searchParams.get("orden") || "ASC";
     
     
     // const [limite, setLimite] = useState(20);
@@ -46,8 +47,8 @@ const QuejasRegistradas = () => {
 
     const topPageRef = useOutletContext();
 
-    const setParams = (nuevaPagina, nuevoLimite = limite, nuevaCategoria = categoria, nuevoEstado = estado) => {
-        setSearchParams({pagina: nuevaPagina, limite: nuevoLimite, categoria: nuevaCategoria, estado: nuevoEstado});
+    const setParams = (nuevaPagina, nuevoLimite = limite, nuevoOrden = orden,nuevaCategoria = categoria, nuevoEstado = estado) => {
+        setSearchParams({pagina: nuevaPagina, limite: nuevoLimite, orden: nuevoOrden,categoria: nuevaCategoria, estado: nuevoEstado});
     }
 
     
@@ -70,12 +71,17 @@ const QuejasRegistradas = () => {
 
     const cambiarCategoria = (event) => {
         const nuevaCategoria = event.target.value;
-        setParams(1, limite, nuevaCategoria , estado);
+        setParams(1, limite, orden, nuevaCategoria , estado);
     }
 
     const cambiarEstado = (event) => {
         const nuevoEstado = event.target.value;
-        setParams(1, limite, categoria, nuevoEstado);
+        setParams(1, limite, orden, categoria, nuevoEstado);
+    }
+
+    const cambiarOrden = (event) => {
+        const nuevoOrden = event.target.value;
+        setParams(1, limite, nuevoOrden, categoria, estado)
     }
 
 
@@ -85,7 +91,7 @@ const QuejasRegistradas = () => {
 
         const getQuejas = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/quejas?pagina=${pagina}&limite=${limite}&categoria=${categoria}&estado=${estado}`);
+                const response = await axios.get(`http://localhost:5000/quejas?pagina=${pagina}&limite=${limite}&categoria=${categoria}&estado=${estado}&orden=${orden}`);
 
                 if (response.data.quejas) {
                     setQuejas(response.data.quejas)
@@ -97,7 +103,7 @@ const QuejasRegistradas = () => {
         } 
         getQuejas();
         topPageRef.current.scrollTo({ top: 0, behavior: "instant" });
-    }, [pagina, limite, categoria, estado, asignada]) 
+    }, [pagina, limite, orden,categoria, estado, asignada]) 
 
     return (
         <>
@@ -127,12 +133,19 @@ const QuejasRegistradas = () => {
                 </select>
                 </div>
 
+                <div className={styles.filtrosContainer}>
+                <select title="Orden de Fecha de Creacion" value={orden} onChange={cambiarOrden}>
+                    <option value="DESC">Fecha Decendiente</option>
+                    <option value="ASC" selected>Fecha Ascendiente</option>
+                </select>
+
                 <select  title="Numero de Registros por Pagina" value={limite} onChange={cambiarLimite}>
                     <option value={10}>10</option>
                     <option value={20} selected>20</option>
                     <option value={30}>30</option>
                     <option value={40}>40</option>
                 </select>
+                </div>
             </div>
 
             <div className={styles.tableContainer}>

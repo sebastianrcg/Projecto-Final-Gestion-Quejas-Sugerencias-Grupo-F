@@ -46,6 +46,7 @@ quejasRouter.get("/", async (req, res) => {
     const limite = parseInt(req.query.limite) || 20;
     const categoria = req.query.categoria;
     const estado = req.query.estado;
+    const orden = req.query.orden;
 
     const offset = (pagina - 1) * limite;
 
@@ -75,7 +76,7 @@ quejasRouter.get("/", async (req, res) => {
 
             if (estado) {
 
-                const sql = `SELECT * FROM quejas WHERE tipoqueja IN ${search} AND estado = $1 ORDER BY fechacreacion ASC LIMIT $2 OFFSET $3`;
+                const sql = `SELECT * FROM quejas WHERE tipoqueja IN ${search} AND estado = $1 ORDER BY fechacreacion ${orden} LIMIT $2 OFFSET $3`;
                 const values = [estado, limite, offset];
 
                 results = await pool.query(sql, values);
@@ -85,7 +86,7 @@ quejasRouter.get("/", async (req, res) => {
 
             } else {
 
-                const sql = `SELECT * FROM quejas WHERE tipoqueja IN ${search} AND estado != 'cerrada' ORDER BY fechacreacion ASC LIMIT $1 OFFSET $2`;
+                const sql = `SELECT * FROM quejas WHERE tipoqueja IN ${search} AND estado != 'cerrada' ORDER BY fechacreacion ${orden} LIMIT $1 OFFSET $2`;
                 const values = [limite, offset];
 
                 results = await pool.query(sql, values);
@@ -101,7 +102,7 @@ quejasRouter.get("/", async (req, res) => {
 
             if (estado) {
 
-                const sql = "SELECT * FROM quejas WHERE estado = $1 ORDER BY fechacreacion ASC LIMIT $2 OFFSET $3";
+                const sql = `SELECT * FROM quejas WHERE estado = $1 ORDER BY fechacreacion ${orden} LIMIT $2 OFFSET $3`;
                 results = await pool.query(sql, [estado, limite, offset]);
 
                 const sql2 = "SELECT COUNT(*) FROM quejas WHERE estado = $1";
@@ -109,7 +110,7 @@ quejasRouter.get("/", async (req, res) => {
 
             } else {
 
-                const sql = "SELECT * FROM quejas WHERE estado != 'cerrada' ORDER BY fechacreacion ASC LIMIT $1 OFFSET $2";
+                const sql = `SELECT * FROM quejas WHERE estado != 'cerrada' ORDER BY fechacreacion ${orden} LIMIT $1 OFFSET $2`;
                 results = await pool.query(sql, [limite, offset]);
 
                 const sql2 = "SELECT COUNT(*) FROM quejas WHERE estado != 'cerrada'";
